@@ -1,0 +1,64 @@
+<div class="measurementsDisplay" ng-show="measurementsDisplay" id="line">
+    <div ng-show="loadingMeasurements" class="loader"></div>
+    <div ng-show="noDataMeasurements" class="noData">No data</div>
+
+    <div ng-show="dataMeasurements">
+    <div class="inLine-measurement">
+        <button type="button" id="butonRefresh" class="btn btn-success" ng-click="measurementSensor(sensor.id)" ng-if="detailsData">Refresh</button>
+        <div  class="form-group measurementsContainerSet">
+            <select class="form-control"  ng-model="pageSize" ng-click="setPageSize(pageSize)">
+                <option selected disabled hidden value="">Sensor per page: 10</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="40">40</option>
+                <option value="60">60</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+            </select>
+        </div>
+    </div>
+        <div class="measurementsTotalReadings">
+            <label>Total Readings: {{totalReadings}}</label>
+            <div class="legend-measurement" ng-if="!vibrations">
+                <a2 style="font-weight: bold;">Legend: </a2>
+                <span class="fa fa-circle" style="color: #4e9a06;"></span><a1>Value</a1>
+                <span class="fa fa-circle" style="color: #d9534f;"></span><a1>Invalid sensor (0)</a1>
+                <span class="fa fa-circle" style="color: #286090;"></span><a1>Out of range</a1>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Index</td>
+                    <td>Reading Date</td>
+                    <td ng-if="!vibrations">Val({{unitOfMeasure}})</td>
+                    <td ng-if="vibrations">Alerts</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="measurementSensor in $root.measurementSensors">
+                    <div></div>
+                    <td>{{$index+1}}</td>
+                    <td>{{measurementSensor.readingDate}}</td>
+                    <td ng-if= "!vibrations">
+                        <div class="measurementsOk" ng-if="(measurementSensor.value < outOfRangePositiveError) && (measurementSensor.value > outOfRangeNegativeError) && (measurementSensor.value != 0)">{{measurementSensor.value}}</div>
+                        <div class="measurementsOutOfRange" ng-if="measurementSensor.value > outOfRangePositiveError">ORP</div>
+                        <div class="measurementsOutOfRange" ng-if="outOfRangeNegativeError > measurementSensor.value">ORN</div>
+                        <div class="measurementsInvalidSensor" ng-if="measurementSensor.value == 0">IS(0)</div>
+                    </td>
+                    <td ng-if ="vibrations">
+                        <div ng-if="measurementSensor.value == 100" class="measurementsInvalidSensor">x</div>
+                        <div ng-if="measurementSensor.value == 200" class="measurementsInvalidSensor">y</div>
+                        <div ng-if="measurementSensor.value == 300" class="measurementsInvalidSensor">z</div>
+                        <div ng-if="measurementSensor.value == 400" class="measurementsInvalidSensor">xy</div>
+                        <div ng-if="measurementSensor.value == 500" class="measurementsInvalidSensor">xz</div>
+                        <div ng-if="measurementSensor.value == 600" class="measurementsInvalidSensor">yz</div>
+                        <div ng-if="measurementSensor.value == 700" class="measurementsInvalidSensor">xyz</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pages-center" paging page="page" total="totalReadings" page-size="size" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
+    </div>
+    <button type="button" class="btn btn" ng-click="cancelMeasurements()" ng-if="detailsData">Cancel</button>
+</div>

@@ -1,0 +1,61 @@
+<div class="c-network-view">
+    <div class="noData" ng-show="noNetworks">Currently you don't have any networks. Go to <a style="text-decoration: none;">Add network</a> to register one</div>
+    <div class="noData" ng-show="serverError">An error has occured. Please try again later.</div>
+
+    <div  class="c-inside-body-network" ng-show ="!noNetworks && !serverError && !editNetworkDisplay && !deleteNetworkDisplay">
+        <div class="header-network-card">
+            <h1>Chose your network</h1>
+            <a ui-sref="sensorsHome.addNetwork"><i class="fas fa-plus"></i>Add a new network</a>
+        </div>
+        
+
+        <div ng-show="loadingNetworks" class="loader"></div>
+
+        <div class="c-aranjament" >
+            <div class="c-column" ng-repeat="network in networks">
+                <div class="c-card">
+                    <div class="c-title-network">
+                        <a ng-click="filterGateways(network)"><i class="fas fa-arrow-right"></i>Go to {{network.name}}</a>
+                    </div>
+
+                    <div class="c-view-action">
+                        <edit-network></edit-network>
+                        <delete-network></delete-network>
+                    </div>
+
+                    <div class="c-buttons-network">
+                        <a ng-click="startEditNetwork(network)">Edit</a>
+                        <a ui-sref="sensorsHome.networkDetails" ng-click="getNetwork(network)">Details</a>
+                        <a ng-click="startDeleteNetwork(network)">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="sensorModel container">
+    <div class="noData" ng-show="noNetworks">Currently you don't have any networks. Go to <a style="text-decoration: none;">Add network</a> to register one</div>
+    <div class="noData" ng-show="serverError">An error has occured. Please try again later.</div>
+    <div  class="container-buttonNetwork" ng-show ="!noNetworks && !serverError && !editNetworkDisplay && !deleteNetworkDisplay">
+        <h1 >Chose your network</h1>
+        <div ng-show="loadingNetworks" class="loader"></div>
+        <div class="container-networksROW" >
+            <div class="container-networksCOLUMN" ng-repeat="network in networks">
+                <div class="container-networksCARD">
+                    <div class="container-networkTitle">
+                        <button type="button" ng-click="filterGateways(network)">Go to {{network.name}} <i class="fas fa-sign-in-alt"></i></button>
+                    </div>
+                    <div class="container-networkCtrl">
+                        <button type="button" class="button-cardView buttonNetAndAdd" ui-sref="sensorsHome.networkDetails" ng-click="getNetwork(network)">Details</button>
+                        <button type="button" class="button-cardView buttonNetAndAdd" ng-click="startEditNetwork(network)">Edit</button>
+                        <button type="button" class="button-cardView buttonNetAndAdd" ng-click="startDeleteNetwork(network)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <edit-network></edit-network>
+    <delete-network></delete-network>
+</div> -->

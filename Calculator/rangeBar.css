@@ -1,0 +1,177 @@
+/* --> total const in header */
+.container-home .header-home .header-home-right .calculator-total-cost{
+    background-color: #4e9a06;
+    margin-right: 10px;
+    padding: 5px;
+    margin-top: 7px;
+    border: 1px solid #333;
+}
+.container-home .header-home .header-home-right .calculator-total-cost span{
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+}
+.container-home .header-home .header-home-right .calculator-total-cost:hover{
+    font-weight: initial;
+    color: #333;
+}
+.container-home .header-home-hover-cost{
+    position: relative;
+}
+.container-home .header-home-hover-cost:hover .hover-total-cost{
+    display: block;
+}
+.container-home .header-home-hover-cost .hover-total-cost{
+    position: absolute;
+    top: 50px;
+    right: 5px;
+    color: white;
+    background-color: black;
+    height: auto;
+    padding: 15px;
+    width: 200px;
+    z-index: 129320;
+    display: none;
+}
+/* /total const in header <--*/
+.container-slide h1{
+    font-family: "FontC4G";
+    text-align: center;
+    font-size: 25px;
+    padding: 5px;
+    margin-left: 15px;
+}
+.container-slide a{
+    color: #68a225;
+}
+ .p-calculator{
+    margin-top: 30px;
+}
+
+
+/* --> cristina */
+.container-range-bar .container-slide .slider-calculator {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-bottom: 10px;
+}
+
+.container-range-bar .container-slide .slider-calculator:hover {
+    opacity: 1;
+}
+
+.container-range-bar .container-slide .slider-calculator::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4e9a06;
+    cursor: pointer;
+}
+
+.container-range-bar .container-slide .slider-calculator::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #4e9a06;
+    cursor: pointer;
+}
+/* cristina <--*/
+
+/* --> aranjare  */
+.container-range-bar .container-calc-req{
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 200px;
+    padding-bottom: 150px;
+}
+.container-calc-req .container-calc{
+    flex-grow: 1;
+}
+.container-calc-req .img-treime{
+    position: absolute;
+    top: -100px;
+    left: -60px;
+    z-index: 0;
+}
+.container-calc-req .img-treime img{
+    width: 300px;
+    height: auto;
+    margin-top: 15px;
+    z-index: 0;
+}
+.container-calc-req .container-req{
+    flex-grow: 4;
+}
+.container-range-bar{
+    border-style: solid;
+    border-color:  rgba(51, 51, 51, 0.274);
+    border-width:  1px 0px 1px 0px;
+    padding: 30px;
+    background-color: #8f8f8f1a;
+    font-family: "FontC4G";
+    font-size: 14px;
+}
+.container-range-bar .container-slide .row-text-calculator{
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+.container-range-bar .container-slide .calculator-flex-ya{
+    text-align: center;
+    flex: 100px;
+}
+.container-range-bar .container-slide .row-text-calculator p{
+    width: 200px;
+}
+.container-range-bar .container-slide .row-text-calculator input{
+    width: 200px;
+}
+.container-slide h1{
+    font-family: "FontC4G";
+}
+@media  screen and (max-width: 880px){
+    .container-calc-req .img-treime{
+        top: -5px;
+        left: -1px;
+    }
+}
+@media  screen and (max-width: 750px){
+    .container-range-bar .container-calc-req{
+        flex-direction: column;
+    }
+    .contact-container-request .contact-container .area-text-container{
+        width: 100%;
+    }
+    
+}
+@media  screen and (max-width: 561px){
+    .container-range-bar .container-slide .row-text-calculator{
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5px;
+    }
+    .container-range-bar .container-slide .row-text-calculator p{
+    width: auto;
+    }
+    .container-slide h1{
+        font-size: 20px;
+    }
+    .container-calc-req .img-treime{
+        top: 0px;
+        left: 0px;
+    }
+    .container-calc-req .img-treime img{
+        width: 200px;
+    }
+}
+/* aranjare <-- */

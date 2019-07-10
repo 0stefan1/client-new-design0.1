@@ -1,0 +1,59 @@
+.container-big-gallery{
+  width: 100%;
+  height: 100%;
+  background-image: url("/Home/images-home/newGallery-images/BG-paralax.svg");
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-size: 100%;
+  background-repeat: round;
+  border-bottom: 1px solid #33333346;
+  border-top: 1px solid #33333346;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+section .containerGallery-big{
+  background-color: white;
+}
+section .containerGallery-mini{
+  display: flex;
+  justify-content: center;
+}
+section .box-spanGallery{
+  margin-left: 12%;
+  padding: 5px;
+}
+section .containerGallery-mini span{
+  user-select: none;
+  cursor: pointer;
+  opacity: 0.6;
+  padding: 7px;
+  font-size: 17px;
+}
+.box-spanGallery #circleG1{
+  opacity: 1.0;
+}
+section .containerGallery-mini span:hover{
+  opacity: 1;
+}
+
+section .containerGallery-big img{
+  height: auto;
+  width: 100%;
+  user-select: none;
+  cursor: pointer;
+  border: 1px solid #33333318;
+}
+.container-IMGgallery{
+  display: none;
+  height: auto;
+  width: 100%;
+  user-select: none;
+}
+@media screen and (max-width: 960px){
+  .container-big-gallery{
+    background-size: 300%;
+    background-repeat: round;
+    padding-top: 45px;
+    padding-bottom: 15px;
+  }
+}

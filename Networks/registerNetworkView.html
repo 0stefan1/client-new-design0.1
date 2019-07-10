@@ -1,0 +1,32 @@
+<div class="c-network-view">
+
+    <div  class="c-inside-body-network" ng-show ="!noNetworks && !serverError && !editNetworkDisplay && !deleteNetworkDisplay">
+        <div class="header-network-card">
+            <img ng-click="cancelRegister()" src="/Home/images-home/Icons/Back1.0.svg" title="Back" alt="Check4Green icon">
+            <h1>Register a network</h1>
+        </div>
+        <div ng-show="loadingNetworks" class="loader"></div>
+
+        <form class="c-aranjament"  name="registerNetworkForm" novalidate>
+            <div class="c-content-edit-network" ng-class="{'has-error':registerNetworkForm.inputName.$invalid && registerNetworkForm.inputName.$dirty}">
+    
+        <span id="alert-error" ng-show="sensorRegisterError"><p>{{message}}</p></span>
+        <span id="alert-succesful" ng-show="networkRegisterSuccess"><p>Network created successful!</p></span>
+
+                <p>Name:</p>
+                <input id="inputName" name="inputName" type="text" maxlength="30" placeholder="ex: network-01" ng-pattern="/^[a-zA-Z 0-9 _-]*$/" name-validation ng-keydown="$event.keyCode != 32 ? $event:$event.preventDefault()" autocomplete="off" ng-model="networkName" ng-model-options="{ debounce: 250 }" required>
+                
+                <span class="help-block has-error">
+                    <span ng-show="!registerNetworkForm.inputName.$error.required">Name is required</span>
+                    <span ng-show="!registerNetworkForm.inputName.$error.required && registerNetworkForm.inputName.$error.pattern">Please keep the Name format! Use only: 'a-z', 'A-Z', '0-9', '-', '_'.</span>
+                    <span ng-show="!registerNetworkForm.inputName.$valid && !registerNetworkForm.inputName.$error.required && !registerNetworkForm.inputName.$error.pattern">Please keep the Name format! Don't insert symbols one after another and before or after the word, and the word needs min one letter.</span>
+                </span>
+
+                <div class="a-edit-netwotk">
+                    <a ng-click="registerNetwork(networkName)">Save</a>
+                    <a ng-click="cancelRegister()">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

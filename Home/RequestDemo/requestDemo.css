@@ -1,0 +1,56 @@
+/* .contact-container-request h2{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.contact-container-request{
+    font-size: 10px;
+}
+.contact-container-request .contact-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    font-size: 10px;
+}
+
+.contact-container-request .contact-container .area-text-container{
+   width: 60%;
+}
+.contact-container-request .contact-container .contact-input-container{
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.contact-container-request .contact-container .contact-input-container .icon{
+    padding: 10px;
+    background: #4e9a06;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+.contact-container-request .contact-container .contact-input-filed{
+    width: 100%;
+    padding: 5px;
+    outline: none;
+}
+.contact-container-request .contact-container .contact-input-filed:focus{
+    border: 2px solid #4e9a06;
+}
+.contact-container-request .contact-container button{
+    background-color: #4e9a06;
+    color: white;
+    padding: 8px 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    align-self: center;
+}
+.contact-container-request .contact-container button:hover{
+    opacity: 1;
+}
+.contact-input-container textarea{
+    min-height: 100px;
+} */

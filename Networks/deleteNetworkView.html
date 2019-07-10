@@ -1,0 +1,11 @@
+<div class="c-edit-network" ng-if="deleteNetworkDisplay">
+        <span id="alert-error" ng-show="errorEdit"><p>{{message}}</p></span>
+
+        <div class="c-content-edit-network">
+            <p>This item will be <b>permanently</b> delete!</p>
+        </div>
+        <div class="a-edit-netwotk">
+            <a ng-click="deleteNetwork(network.id)">Delete</a>
+            <a ng-click="cancelDelete();">Close</a>
+        </div>
+</div>

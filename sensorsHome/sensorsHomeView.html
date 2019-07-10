@@ -1,0 +1,112 @@
+<div class="container-sensorHome" id="sensorsHomeView">
+
+    <header class="header-sensor-home">
+        <img id="main" onclick="openNav()" ng-show="!hideSensorMenu" src="/Home/images-home/Icons/MenuBar.svg" title="Open menu" alt="Original icon by Check4Green">
+        <div class="c-flex-grow"></div>
+        <img ui-sref="settings" src="/Home/images-home/Icons/Setting.svg" title="Open account settings" alt="Original icon by Check4Green">
+    </header>
+
+      <!-- menu-body -->
+    <div id="mySidenav" class="c-menu">
+        <img onclick="closeNav()" src="/Home/images-home/Icons/Close1.0.svg" title="Close" alt="Ceheck4Green Icon">
+
+        <div class="img-user-menu">
+            <img onclick="closeNav()" ng-click="cancelCards()" ui-sref="sensorsHome.devices" src="/Home/images-home/Icons/User1.0.svg" title="Go to sensor home" alt="Check4Green Icon">
+            <div class="text-user-menu" ui-sref="settings" title="Go to account settings">
+                <b>{{vm.username}}</b>
+                <p>Email: {{user.email}}</p>
+            </div>
+        </div>
+
+        <div class="c-all-categories">
+            <div class="icon-text-menu" onclick="closeNav()" ng-click="cancelCards()" ui-sref="sensorsHome.gateways" title="Go to gateway view">
+                <img src="/Home/images-home/Icons/Gateway-icon.svg" title="Open gateways view" alt="Check4Green Icon">
+                <a>Go to gateways</a>
+            </div>
+
+            <div class="icon-text-menu" onclick="colapseCategories3(this)" title="Collapse">
+                <img src="/Home/images-home/Icons/Sensors-icon.svg" title="Open sensors list" alt="Check4Green Icon">
+                <a>Open sensors list <i id="caretMenu3" class="fas fa-angle-down"></i></a>
+            </div>
+        
+
+        <div id="content3" class="dropdown-content display-none">
+
+            <p class="title-categories" onclick="colapseCategories1(this)" title="Collapse">Measurement sensors <i id="caretMenu1" class="fas fa-angle-down"></i></p>
+            <div id="content1" class="dropdown-content display-none">
+                <div class="icon-text-menu" onclick="closeNav()" ui-sref="sensorsHome.distance" ng-click="cancelCards()">
+                    <img src="/Home/images-home/Icons/DistanceM1.0.svg" title="Distance sensors" alt="Check4Green Icon">
+                    <a>Distance</a>
+                </div>
+
+                <div class="icon-text-menu" onclick="closeNav()" ui-sref="sensorsHome.temperature" ng-click="cancelCards()">
+                    <img src="/Home/images-home/Icons/Thermometer1.0.svg" title="Temperature sensors" alt="Check4Green Icon">
+                    <a>Temperature</a>
+                </div>
+
+                <div class="icon-text-menu" onclick="closeNav()" ui-sref="sensorsHome.electricalCurrent" ng-click="cancelCards()">
+                    <img src="/Home/images-home/Icons/ElectricalCurrent1.0.svg" title="Electrical Current sensors" alt="Check4Green Icon">
+                    <a>Electrical Current</a>
+                </div>
+
+                <div class="icon-text-menu" onclick="closeNav()" ui-sref="sensorsHome.airQuality" ng-click="cancelCards()">
+                    <img src="/Home/images-home/Icons/AirQuality1.0.svg" title="Air Quality sensors" alt="Check4Green Icon">
+                    <a>Air Quality</a>
+                </div>
+
+                <div class="icon-text-menu" onclick="closeNav()" ui-sref="sensorsHome.pressure" ng-click="cancelCards()">
+                    <img src="/Home/images-home/Icons/Pressure1.0.svg" title="Pressure sensors" alt="Check4Green Icon">
+                    <a>Pressure</a>
+                </div>
+            </div>
+            <p class="title-categories" onclick="colapseCategories2(this)" title="Collapse">Alert sensors <i id="caretMenu2" class="fas fa-angle-down"></i></p>
+            <div id="content2" class="dropdown-content display-none">
+                <div class="icon-text-menu" onclick="closeNav()" ui-sref="sensorsHome.vibration" ng-click="cancelCards()">
+                    <img src="/Home/images-home/Icons/Vibration1.0.svg" title="Vibrations sensors" alt="Check4Green Icon">
+                    <a>Vibrations</a>
+                </div>
+
+                <div class="icon-text-menu">
+                    <img src="/Home/images-home/Icons/Motion1.0.svg" title="This category is not available" alt="Check4Green Icon">
+                    <a>Motion</a>
+                </div>
+            </div>
+            <p class="title-categories" onclick="closeNav()" ng-click="cancelCards()" ui-sref="sensorsHome.sensors" title="Go to all sensors">All sensors</p>
+        </div>
+        <a class="log-out" ng-click="logOut()" ui-sref="home" title="Log out">Tap here to <b>log out</b></a>
+    </div>
+    </div>
+      <!-- /menu-body -->
+
+    <div id="bg-gray" class="bg-gray" onclick="closeNav()" title="Click to close menu"></div>
+
+    <div class="homeMenu">
+        <!-- route-grid -->
+        <div id="marginTopView" class="container gridView">
+            <div ui-view="distance@"></div>
+            <div ui-view="temperature@"></div>
+            <div ui-view="electricalCurrent@"></div>
+            <div ui-view="airQuality@"></div>
+            <div ui-view="pressure@"></div>
+            <div ui-view="vibration@"></div>
+            <div ui-view="gridSensors@"></div>
+            <div ui-view="devices@"></div>
+            <div ui-view="networks@"></div>
+            <div ui-view="editLocation@"></div>
+            <div ui-view="registerSensor@"></div>
+            <div ui-view="editSensor@"></div>
+            <div ui-view="registerNetwork@"></div>
+            <div ui-view="registerGateway@"></div>
+            <div ui-view ="gateways@"></div>
+            <div ui-view="editgateway@"></div>
+            <div ui-view="gatewayLocation@"></div>
+            <div ui-view="detailsNetwork@"></div>
+        </div>
+        <!-- /route-grid -->
+    </div>
+</div>
+
+    <!-- Fake elements -->
+    <div id="myTopnav" style=" display: none !important; "></div>
+    <div id="logoC4Gheader" style=" display: none !important; "></div>
+    <!-- Fake elements -->

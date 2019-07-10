@@ -1,0 +1,132 @@
+.homeMenu{
+    height: 100%;
+}
+.outside-element{
+    position: absolute;
+    width: 10000px !important;
+    height: 10000px !important;
+    background-color: red;
+}
+.homeMenu .parallax {
+    min-height: 900px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* --> Logged in as */
+.container-sensorHome .logged-hover{
+    padding: 1px 5px;
+    height: auto;
+    cursor: pointer;
+}
+.container-sensorHome .logged-hover:hover .logged-container{
+    display: initial;
+    display: flex;
+}
+.container-sensorHome .logged-hover img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    /* box-shadow: 0px 0px 20px #4e9a06; */
+}
+.container-sensorHome .logged-container{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    padding: 10px 10px 0px 10px;
+    right: 5px;
+    background-color: #4e9a06;
+    border-radius: 5px;
+    margin-top: 5px;
+    height: auto;
+    display: none;
+    line-height: 8px;
+}
+.container-sensorHome .logged-container img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.container-sensorHome .logged-container p{
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    font-family: "FontC4G";
+}
+.container-sensorHome .logged-container .title-user{
+    color: white;
+}
+.container-sensorHome .logged-container .about-user{
+    color: #333333e5;
+}
+/* <-- Logged in as */
+
+/* --> progres bar */
+.container-sensorHome .progress-container {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 3px;
+    background: #ccc;
+    display: none;
+}
+
+.container-sensorHome .progress-container .progress-bar {
+    height: 3px;
+    background: #4e9a06;
+    width: 0%;
+}
+/* <-- progres bar */
+
+
+.homeMenu .text-banner {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    background: rgba(51, 51, 51, 0.26);
+}
+
+.homeMenu .text-banner h1 {
+    font-size: 35px;
+}
+
+.homeMenu .text-banner p {
+    font-size: 14px;
+}
+
+.homeMenu .fill-screen {
+    background-size: cover;
+    background-position: center;
+}
+
+.homeMenu .fixed-attachment {
+    background-attachment: fixed;
+}
+
+.homeMenu .activity-element {
+    text-align: center;
+    background-color: white;
+}
+
+.homeMenu .activity-element img {
+    width: 150px;
+    height: 150px;
+}
+
+footer {
+    background-color: #333;
+    color: #ddd;
+    padding: 20px;
+    text-align: center;
+}
+@media only screen and (max-width: 1024px) {
+    .homeMenu .parallax {
+        background-attachment: scroll;
+    }
+}
+/* --> footer */
+/* footer <-- */

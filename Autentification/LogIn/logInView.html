@@ -1,0 +1,42 @@
+<div class="login-container-big">
+    <img class="sign-icon" src="/Home/images-home/Icons/Close1.0.svg" ui-sref="home" alt="Check4Green original icon" title="Close">
+
+    <div class="c-login-parrent">
+            <img src="/Home/images-home/Home-page/Check4Green-logoPP.svg" alt="Check4Green original logo">
+
+            <div ng-if = "loading" class="loader"></div>
+            <div ng-show="vm.showLogInError" id="alert-error"><p>{{message}}</p></div>
+
+      <div class="c-login-form" name="loginForm" novalidate ng-hide="loading">
+
+          <div class="f-group" ng-class="{'has-error': loginForm.uname.$invalid && loginForm.uname.$dirty}">
+              <input type="email" placeholder="Enter email" ng-model="email" ng-pattern="/^[A-Za-z0-9._@]*$/" name="uname" required>
+          
+            <div class="error-style">
+              <div ng-show="loginForm.uname.$error.required && loginForm.uname.$dirty"><p>This field is required!</p></div>
+              <div ng-show="loginForm.uname.$error.email || loginForm.uname.$error.pattern"><p>This email address is invalid!</p></div>
+            </div>
+          </div>
+
+          <div class="f-group" ng-class="{'has-error': loginForm.psw.$invalid && loginForm.psw.$dirty}">
+              <input type="password" placeholder="Enter password" ng-enter="login(email, password)" ng-model="password" name="psw" required>
+          </div>
+          <div class="error-style" ng-show="loginForm.psw.$error.required && loginForm.psw.$dirty"><p>This field is required!</p></div>
+      </div>
+      <div class="remember-fpass" ng-hide="loading">
+          <label class="container-checkboxes">
+              <input type="checkbox" checked ng-model="value" ng-click="remeberAccount(value)"><a>Remember me</a>
+              <span class="checkmark"></span>
+          </label>
+          
+          <a ui-sref="forgotPassword">Forgot your password?</a>
+      </div>
+      
+      <div class="c-login-register" ng-hide="loading">
+        <a ng-click="login(email, password)">Log in</a>
+        <a ui-sref="accountEmail">Register</a>
+      </div>
+
+    </div>
+</div>
+<!-- <div class="header-home-add" style="display: none !important;" title="Fake-element"></div> -->

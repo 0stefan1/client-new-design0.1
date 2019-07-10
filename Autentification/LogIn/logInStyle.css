@@ -1,0 +1,226 @@
+.login-container-big{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 3124324;
+    width: 100%;
+    height: 100%;
+    background-image: url("/Home/images-home/Home-page/BG-login1.0.svg");
+    background-attachment: fixed;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    overflow: auto;
+}
+.login-container-big > .sign-icon{
+    height: auto;
+    width: 30px;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+    text-shadow: 1px 1px #e0e0e0;
+}
+.login-container-big > .back{
+    right: 40%;
+}
+.login-container-big > .sign-icon:hover{
+    opacity: 0.7;
+}
+
+
+.c-login-parrent{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    position: absolute;
+    top: 100px;
+    right: 15%;
+}
+.c-login-parrent > img{
+    height: auto;
+    width: 250px;
+    align-self: center;
+    padding: 10px;
+}
+.c-login-parrent > .c-login-form{
+   display: flex;
+   flex-direction: column;
+}
+.register-group{
+    display: flex;
+    flex-direction: column;
+}
+.error-style > div > p{
+    color: red;
+    padding: 5px;
+    text-align: center;
+}
+.register-group > input{
+    border-radius: 5px;
+    border: 1px solid #B1D8B1;
+    padding: 20px;
+    width: 250px;
+}
+.register-group > input::placeholder{
+    color: #6BB597;
+}
+body > div:nth-child(5) > register > div > div > div.c-login-form > div:nth-child(5) > input{
+    margin-top: 10px;
+}
+body > div:nth-child(5) > register > div > div > div.c-login-form > div:nth-child(6) > input{
+    padding: 10px !important;
+    margin-top: 10px;
+}
+#inputPhone{
+    height: auto;
+    width: 55px;
+    color: #6BB597;
+    text-align: center;
+    border-right: 1px solid rgba(51, 51, 51, 0);
+    border-radius: 5px 0px 0px 5px;
+    border-right: 0px solid #00AC06;
+    background-color: white;
+}
+#numberPhone{
+    border-radius: 0px 5px 5px 0px;
+    border-left: 0px solid #00AC06;
+}
+#numberPhone::placeholder{
+    color: #6BB597;
+}
+#alert-error{
+    color: red;
+    text-align: center;
+}
+.white-bg{
+    background-color: white;
+    top: 5px;
+}
+.register-group-phone > input{
+    border-radius: 5px;
+    border: 1px solid #B1D8B1;
+    padding: 10px;
+}
+.register-group-phone > select{
+    border-radius: 5px;
+    border: 1px solid #B1D8B1;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.f-group > input{
+    border-radius: 5px;
+    border: 1px solid #B1D8B1;
+    padding: 15px;
+    width: 250px;
+    margin: 5px;
+}
+.f-group > input::placeholder{
+    color: #6BB597;
+}
+.c-login-register{
+    display: flex;
+    flex-direction: column;
+
+}
+.c-login-register > a:first-child{
+    background-color: #31E500;
+}
+.c-login-register > a{
+    border-radius: 5px;
+    background-color: #00AC06;
+    color: white;
+    padding: 15px;
+    margin: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+.c-login-register > a:hover{
+    text-decoration: none;
+}
+.remember-fpass{
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+body > div:nth-child(4) > log-in > div > div > div.remember-fpass > label > a{
+    color: #6BB597;
+    font-size: 12px;
+    font-weight: normal;
+    font-family: 'Muli', sans-serif;
+}
+.remember-fpass > a{
+    color: #6BB597;
+    font-size: 12px;
+    padding-top: 10px;
+    font-family: 'Muli', sans-serif;
+}
+body > div:nth-child(7) > activate-account > div > div > div.c-login-form > div:nth-child(1) > p{
+    font-size: 13px;
+    color: red;
+    width: 400px;
+    text-align: center;
+    position: absolute;
+    left: -70px;
+    top: 75px;
+}
+/* container-checkboxes */
+.container-checkboxes{
+    margin-top: 10px;
+    font-size: 13px;
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.container-checkboxes:hover{
+    opacity: 0.8;
+}
+.container-checkboxes input{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.container-checkboxes .checkmark:after{
+    content: "";
+    position: absolute;
+    display: none;
+}
+.container-checkboxes input:checked ~ .checkmark{
+    background-color: rgba(140, 204, 140, 0.151);
+}
+.container-checkboxes input:checked ~ .checkmark:after{
+    display: block;
+}
+.container-checkboxes .checkmark{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    border: 1px solid #B1D8B1;
+    border-radius: 3px;
+    padding: 7px;
+}
+.container-checkboxes .checkmark:after{
+    left: 5px;
+    top: 1px;
+    width: 5px;
+    height: 10px;
+    border: solid #6BB597;
+    border-radius: 10px;
+    border-width: 0 1.5px 1.5px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/* container-checkboxes */

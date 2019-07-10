@@ -1,0 +1,30 @@
+<div class="measurementsDisplay" ng-show="showGateways" id="line">
+        <div ng-show="loadingGateways" class="loader"></div>
+        <div ng-show="noGateway" class="noData">No data</div>
+        <table class="table" ng-show="!loadingGateways && !noGateway">
+            <thead>
+                <tr>
+                    <td>Index</td>
+                    <td>Name</td>
+                    <td>Address</td>
+                    <td>Last Date</td>
+                    <td>Active</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="ga in gateway">
+                    <div></div>
+                    <td>{{$index+1}}</td>
+                    <td>{{ga.name}}</td>
+                    <td>{{ga.address}}</td>
+                    <td>{{ga.lastSensorDate}}</td>
+                    <td>
+                        <span class="label label-success" ng-if="sensor.active == true">Active</span>
+                        <span class="label label-danger" ng-if="sensor.active == false">Inactive</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn" ng-click="cancel()">Cancel</button>
+
+</div>

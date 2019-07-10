@@ -1,0 +1,73 @@
+<div class="container-home">
+        <head><meta name="Homepage" content="IoT based hardware and software solutions integrated with LTE and LPWAN technologies such as: SIGFOX, LoRA and NB-IOT."></head>
+<!-- header home -->
+<header>
+    <div class="header-container" id="myTopnav">
+      <img src="/Home/images-home/C4G-logo-BG-white-2.svg" alt="check4green logo" class="logo-header-home" id="logoC4Gheader" ui-sref="home" ng-click="showContent()" title="Home page">
+      <!-- <a id="totalCost">Total cost: <span class="fas fa-euro-sign"></span> <span id="total"></span></a> -->
+      <a class="icon" onclick="nowHeaderFunction()">
+        <i id="menu-home" class="fas fa-bars"></i>
+      </a>
+      <!-- <a id="costTwo" class="totalTwo icon">Cost: <span class="fas fa-euro-sign"></span> <span id="totalTwo"></span></a> -->
+      <a ui-sref="contact" class="margin-header">Contact</a>
+      <a ui-sref="home.aboutUs" ng-click="hideContent()">About us</a>
+      <a ui-sref="home.technology" ng-click="hideContent()">Technology</a>
+      <a ui-sref="home.products" ng-click="hideContent()">Products</a>
+      <a ui-sref="home.pricing" ng-click="hideContent()">Pricing</a>
+      <a ng-click="goToHome()" ng-hide="vm.log">Sensor management</a> 
+      <a ui-sref="logIn" ng-show="vm.log">Log in</a>
+      <a ui-sref="home" style="font-weight: bold;" ng-click="showContent()" title="Home page">Home</a>
+    </div>
+</header>
+<!-- /header home -->
+<p style="display: none !important;"content="IoT based hardware and software solutions integrated with LTE and LPWAN technologies such as: SIGFOX, LoRA and NB-IOT."
+>Homepage: IoT based hardware and software solutions integrated with LTE and LPWAN technologies such as: SIGFOX, LoRA and NB-IOT.</p>
+<meta name="Homepage" content="IoT based hardware and software solutions integrated with LTE and LPWAN technologies such as: SIGFOX, LoRA and NB-IOT.">
+<content></content>
+
+<div class="container container-textHeader">
+    <div ui-view="aboutUs@"></div>
+    <div ui-view="pricing@"></div>
+    <div ui-view="technology@"></div>
+    <div ui-view="products@"></div>
+</div>
+
+<!-- footer -->
+    <footer>
+
+        <div class="footer-container fixed-bottom container">
+
+            <div class="footer-container-contact">
+                <a href="tel:0040724147687"><span class="fas fa-phone"></span>+40 724 147 687</a>
+                <a href="mailto:info@check4green.com"><span class="fas fa-envelope"></span>info@check4green.com</a>
+            </div>
+
+            <div class="footer-container-condition">
+
+                <div class="container-condition">
+                    <a>Privacy Policy</a>
+                    <a>Terms & Conditions</a>
+                    <a>Disclaimer</a>
+                </div>
+
+                <div class="container-cc">
+                    <a target="_blank" href="https://www.check4green.com/">Copyright <i class="	far fa-copyright"></i> 2019 Check4Green</a>
+                </div>
+
+            </div>
+
+            <div class="footer-container-social">
+                <a target="_blank" href="https://play.google.com/store/apps/details?id=appinventor.ai_stefan_swiss_0514.Check4GreenSstefan01" title="Play store App"><span class="fab fa-google-play"></span></a>
+                <a target="_blank" href="https://www.facebook.com/Check4Green-227916074770088"><span class="fab fa-facebook-square"></span></a>
+                <a target="_blank" href="https://www.linkedin.com/in/check-green-68152a120?trk=hp-identity-name"><span class="fab fa-linkedin"></span></a>
+                <a target="_blank" href="https://twitter.com/CheckforGreen"><span class="fab fa-twitter"></span></a>
+                <a target="_blank" href="https://www.youtube.com/channel/UCcN0yl6WLk7jJ1EObr7-Hdg?view_as=subscriber"><span class="fab fa-youtube"></span></a>
+            </div>
+
+        </div>
+
+
+
+    </footer>
+<!-- /footer -->
+</div>

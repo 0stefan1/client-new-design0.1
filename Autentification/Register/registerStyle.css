@@ -1,0 +1,47 @@
+
+
+/* --> select */
+.multiselect-container{
+    user-select: none;
+    margin-bottom: 15px;
+}
+.multiselect-container .selectBoxtypeId {
+    display: flex;
+    position: relative;
+
+}
+.multiselect-container .selectBoxtypeId .overSelecttypeId {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.multiselect-container .selectBoxtypeId select{
+    width: 100%;
+    height: 45px;
+}
+.multiselect-container .selectBoxtypeId .icon{
+    padding: 10px;
+    background: #4e9a06;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+.multiselect-container .selectBoxtypeId img{
+    width: 20px;
+    height: 25px;
+}
+.multiselect-container #checkboxes {
+    display: none;
+    border: 1px #dadada solid;
+}
+.multiselect-container #checkboxes label {
+    display:block;
+
+}
+.multiselect-container #checkboxes input{
+    margin-left: 10px;
+}
+/* <-- select */

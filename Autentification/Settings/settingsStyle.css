@@ -1,0 +1,94 @@
+* a:hover{
+    text-decoration: none !important;
+    cursor: pointer;
+  }
+  * strong, a, input, input::placeholder{
+    font-weight: normal;
+    font-family: 'Muli', sans-serif;
+  }
+  * b, h1, p, a, strong{
+    font-family: 'Muli', sans-serif;
+  }
+.c-setting-view{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #E3F3EB;
+    margin: 40px;
+    box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
+}
+.c-setting-view > .header-setting{
+    display: flex;
+    text-align: center;
+    background-color: #31DB75;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
+}
+.c-setting-view > .header-setting > img{
+    height: auto;
+    width: 30px;
+    cursor: pointer;
+    margin: 10px;
+}
+.c-setting-view > .header-setting > img:hover{
+    opacity: 0.9;
+}
+.c-setting-view > .header-setting > h1{
+    flex-grow: 2;
+    padding: 10px;
+}
+.c-setting-view > form{
+    padding-top: 20px;
+}
+.c-setting-view > .c-content-setting{
+    padding-top: 20px;
+    align-self: center;
+}
+.c-setting-view > form > .box-text{
+    display: flex;
+    flex-direction: column;
+    
+}
+.box-text > p{
+    cursor: pointer;
+}
+.box-text > p:hover i{
+    color: #2CA72F;
+}
+.c-setting-view > p{
+    text-align: center;
+    padding: 10px;
+    color: #013402;
+}
+.c-setting-view > a{
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
+    background-color: #2CA72F;
+    width: 120px;
+    align-self: center;
+}
+.c-setting-view > a:hover{
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.9;
+}
+.input-setting > input, select{
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #B1D8B1;
+    border-radius: 5px;
+    width: 100%;
+}
+.input-setting > input::placeholder{
+    color: #82D2B1;
+    font-size: 13px;
+    text-align: center;
+}
+.rotate{
+    transform: rotate(180deg);
+}
