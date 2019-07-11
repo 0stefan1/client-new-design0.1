@@ -42,6 +42,27 @@
             })
             sensor.expanded=true;
         };
+
+
+        $scope.showDetails = function(sensor){
+            $scope.sensor = sensor;
+            $scope.name = sensor.name;
+            $scope.lat = sensor.latitude;
+            $scope.long = sensor.longitude;
+            $scope.address = sensor.address;
+            $scope.productionDate = sensor.productionDate;
+            $scope.uploadInt = sensor.uploadInterval;
+            $scope.id = sensor.id;
+            $sessionStorage.sensorId = sensor.id;
+            $scope.detailsData = true;
+            
+        };
+        $scope.hideDetails = function(){
+            $scope.detailsData = false;
+        }
+
+
+
         $scope.disconnectFromHub = function(){
             hubConnection.disconnectFromHub();
         }
@@ -264,7 +285,7 @@
             hubConnection.connectingToHub();
             $scope.noRead = false;
             $scope.detailsData = false;
-            $scope.loadingDetails = true;
+            //$scope.loadingDetails = true;
             sensorModelService.getMeasurements(encodeduser, $sessionStorage.netId, id, 1, 1)
                 .then(function(measurement){
                     $rootScope.lastRead = measurement;

@@ -8,7 +8,7 @@
         $scope.activate = function(activationCode){
             vm.showMessage = false;
             $scope.code ={email: $sessionStorage.accountEmail, code: activationCode}
-            $location.path('/logIn/register');
+            $location.path('/register');
             // autentificationService.activateAccount($scope.code)
             //     .then(function(response){
                     

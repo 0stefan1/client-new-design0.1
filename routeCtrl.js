@@ -276,7 +276,7 @@
                         }]
                     }
                 })
-                .state('logIn.register',{
+                .state('register',{
                     url: "/register",
                     views: {
                         'register@':{

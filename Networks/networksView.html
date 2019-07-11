@@ -14,16 +14,21 @@
         <div class="c-aranjament" >
             <div class="c-column" ng-repeat="network in networks">
                 <div class="c-card">
-                    <div class="c-title-network">
-                        <a ng-click="filterGateways(network)"><i class="fas fa-arrow-right"></i>Go to {{network.name}}</a>
+                    <div class="c-title-network" ng-show="!network.sensorsGatewaysButtons">
+                        <a ng-click="sensorsGateways(network)"><i class="fas fa-arrow-right"></i>Go to {{network.name}}</a>
                     </div>
-
+                    <div class="c-title-network" ng-show="network.sensorsGatewaysButtons">
+                        <a ng-click="filterSensors(network)"><i class="fas fa-arrow-right"></i>Go to sensors</a>
+                    </div>
+                    <div class="c-title-network" ng-show="network.sensorsGatewaysButtons">
+                        <a ng-click="filterGateways(network)"><i class="fas fa-arrow-right"></i>Go to gateways</a>
+                    </div>
                     <div class="c-view-action">
                         <edit-network></edit-network>
                         <delete-network></delete-network>
                     </div>
 
-                    <div class="c-buttons-network">
+                    <div class="c-buttons-network" ng-show="!deleteNetworkDisplay && !editNetworkDisplay && !network.sensorsGatewaysButtons">
                         <a ng-click="startEditNetwork(network)">Edit</a>
                         <a ui-sref="sensorsHome.networkDetails" ng-click="getNetwork(network)">Details</a>
                         <a ng-click="startDeleteNetwork(network)">Delete</a>

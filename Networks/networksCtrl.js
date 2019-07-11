@@ -24,14 +24,30 @@
                 $scope.serverError = true;
                 $scope.loadingNetworks = false;
 
-            })
-            
+            });
+        $scope.sensorsGateways = function(network){
+            $scope.networks.forEach(function(val){
+                val.sensorsGatewaysButtons = false;
+            });
+            network.sensorsGatewaysButtons = true;
+        }    
         $scope.filterGateways = function(network){
             $scope.networkName = network.name;
             $sessionStorage.networkName = network.name;
             $sessionStorage.netId = network.id;
             $sessionStorage.hideSensorMenu = false;
-            $location.path('/sensorsHome/devices');
+            $location.path('/sensorsHome/gateways');
+            $timeout(function(){
+                $window.location.reload();
+
+            }, 100)
+        }
+        $scope.filterSensors = function(network){
+            $scope.networkName = network.name;
+            $sessionStorage.networkName = network.name;
+            $sessionStorage.netId = network.id;
+            $sessionStorage.hideSensorMenu = false;
+            $location.path('/sensorsHome/sensors');
             $timeout(function(){
                 $window.location.reload();
 
