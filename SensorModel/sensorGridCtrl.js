@@ -4,7 +4,7 @@
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
         $scope.networkName = $sessionStorage.networkName;
-        $scope.sensorHomeData = false;
+        $scope.sensorData = false;
         $scope.noData = false;
         $scope.change = true;
         $scope.backButton = true;
@@ -32,6 +32,15 @@
             })
             sensor.expanded=true;
         };
+        $scope.showDetails = function(sensor){
+            $scope.sensor = sensor;
+            $sessionStorage.sensorId = sensor.id;
+            $scope.detailsData = true;
+            
+        };
+        $scope.hideDetails = function(){
+            $scope.detailsData = false;
+        }
         $scope.disconnectFromHub = function(){
             hubConnection.disconnectFromHub();
         }
@@ -44,29 +53,30 @@
                         $scope.sensors[i].productionDate = $scope.sensors[i].productionDate.substr(0, 10)+ " "+ $scope.sensors[i].productionDate.substr(11, 5)
                     }
                     $scope.loading=false;
-                    $scope.sensorHomeData = true;
+                    $scope.sensorData = true;
                     if($scope.sensors.length == 0){
                         $scope.noData = true;
                         $scope.noSensors = true;
-                        $scope.sensorHomeData = false;
+                        $scope.sensorData = false;
                     }else{
                         $scope.noData = false;
                         $scope.noSensors = false;
-                        $scope.sensorHomeData = true;
+                        $scope.sensorData = true;
                     }
                 })
                 .catch(function(){
                     $scope.loading = false
                     $scope.noData = true;
-                    $scope.sensorHomeData = false;
+                    $scope.sensorData = false;
                     $scope.message = 'An error ocurred. Please try again later.'
                 })
         }
         autentificationService.getAllSensors(encodeduser, $sessionStorage.netId)
             .then(function(data){
-                $scope.allSensors = data;
-                $scope.currentPage = 1;
-                $scope.sensPerPage = 50;
+                vm.allSensors = data;
+                $scope.totalSensors = data;
+                vm.currentPage = 1;
+                vm.sensPerPage = 50;
                 $scope.loading = true;
                 $scope.activeCount = 0;
                 $scope.inactiveCount = 0;
@@ -88,22 +98,22 @@
                 $scope.gridSize ='';
                 $scope.setPageSize = function(gridSize){
                     if(gridSize){
-                        $scope.sensPerPage = gridSize;
-                        getSensors(encodeduser, 1, $scope.sensPerPage);
+                        vm.sensPerPage = gridSize;
+                        getSensors(encodeduser, 1, vm.sensPerPage);
                     }
                 }
                 $scope.search = function(){
                     $scope.$watchCollection('filterSensors.length', function(newValue, oldValue){
                         if(newValue == data){
-                            $scope.allSensors = data;
-                            $scope.sensPerPage = 50;
+                            vm.allSensors = data;
+                            vm.sensPerPage = 50;
                             return;
                         }
                         if(oldValue == newValue){
-                            $scope.currentPage = 1; 
+                            vm.currentPage = 1; 
                             var filterSensors = document.getElementById('filteredSens');
-                            $scope.allSensors = filterSensors.innerHTML;
-                            $scope.sensPerPage = filterSensors.innerHTML;
+                            vm.allSensors = filterSensors.innerHTML;
+                            vm.sensPerPage = filterSensors.innerHTML;
                         }
                     });
                 }
@@ -119,118 +129,88 @@
                         expanded = false;
                     }
                 }
-                $scope.showActiveSens = function(value)
+                $scope.showActiveSensors = function(value)
+            {
+                if(value == true)
                 {
-                    if(value == true){
-                        autentificationService.getUserSensors(encodeduser, $sessionStorage.netId, $scope.currentPage, data)
-                            .then(function(response){
-                                $scope.actSensors = response.data;
-                                $scope.loading = false;
-                                $scope.noSensorsData = false;
-                                $scope.sensorData = true;
-                                $scope.actsens = [];
-                                for(var i=0; i<$scope.actSensors.length; i++)
+                    autentificationService.getUserSensors(encodeduser, $sessionStorage.netId,vm.currentPage, vm.allSensors)
+                        .then(function(response)
+                        {
+                            $scope.actSensors = response.data;
+                            $scope.loading = false;
+                            $scope.noSensorsData = false;
+                            $scope.sensorData = true;
+                            $scope.actsens = [];
+                            for(var i=0; i<$scope.actSensors.length; i++)
+                            {
+                                if($scope.actSensors[i].active == true)
                                 {
-                                    if($scope.actSensors[i].active == true)
-                                    {
-                                        $scope.actsens.push($scope.actSensors[i]);
-                                    }
+                                    $scope.actsens.push($scope.actSensors[i]);
                                 }
+                            }
+                            $scope.sensors = $scope.actsens;
+                            $scope.active = true;
                             
-                                $scope.sensors = $scope.actsens;
-                                $scope.act = true;
-                            
-                            })
-                            .catch(function(){
-                                $scope.noSensorsData = true;
-                                $scope.loading = false;
-                                $scope.sensorData = false;
-                            })
-                    } else{
-                        getSensors(encodeduser,  $scope.currentPage, data);
-                    }
+                        })
+                        .catch(function(response)
+                        {
+                            $scope.noSensorsData = true;
+                            $scope.loading = false;
+                            $scope.sensorData = false;
+                        })
                 }
+                else
+                {
+                    getSensors( encodeduser, vm.currentPage, vm.allSensors);
+                }
+            }
 
                 $scope.showAll = function(value){
                     if(value == true){
-                        getSensors(encodeduser, $scope.currentPage, data);
+                        getSensors(encodeduser, vm.currentPage, data);
                     }
                 }
             });
-        if($sessionStorage.cards == true){
-            $scope.cards = true;
-            $scope.grid = false;
-        } 
-        else{
-            $scope.grid = true;
-            $scope.cards = false;
-        };
-        $scope.changeLayoutCards = function(){
-            $scope.noSensorData = false;
-            $scope.sensorData = false;
-            $scope.buttons = false;
-            $scope.cards = true;
-            $scope.editCards = true;
-            $scope.grid = false;
-            $sessionStorage.cards = true;
-            $scope.editLocation = false;
-            $sessionStorage.details = true;
-            $sessionStorage.editDisplay = true;
-            $sessionStorage.editSensGrid = false;
-            $sessionStorage.title = true;
-        }; 
-        $scope.changeLayoutGrid = function(){
-            $sessionStorage.editSensGrid = true;
-            $sessionStorage.editDisplay = false;
-            $scope.sensorData = true;
-            $scope.buttons = false;
-            $scope.cards = false;
-            $scope.editCards = false;
-            $scope.grid = true;
-            $sessionStorage.details = false;
-            $sessionStorage.cards = false;
-            $sessionStorage.title = false;
-            if($sessionStorage.cancelEdit){
-                $timeout(function(){
-                    $window.location.reload();
-                }, 1);
-                $sessionStorage.cancelEdit = false;
-            }
-        };
-        $scope.details = function(){
-            $scope.name = $sessionStorage.name;
-            $scope.detailsDisplay = true;
-            $scope.detailsData = false;
-            $scope.id = $sessionStorage.sensorId;
-            $scope.editLoc = true;
-            $scope.cards = false;
-            $scope.backButton = false;
-            $scope.change = false;
-            $scope.cancel = true;
-            $scope.registerButton = false;
-            $scope.refresh = true;
-            $scope.detail = true;
-            $sessionStorage.detail = true
-            $scope.sensName = true;
-        }
-        $scope.refreshFunction = function(){
-            $scope.id = $sessionStorage.sensorId;
-        }
-        $scope.cancelDetails = function(){  
-            $scope.detailsDisplay = false;   
-            $scope.cancel = false;
-            $scope.refresh = false;
-            $scope.cards = true;
-            $scope.backButton = true;
-            $scope.change = true;
-            $scope.registerButton = true;
-            $scope.editLoc = false;
-            $sessionStorage.editLoc = false;
-            $scope.detailsData = true;
-            $scope.detail = false;
-            $sessionStorage.detail = false;
-            $scope.sensName = false;
-        }
+        // if($sessionStorage.cards == true){
+        //     $scope.cards = true;
+        //     $scope.grid = false;
+        // } 
+        // else{
+        //     $scope.grid = true;
+        //     $scope.cards = false;
+        // };
+        // $scope.changeLayoutCards = function(){
+        //     $scope.noSensorData = false;
+        //     $scope.sensorData = false;
+        //     $scope.buttons = false;
+        //     $scope.cards = true;
+        //     $scope.editCards = true;
+        //     $scope.grid = false;
+        //     $sessionStorage.cards = true;
+        //     $scope.editLocation = false;
+        //     $sessionStorage.details = true;
+        //     $sessionStorage.editDisplay = true;
+        //     $sessionStorage.editSensGrid = false;
+        //     $sessionStorage.title = true;
+        // }; 
+        // $scope.changeLayoutGrid = function(){
+        //     $sessionStorage.editSensGrid = true;
+        //     $sessionStorage.editDisplay = false;
+        //     $scope.sensorData = true;
+        //     $scope.buttons = false;
+        //     $scope.cards = false;
+        //     $scope.editCards = false;
+        //     $scope.grid = true;
+        //     $sessionStorage.details = false;
+        //     $sessionStorage.cards = false;
+        //     $sessionStorage.title = false;
+        //     if($sessionStorage.cancelEdit){
+        //         $timeout(function(){
+        //             $window.location.reload();
+        //         }, 1);
+        //         $sessionStorage.cancelEdit = false;
+        //     }
+        // };
         $scope.measureUnit = function(sensTypeID){
             sensorModelService.getMeasureId(sensTypeID)
                 .then(idSuccess)

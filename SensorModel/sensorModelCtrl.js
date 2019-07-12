@@ -46,13 +46,6 @@
 
         $scope.showDetails = function(sensor){
             $scope.sensor = sensor;
-            $scope.name = sensor.name;
-            $scope.lat = sensor.latitude;
-            $scope.long = sensor.longitude;
-            $scope.address = sensor.address;
-            $scope.productionDate = sensor.productionDate;
-            $scope.uploadInt = sensor.uploadInterval;
-            $scope.id = sensor.id;
             $sessionStorage.sensorId = sensor.id;
             $scope.detailsData = true;
             
@@ -190,78 +183,44 @@
                 }
             }
         }
-        if($sessionStorage.cards == true){
-            $scope.cards = true;
-            $scope.grid = false;
-        } 
-        else{
-            $scope.grid = true;
-            $scope.cards = false;
-        }
-        $scope.changeLayoutCards = function(){
-            $scope.buttons = false;
-            $scope.cards = true;
-            $scope.editCards = true;
-            $scope.grid = false;
-            $sessionStorage.cards = true;
-            $scope.editLocation = false;
-            $sessionStorage.details = true;
-            $sessionStorage.editDisplay = true;
-            $sessionStorage.editSensGrid = false;
-            $sessionStorage.title = true;
-        } 
-        $scope.changeLayoutGrid = function(){
-            $sessionStorage.editSensGrid = true;
-            $sessionStorage.editDisplay = false;
-            $scope.sensorData = true;
-            $scope.buttons = false;
-            $scope.cards = false;
-            $scope.editCards = false;
-            $scope.grid = true;
-            $sessionStorage.details = false;
-            $sessionStorage.cards = false;
-            $sessionStorage.title = false;
-            if($sessionStorage.cancelEdit){
-                $timeout(function(){
-                    $window.location.reload();
-                }, 1);
-                $sessionStorage.cancelEdit = false;
-            }
-        }
-        $scope.refreshFunction = function(){
-            $scope.id = $sessionStorage.sensorId;
-        }
-        $scope.details = function(){
-            $scope.name = $sessionStorage.name;
-            $scope.detailsDisplay = true;
-            $scope.detailsData = false;
-            $scope.id = $sessionStorage.sensorId;
-            $scope.editLoc = true;
-            $scope.cards = false;
-            $scope.backButton = false;
-            $scope.change = false;
-            $scope.cancel = true;
-            $scope.registerButton = false;
-            $scope.refresh = true;
-            $scope.detail = true;
-            $sessionStorage.detail = true
-            $scope.sensName = true;
-        }
-        $scope.cancelDetails = function(){  
-            $scope.detailsDisplay = false;   
-            $scope.cancel = false;
-            $scope.refresh = false;
-            $scope.cards = true;
-            $scope.backButton = true;
-            $scope.change = true;
-            $scope.registerButton = true;
-            $scope.editLoc = false;
-            $sessionStorage.editLoc = false;
-            $scope.detailsData = true;
-            $scope.detail = false;
-            $sessionStorage.detail = false;
-            $scope.sensName = false;
-        }
+        // if($sessionStorage.cards == true){
+        //     $scope.cards = true;
+        //     $scope.grid = false;
+        // } 
+        // else{
+        //     $scope.grid = true;
+        //     $scope.cards = false;
+        // }
+        // $scope.changeLayoutCards = function(){
+        //     $scope.buttons = false;
+        //     $scope.cards = true;
+        //     $scope.editCards = true;
+        //     $scope.grid = false;
+        //     $sessionStorage.cards = true;
+        //     $scope.editLocation = false;
+        //     $sessionStorage.details = true;
+        //     $sessionStorage.editDisplay = true;
+        //     $sessionStorage.editSensGrid = false;
+        //     $sessionStorage.title = true;
+        // } 
+        // $scope.changeLayoutGrid = function(){
+        //     $sessionStorage.editSensGrid = true;
+        //     $sessionStorage.editDisplay = false;
+        //     $scope.sensorData = true;
+        //     $scope.buttons = false;
+        //     $scope.cards = false;
+        //     $scope.editCards = false;
+        //     $scope.grid = true;
+        //     $sessionStorage.details = false;
+        //     $sessionStorage.cards = false;
+        //     $sessionStorage.title = false;
+        //     if($sessionStorage.cancelEdit){
+        //         $timeout(function(){
+        //             $window.location.reload();
+        //         }, 1);
+        //         $sessionStorage.cancelEdit = false;
+        //     }
+        // }
         $scope.measureUnit = function(sensTypeId){
             sensorModelService.getMeasureId(sensTypeId)
                  .then(idSuccess)

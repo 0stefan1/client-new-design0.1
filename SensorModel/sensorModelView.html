@@ -2,17 +2,6 @@
     <div class="title-grid">
         <p>{{::vm.titleGrid}}</p>
     </div>
-       <div class="container-buttonGrid" style="margin-bottom: 10px;">
-               <button type="button" class="btn buttonNetAndAdd" ng-click="back()" ng-if ="backButton" title="Back to selection">
-               <span>Networks</span>
-               <i class="fas fa-arrow-left"></i>
-               </button>
-
-               <button type="button" class="btn buttonNetAndAdd"  ng-if="!detail" ui-sref="sensorsHome.addSensor" >
-               <span>Add sensor</span>
-               <i class="fas fa-plus"></i>
-               </button>
-        </div>
         <div ng-show="loading" class="loader"></div>
         <div ng-show="noSensorsData && !loading" class="noData">No Data</div>
         <div ng-show="sensorData && !loading"  class="table-overflow">
@@ -34,9 +23,7 @@
                         <div ng-if="!detail" class="container-filters" style="margin-left: 5px;" onclick="showFilters()">
                             <div class="container-front "><p>Filters</p><i class="fas fa-caret-down addStyle"></i></div>
                             <div id="filterMenu" class="container-back">
-                                <div class="container-backFlex">
-                                        <div class="sayFlex"><input  onmouseout="hideFilters()" type="checkbox" ng-model="value" id="active" ng-click="showActiveSensors(value)"/><p>Show active sensors</p></div>
-                                </div>
+                                
                             </div>
                         </div>
 
@@ -56,15 +43,7 @@
                 </div>
             
             </div>
-        
-            <div class="measurementsTotalReadings" ng-if="!detail">            
-                <label style="font-weight: initial;">Network: <b>{{networkName}}</b>.</label>
-                <label style="font-weight: initial;">Total Sensors: <b>{{totalSensors}}</b>.</label>
-                <label style="font-weight: initial;">Active: <b style="color: #5cb85c;">{{activeCount}}</b>,</label>
-                <label style="font-weight: initial;">inactive: <b style="color: #d9534f;">{{inactiveCount}}</b></label>
-            </div>
-
-            <table class="table" ng-if="grid">
+            <!-- <table class="table" ng-if="grid">
                 <thead>
                     <tr>
                         <td>No.</td>
@@ -115,20 +94,28 @@
                 </tbody>
             </table>
          
-        </div>
+        </div> -->
 <!-- CARDS *********************************************** -->
-<div class="c-network-view" ng-show ="cards && !loading">
+<div class="c-network-view" ng-show ="!loading">
 
     <div  class="c-inside-body-network">
         <div class="header-network-card">
+            <div><i class="fas fa-arrow-left" ng-click="back()" ng-if ="backButton"></i></div>
             <h1>You are in: <b>{{networkName}}</b></h1>
             <div class="measurementsTotalReadings" ng-if="!detail">            
                 <label style="font-weight: initial;">Total Sensors: <b>{{totalSensors}}</b>.</label>
                 <label style="font-weight: initial;">Active: <b style="color: #5cb85c;">{{activeCount}}</b>,</label>
                 <label style="font-weight: initial;">inactive: <b style="color: #d9534f;">{{inactiveCount}}</b></label>
-                <search></search>
+                <div class="container-backFlex">
+                        <div class="sayFlex"><input  onmouseout="hideFilters()" type="checkbox" ng-model="value" id="active" ng-click="showActiveSensors(value)"/><p>Show active sensors</p></div>
+                </div>
             </div>
-            
+            <div class="container-rightButtons" ng-show="!detail">
+                <div class="container-buttonView" >
+                    <search></search>
+                </div>
+            </div>
+
             <a ng-if="!detail" ui-sref="sensorsHome.addSensor"><i class="fas fa-plus"></i>Add a new sensor</a>
 
         </div>
@@ -141,6 +128,8 @@
                 <div class="c-card">
                     <div class="c-title-network">
                         <a>{{$index+1}}. {{sensor.name}}</a>
+                        <span class="fa fa-circle" ng-if="sensor.active" style="color: #4e9a06;"></span>
+                        <span class="fa fa-circle" ng-if="!sensor.active" style="color: #f80808;"></span>
                     </div>
 
                     <div class="c-view-action">
@@ -148,7 +137,7 @@
                         <delete-sensor></delete-sensor>
                     </div>
                     <div class="c-title-network">
-                        <a ng-click="vm.expandSelected(sensor);getLastRead(id); sensData(sensor.name, id, sensor.sensorTypeId); measureUnit(sensor.sensorTypeId); showSensorGateway(id); showDetails(sensor)">Show sensors details</a>
+                        <a ng-click="vm.expandSelected(sensor);getLastRead(sensor.id); sensData(sensor.name, sensor.id, sensor.sensorTypeId); measureUnit(sensor.sensorTypeId); showSensorGateway(sensor.id); showDetails(sensor); outOfRangeAllSens(sensor.name, sensor.id, sensor.address, sensor.sensorTypeId)">Show sensors details</a>
                     </div>
                     <!-- <div class="c-buttons-network">
                         <a ui-sref="sensorsHome.editSensor">Edit</a>

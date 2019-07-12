@@ -434,27 +434,8 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'sensorsHome/sensorGridComponent.js',
-                                'sensorsHome/sensorGridCtrl.js'
-                            ])
-                        }]
-                    }
-                })
-                .state('sensorsHome.devices', {
-                    url: "/devices",
-                    views: {
-                        'devices@':{
-                            template: "<devices></devices>",
-                            controller: function(SENSOR_TYPE){
-                                SENSOR_TYPE.TITLE = 'Devices';
-                            }
-                        }
-                    },
-                    resolve: {
-                        loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
-                            return $ocLazyLoad.load([
-                                'sensorsHome/devicesComponent.js',
-                                'sensorsHome/devicesCtrl.js'
+                                'Sensors/AllSensors/sensorGridComponent.js',
+                                'SensorModel/sensorGridCtrl.js',
                             ])
                         }]
                     }
