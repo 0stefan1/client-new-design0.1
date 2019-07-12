@@ -17,13 +17,17 @@
                     <div class="c-title-network" ng-show="!network.sensorsGatewaysButtons">
                         <a ng-click="sensorsGateways(network)"><i class="fas fa-arrow-right"></i>Go to {{network.name}}</a>
                     </div>
-                    <span class="fas fa-window-close span-x" ng-show="network.sensorsGatewaysButtons" ng-click="cancelSensorsGateways(network)"></span>
-                    <div class="c-title-network" ng-show="network.sensorsGatewaysButtons">
+
+                    <img src="/Home/images-home/Icons/Close1.0.svg" ng-show="network.sensorsGatewaysButtons" ng-click="cancelSensorsGateways(network)" alt="Check4Green Icons" title="Back">
+
+                    <div class="c-title-network-2" ng-show="network.sensorsGatewaysButtons">
                         <a ng-click="filterSensors(network)"><i class="fas fa-arrow-right"></i>Go to sensors</a>
-                    </div>
-                    <div class="c-title-network" ng-show="network.sensorsGatewaysButtons">
                         <a ng-click="filterGateways(network)"><i class="fas fa-arrow-right"></i>Go to gateways</a>
                     </div>
+                    <!-- <div class="c-title-network" ng-show="network.sensorsGatewaysButtons">
+                        
+                    </div> -->
+
                     <div class="c-view-action">
                         <edit-network></edit-network>
                         <delete-network></delete-network>
