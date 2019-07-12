@@ -25,9 +25,12 @@
             }, 1000)
         }
 
-        $scope.expandSelected = function(sensor){
+        vm.expandSelected = function(sensor){
             $scope.sensors.forEach(function(val){
                 val.expanded=false;
+                $scope.editLocation = true;
+                $scope.editDisplay = false;
+                $scope.editButton = true;
                 $scope.editLocation = true;
             })
             sensor.expanded=true;
@@ -40,11 +43,9 @@
         };
         $scope.hideDetails = function(){
             $scope.detailsData = false;
-        }
-        $scope.disconnectFromHub = function(){
             hubConnection.disconnectFromHub();
         }
-
+        
         function getSensors(user, page, pageSize){
             autentificationService.getUserSensors(user, $sessionStorage.netId, page, pageSize)
                 .then(function(response){

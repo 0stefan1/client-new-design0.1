@@ -52,13 +52,11 @@
         };
         $scope.hideDetails = function(){
             $scope.detailsData = false;
-        }
-
-
-
-        $scope.disconnectFromHub = function(){
             hubConnection.disconnectFromHub();
         }
+
+
+        
         function getSens(user, networkId, page, size){
             sensorModelService.getSensors(user, networkId, page, size)
                 .then(function(response){

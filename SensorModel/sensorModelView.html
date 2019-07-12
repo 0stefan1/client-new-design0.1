@@ -2,12 +2,11 @@
     <div class="title-grid">
         <p>{{::vm.titleGrid}}</p>
     </div>
-        <div ng-show="loading" class="loader"></div>
-        <div ng-show="noSensorsData && !loading" class="noData">No Data</div>
-        <div ng-show="sensorData && !loading"  class="table-overflow">
         
-            <div class="container-buttonGrid">
-                <div class="container-leftButtons">
+        <!-- <div ng-show="sensorData && !loading"  class="table-overflow"> -->
+        
+            <!-- <div class="container-buttonGrid"> -->
+                <!-- <div class="container-leftButtons">
                         <div  class="form-group measurementsContainerSet" ng-show="!detail">
                             <select class="form-control"  ng-model="modelSize" ng-click="setPageSize(modelSize)">
                                 <option selected disabled hidden value="">Sensors per page: <b>50</b></option>
@@ -25,11 +24,11 @@
                             <div id="filterMenu" class="container-back">
                                 
                             </div>
-                        </div>
+                        </div> 
 
-                </div>
+                </div> -->
 
-                <div class="grow"></div>
+                <!-- <div class="grow"></div>
 
                 <div class="container-rightButtons" ng-show="!detail">
 
@@ -40,9 +39,9 @@
                             <i id="list" class=" fas fa-th-list" ng-click="changeLayoutGrid()" ng-if= "change " onclick="focusButtonList()"></i>
                         </div>
                     </div>
-                </div>
+                </div> -->
             
-            </div>
+            <!-- </div> -->
             <!-- <table class="table" ng-if="grid">
                 <thead>
                     <tr>
@@ -96,7 +95,7 @@
          
         </div> -->
 <!-- CARDS *********************************************** -->
-<div class="c-network-view" ng-show ="!loading">
+<div class="c-network-view" >
 
     <div  class="c-inside-body-network">
         <div class="header-network-card">
@@ -115,15 +114,16 @@
                     <search></search>
                 </div>
             </div>
-
+            <div ng-show="!sensorData && !loading" class="noData">You don't have any sensors registered in this network.</div>
             <a ng-if="!detail" ui-sref="sensorsHome.addSensor"><i class="fas fa-plus"></i>Add a new sensor</a>
 
         </div>
         
 
         <div ng-show="loadingNetworks" class="loader"></div>
+        <div ng-show="loading" class="loader"></div>
 
-        <div class="c-aranjament" >
+        <div class="c-aranjament" ng-show ="!loading && sensorData">
             <div class="c-column" ng-if="!detailsData" ng-repeat= "sensor in filterSensors = (sensors | filter: filterSearch) | limitTo: vm.sensPerPage: vm.sensPerPage*(vm.currentPage-1) ">
                 <div class="c-card">
                     <div class="c-title-network">
@@ -139,12 +139,6 @@
                     <div class="c-title-network">
                         <a ng-click="vm.expandSelected(sensor);getLastRead(sensor.id); sensData(sensor.name, sensor.id, sensor.sensorTypeId); measureUnit(sensor.sensorTypeId); showSensorGateway(sensor.id); showDetails(sensor); outOfRangeAllSens(sensor.name, sensor.id, sensor.address, sensor.sensorTypeId)">Show sensors details</a>
                     </div>
-                    <!-- <div class="c-buttons-network">
-                        <a ui-sref="sensorsHome.editSensor">Edit</a>
-                        <a ng-click=" chart(id); measureUnit(sensor.sensorTypeId); measurementSensor(id); startMeasurements(); startEditLocation(sensor.name, sensor.uploadInterval, sensor.latitude, sensor.longitude); details(); sensData(sensor.name, id, sensor.sensorTypeId);">
-                            Details</a>
-                        <a ng-click="startDelete(sensor);">Delete</a>
-                    </div> -->
                 </div>
                 
             </div>
@@ -235,4 +229,4 @@
 
         
     
-</div>
+<!-- </div> -->
