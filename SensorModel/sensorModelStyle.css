@@ -189,9 +189,9 @@
 .c-aranjament > .c-column{
     float: left;
     width: 25%;
-    height: 140px;
-    z-index: 100;
-    padding: 10px 10px;
+    
+   /* z-index: 100; */
+    padding: 10px;
 }
 .c-card > .c-view-action{
     /* position: absolute; */
