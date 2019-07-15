@@ -1,10 +1,10 @@
-<div class="sensorModel container">
-    <div class="title-grid">
+<div class="sensorModel">
+    <!-- <div class="title-grid">
         <p>{{::vm.titleGrid}}</p>
-    </div>
+    </div> -->
         <div ng-show="loading" class="loader"></div>
         <div ng-show="noSensorsData && !loading" class="noData">No Data</div>
-        <div ng-show="sensorData && !loading"  class="table-overflow">
+        <!--<div ng-show="sensorData && !loading"  class="table-overflow">
         
             <div class="container-buttonGrid">
                 <div class="container-leftButtons">
@@ -43,7 +43,7 @@
                 </div>
             
             </div>
-            <!-- <table class="table" ng-if="grid">
+             <table class="table" ng-if="grid">
                 <thead>
                     <tr>
                         <td>No.</td>
@@ -96,27 +96,33 @@
          
         </div> -->
 <!-- CARDS *********************************************** -->
-<div class="c-network-view" ng-show ="!loading">
+<div class="c-sensors-view" ng-show ="!loading">
 
-    <div  class="c-inside-body-network">
-        <div class="header-network-card">
-            <div><i class="fas fa-arrow-left" ng-click="back()" ng-if ="backButton"></i></div>
-            <h1>You are in: <b>{{networkName}}</b></h1>
-            <div class="measurementsTotalReadings" ng-if="!detail">            
-                <label style="font-weight: initial;">Total Sensors: <b>{{totalSensors}}</b>.</label>
-                <label style="font-weight: initial;">Active: <b style="color: #5cb85c;">{{activeCount}}</b>,</label>
-                <label style="font-weight: initial;">inactive: <b style="color: #d9534f;">{{inactiveCount}}</b></label>
-                <div class="container-backFlex">
-                        <div class="sayFlex"><input  onmouseout="hideFilters()" type="checkbox" ng-model="value" id="active" ng-click="showActiveSensors(value)"/><p>Show active sensors</p></div>
+    <div  class="c-inside-body-sensors">
+        <div class="header-sensors-card">
+            <div class="header-c-top">
+                <img src="/Home/images-home/Icons/Back1.0.svg" alt="Check4Green Icons" title="Back" ng-click="back()" ng-if ="backButton">
+                <h1>You are in: <b>{{networkName}}</b></h1>
+            </div>
+            <div class="filters-sensors" ng-if="!detail">
+                <div class="ceckbox-sensors">
+                <p>Total sensors: <b>{{totalSensors}}</b></p>
+                <p>Active: <b style="color: #5cb85c;">{{activeCount}}</b></p>
+                <p>Inactive: <b style="color: #d9534f;">{{inactiveCount}}</b></p>
+                <p>Devices per page:<input></p>
+                </div>
+                
+                <div class="ceckbox-sensors">
+                    
+                    <p>Show active sensors</p>
+                    <input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/>
                 </div>
             </div>
-            <div class="container-rightButtons" ng-show="!detail">
-                <div class="container-buttonView" >
-                    <search></search>
-                </div>
+            <div class="search-c" ng-show="!detail">
+                <search></search>
             </div>
 
-            <a ng-if="!detail" ui-sref="sensorsHome.addSensor"><i class="fas fa-plus"></i>Add a new sensor</a>
+            <a id="addSensorB" ng-if="!detail" ui-sref="sensorsHome.addSensor"><i class="fas fa-plus"></i>Add a new sensor</a>
 
         </div>
         
@@ -126,50 +132,47 @@
         <div class="c-aranjament" >
             <div class="c-column" ng-if="!detailsData" ng-repeat= "sensor in filterSensors = (sensors | filter: filterSearch) | limitTo: vm.sensPerPage: vm.sensPerPage*(vm.currentPage-1) ">
                 <div class="c-card">
-                    <div class="c-title-network">
+                    <div class="c-title-network-2">
                         <a>{{$index+1}}. {{sensor.name}}</a>
-                        <span class="fa fa-circle" ng-if="sensor.active" style="color: #4e9a06;"></span>
-                        <span class="fa fa-circle" ng-if="!sensor.active" style="color: #f80808;"></span>
+                        <span class="fa fa-circle" ng-if="sensor.active" style="color: #58FF5E;"></span>
+                        <span class="fa fa-circle" ng-if="!sensor.active" style="color: #FB3030;"></span>
                     </div>
 
                     <div class="c-view-action">
 
                         <delete-sensor></delete-sensor>
                     </div>
-                    <div class="c-title-network">
-                        <a ng-click="vm.expandSelected(sensor);getLastRead(sensor.id); sensData(sensor.name, sensor.id, sensor.sensorTypeId); measureUnit(sensor.sensorTypeId); showSensorGateway(sensor.id); showDetails(sensor); outOfRangeAllSens(sensor.name, sensor.id, sensor.address, sensor.sensorTypeId)">Show sensors details</a>
+                    <div class="c-title-network-2">
+                        <a class="blue" ng-click="vm.expandSelected(sensor);getLastRead(sensor.id); sensData(sensor.name, sensor.id, sensor.sensorTypeId); measureUnit(sensor.sensorTypeId); showSensorGateway(sensor.id); showDetails(sensor); outOfRangeAllSens(sensor.name, sensor.id, sensor.address, sensor.sensorTypeId)">
+                            Show sensors details<i class="fas fa-chevron-down"></i></a>
                     </div>
-                    <!-- <div class="c-buttons-network">
-                        <a ui-sref="sensorsHome.editSensor">Edit</a>
-                        <a ng-click=" chart(id); measureUnit(sensor.sensorTypeId); measurementSensor(id); startMeasurements(); startEditLocation(sensor.name, sensor.uploadInterval, sensor.latitude, sensor.longitude); details(); sensData(sensor.name, id, sensor.sensorTypeId);">
-                            Details</a>
-                        <a ng-click="startDelete(sensor);">Delete</a>
-                    </div> -->
                 </div>
                 
             </div>
-            <div class="c-column" ng-if="detailsData">
-                    <div>{{sensor.name}}
-                        <span class="fa fa-circle" ng-if="sensor.active" style="color: #4e9a06;"></span>
-                        <span class="fa fa-circle" ng-if="!sensor.active" style="color: #f80808;"></span>
-                    </div>
-                    <div class="c-title-network">
-                        <a ng-click="hideDetails()">Hide sensors details</a>
-                        <button type="button" class="btn btn-success" ng-click="measurementSensor(sensor.id); startMeasurements()" ng-show="(measurementsButton && !editDisplay && !showGateways)">Reading History</button>
-                        <button type="button" class="btn btn-success" ng-click="chart(sensor.id)" ng-show="(chartButton && !editDisplay && !showGateways)">Chart History</button>
-                        <button type="button" class="btn btn-success" ng-click="showGate(sensor.id);" ng-show="gatewayButton">Gateways</button>
-                        <button type="button" class="btn btn-success" ng-click=" startEdit();" ng-if="(editButton && !editDisplay && !showGateways)">Edit</button>
-                        <button type="button" class="btn btn-success" ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.name, sensor.uploadInterval, sensor.latitude, sensor.longitude)" ng-if="(editLocation && !editDisplay && !showGateways)">Location</button>
-                        <button type="button" class="btn btn-success" ng-click="startDelete(sensor)" ng-show="(deleteButton && !editDisplay && !showGateways)">Delete</button>
-                    </div>
+            <div class="c-details" ng-if="detailsData">
+                <div class="header-details">
+                    <a>{{sensor.name}}</a>
+                    <a ng-click="hideDetails()">Hide sensors details <i class="fas fa-chevron-up"></i></a>
+                    <a ng-click="measurementSensor(sensor.id); startMeasurements()" ng-show="(measurementsButton && !editDisplay && !showGateways)">Grid</a>
+                    <a ng-click="chart(sensor.id)" ng-show="(chartButton && !editDisplay && !showGateways)">Chart</a>
+                    <a ng-click="showGate(sensor.id);" ng-show="gatewayButton">Gateways</a>
+                    <a ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.name, sensor.uploadInterval, sensor.latitude, sensor.longitude)" ng-if="(editLocation && !editDisplay && !showGateways)">Map</a>
+                    <a>Edit</a>
+                    <a ng-click="startDelete(sensor)" ng-show="(deleteButton && !editDisplay && !showGateways)">Delete</a>
+                </div>
+                    
+                <div class="c-content-details">
                     <edit-directive></edit-directive>
                     <sensor-gateway></sensor-gateway>
                     <measurements></measurements>
                     <chartd3></chartd3>
                     <delete-sensor></delete-sensor>
-                    <div class="c-view-action" ng-if="!editDisplay && !showGateways && !deleteDisplay && !measurementsDisplay && !chartDisplay">
+
+                    <div class="" ng-if="!editDisplay && !showGateways && !deleteDisplay && !measurementsDisplay && !chartDisplay">
                         <details-sensor></details-sensor>
                     </div>
+                </div>
+                    
             </div>
             <div ng-show="!detailsData">
                 <div ng-show="(!filterSensors.length && sensorData && !loading)" id="alert-error"><p>No result</p></div> 

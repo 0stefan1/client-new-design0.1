@@ -1,55 +1,3 @@
-/* Search --> */
-.search-container .input-group-container{
-    display: flex;
-    width: 100%;
-    margin-bottom: 15px;
-    height: 34px;
-    position: relative;
-}
-.search-container .input-group-container .input-icon{
-    padding: 10px;
-    background: #4e9a06;
-    color: white;
-    min-width: 50px;
-    text-align: center;
-    font-size: 13px;
-    cursor: pointer;
-    
-}
-.search-container .input-group-container .input-icon p{
-    position: absolute;
-    left: -5px;
-    margin-top: 15px;
-    padding: 10px;
-    font-size: 13px;
-    background-color: white;
-    color: #333;
-    border-radius: 5px;
-    border: 2px solid #4e9a06;
-    min-height: 30px;
-    min-width: 100px;
-    z-index: 100;
-    box-shadow: 2px 2px 2px #888;
-    display: none;
-}
-.search-container .input-group-container .input-icon:hover #hover-search{
-    display: block;
-}
-.search-container .input-group-container .input-form-control{
-    width: 100%;
-    padding: 10px;
-    outline: none;
-    
-}
-#searchBOX{
-    display: none;
-    transition: 1s;
-}
-.search-container .input-group-container .input-form-control:focus{
-    border: 2px solid #4e9a06;
-}
-/* <-- Search */
-
 /* Tabel buttons */
 .table-overflow .container-buttonGrid{
     display: flex;
@@ -178,7 +126,7 @@
     padding-right: 5px;
 }
 .c-inside-body-network > .c-aranjament{
-   margin: 0 -5px;
+    height: auto;
    margin: 20px;
 }
 .c-inside-body-network > .c-aranjament:after {
@@ -189,28 +137,23 @@
 .c-aranjament > .c-column{
     float: left;
     width: 25%;
-    
-   /* z-index: 100; */
+    position: relative;
     padding: 10px;
 }
-.c-card > .c-view-action{
-    /* position: absolute; */
-    z-index: 100;
-}
+
 .c-column > .c-card{
     border-radius: 10px;
     background-color: white;
     padding: 20px;
     box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
-    position: relative;
-    /* z-index: 200; */
+    min-height: 105px;
 }
 .c-card > img{
     height: auto;
     width: 20px;
     position: absolute;
-    top: 5px;
-    right: 5px;
+    top: 15px;
+    right: 15px;
     cursor: pointer;
 }
 .c-card > img:hover{
@@ -222,12 +165,40 @@
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    position: relative;
 }
+.c-title-network-2 > span{
+    position: absolute;
+    right: 6px;
+    bottom: -4px;
+    font-size: 11px;
+    border: 2px solid white;
+    border-radius: 100%;
+}
+.c-title-network-2 > .blue{
+    background-color: #4DA8F2;
+    position: relative;
+    border-radius:  50px 50px 0px 50px;
+}
+.blue > i{
+    position: absolute;
+    background-color: #4DA8F2;
+    border-radius: 100px 0px 200px 200px;;
+    bottom: -12px;
+    right: 0px;
+    width: 35px;
+    height: 16px;
+
+}
+/* .blue > .fa-chevron-down:before{
+    text-align: end;
+} */
 .c-title-network-2 > a{
     background-color: #31DB75;
     color: white;
     border-radius: 50px;
-    padding: 5px;
+    padding: 1px;
+    font-size: 13px;
     margin: 5px;
     text-align: center;
 }
@@ -235,9 +206,10 @@
     opacity: 0.8;
 }
 .c-title-network-2 > a > i{
-    padding: 1px;
+    padding: 3px;
     font-size: 13px;
 }
+
                                 /* sensor sau gateway */
 .c-card > .c-title-network{
     border-radius: 50px;
@@ -470,6 +442,240 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
 
 
 /* CARDS******************************************************************* */
+.sensorModel > .c-sensors-view{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+.c-sensors-view > .c-inside-body-sensors{
+   display: flex;
+   flex-direction: column;
+   border-radius: 50px 50px 10px 10px;
+   background-color: #E3F3EB;
+   box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
+}
+.header-sensors-card > img{
+    height: auto;
+    width: 30px;
+    cursor: pointer;
+}
+
+.c-inside-body-sensors > .header-sensors-card{
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   border-radius:  50px 50px 0px 0px;
+   background-color: #31DB75;
+   padding: 20px;
+   box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
+   cursor: pointer;
+}
+.header-sensors-card > .header-c-top{
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.header-c-top > img{
+    height: auto;
+    width: 35px;
+    position: absolute;
+    left: 10px;
+    top: 30px;
+    cursor: pointer;
+}
+.header-c-top > img:hover{
+    opacity: 0.7;
+}
+.header-sensors-card > .filters-sensors{
+    display: flex;
+    justify-content: space-between;
+    background-color: #E3F3EB;
+    border-radius: 50px;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+.filters-sensors > label{
+    font-weight: normal !important;
+}
+#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(1) > b{
+    padding-right: 5px;
+    border-right: 1px solid #013402;
+}
+#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(2){
+    padding-left: 5px;
+}
+#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(2) > b{
+    padding-right: 5px;
+    border-right: 1px solid #013402;
+}
+#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(3){
+    padding-left: 5px;
+}
+#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(2) > p{
+    padding-right: 5px;
+}
+#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(3) > b{
+    padding-right: 5px;
+    border-right: 1px solid #013402;
+}
+#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(4){
+    padding-left: 5px;
+}
+#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(4) > input{
+    margin-left: 5px;
+    width: 25px;
+    height: 20px;
+}
+
+/* ****************DETAILS SENSOR */
+.c-aranjament > .c-details{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
+    margin: 10px;
+}
+.c-details > .header-details{
+    padding: 10px;
+}
+.header-details > a{
+    padding: 5px;
+    color: white;
+    background-color: #4DA8F2;
+    border-radius: 5px;
+    font-size: 13px;
+}
+.header-details > a:first-child{
+    background-color: #31DB75;
+}
+.header-details > a:last-child{
+    background-color: #E88282;
+}
+
+.header-details >  a:nth-child(6){
+    background-color: #3CDB41;
+}
+.header-details > a > i{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+/* ****************DETAILS SENSOR */
+
+
+
+.ceckbox-sensors{
+    margin-left: 10px;
+    display: flex;
+}
+.header-sensors-card > a{
+    display: none;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    color: white;
+    background-color: #15b455;
+    border-radius: 0px 10px 0px 0px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-self: center;
+    cursor: pointer;
+    z-index: 200;
+    box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
+}
+.header-sensors-card > a:hover{
+    text-decoration: none;
+    opacity: 0.9;
+}
+.header-sensors-card > a > i{
+    font-size: 15px;
+    padding-right: 5px;
+}
+.header-sensors-card > .search-c{
+    display: none;
+    position: absolute;
+    bottom: -15px;
+    right: 0px;
+    z-index: 200;
+    transition: 1s;
+}
+.c-inside-body-sensors > .header-sensors-card:hover .search-c{
+    display: initial;
+}
+.c-inside-body-sensors > .header-sensors-card:hover #addSensorB{
+    display: initial;
+}
+/* Search --> */
+.search-container .input-group-container{
+    display: flex;
+    width: 100%;
+    height: 34px;
+    position: relative;
+}
+.search-container .input-group-container .input-icon{
+    padding: 10px;
+    background: #15b455;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+    font-size: 13px;
+    cursor: pointer;
+    border-radius: 10px 0px 0px 0px;
+}
+.search-container .input-group-container .input-icon p{
+    position: absolute;
+    left: -5px;
+    margin-top: 15px;
+    padding: 10px;
+    font-size: 13px;
+    background-color: white;
+    color: #333;
+    border-radius: 5px;
+    border: 2px solid #15b455;
+    min-height: 30px;
+    min-width: 100px;
+    z-index: 200;
+    box-shadow: 2px 2px 2px #888;
+    display: none;
+}
+#searchBOX{
+    border: 2px solid #15b455;
+}
+.search-container .input-group-container .input-icon:hover #hover-search{
+    display: block;
+}
+.search-container .input-group-container .input-form-control{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+#searchBOX{
+    display: none;
+    transition: 1s;
+}
+.search-container .input-group-container .input-form-control:focus{
+    border: 2px solid #15b455;
+}
+/* <-- Search */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* --> Edit info */
 .container-name{
     display: flex;
