@@ -30,9 +30,12 @@
                 val.sensorsGatewaysButtons = false;
             });
             network.sensorsGatewaysButtons = true;
+            $scope.sensorsGatewaysButtons = true;
         }
         $scope.cancelSensorsGateways = function(network) {
             network.sensorsGatewaysButtons = false;
+            $scope.sensorsGatewaysButtons = false;
+
         }   
         $scope.filterGateways = function(network){
             $scope.networkName = network.name;

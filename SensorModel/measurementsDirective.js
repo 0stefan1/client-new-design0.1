@@ -6,30 +6,29 @@ app.directive('measurements', function(){
         templateUrl: 'SensorModel/measurementsDirectiveView.html',
         controller: function( $rootScope, $scope, sensorModelService, hubConnection, SENSOR_TYPE, $localStorage, $sessionStorage, $timeout){
             var vm = this;
-            $scope.measurementsButton = true;
             $scope.measurementsDisplay = false;
             $scope.startMeasurements = function(){
+                document.getElementById('gridButton').style.backgroundColor = '#240B73';
+                document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('editButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('deleteButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
                 $scope.detailsDisplay = false;
-                $scope.deleteButton = false;
-                $scope.editButton = false;
-                $scope.chartButton = false;
                 $scope.editLocation = false;
                 $scope.gatewayButton = false;
-
+                $scope.deleteDisplay = false;
+                $scope.showGateways = false;
+                $scope.chartDisplay = false;
+                $scope.editDisplay = false;
                 if($scope.measurementsDisplay == false){
                     $scope.measurementsDisplay = true;
-                    $scope.measurementsButton = false;
                 }
             };
             $scope.cancelMeasurements = function(){
-                $scope.measurementsButton = true;
-                $scope.gatewayButton = true;
+                document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
                 $scope.editLocation = true;
                 $scope.measurementsDisplay = false;
                 $scope.detailsDisplay = true;
-                $scope.deleteButton = true;
-                $scope.editButton = true;
-                $scope.chartButton = true;
             };
             
             if ($localStorage.email && $localStorage.password){

@@ -5,22 +5,24 @@ app.directive('deleteSensor', function(){
         restrict: 'E',
         templateUrl: 'SensorModel/deleteSensorDirectiveView.html',
         controller: function($scope, sensorModelService, $window, $timeout, $localStorage, $sessionStorage){
-            $scope.deleteButton = true;
             $scope.deleteDisplay = false;
             $scope.startDelete = function(sensor){
+                document.getElementById('deleteButton').style.backgroundColor = '#240B73';
+                document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('editButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
                 $scope.sensors.forEach(function(val){
                     val.deleteDisplay = false;
                 });
-                
+                $scope.editDisplay = false;
+                $scope.showGateways = false;
+                $scope.chartDisplay = false;
+                $scope.measurementsDisplay = false; 
                 sensor.deleteDisplay = true;
                 $scope.gatewayButton = false;
                 $scope.deleteDisplay = true;
-                $scope.deleteButton = false;
                 $scope.detailsDisplay = false;
-                $scope.editButton = false;
-                $scope.editLocation = false;
-                $scope.measurementsButton = false;
-                $scope.chartButton = false;
             }
             if($localStorage.email && $localStorage.password){
                 $scope.encodedData = btoa($localStorage.email +':'+ $localStorage.password)
@@ -41,14 +43,11 @@ app.directive('deleteSensor', function(){
             };
             $timeout.cancel(timer);
             $scope.cancelDeleteSensor = function(){
+                document.getElementById('deleteButton').style.backgroundColor = '#4DA8F2'
+
                 $scope.deleteDisplay = false;
-                $scope.deleteButton = true;
                 $scope.detailsDisplay = true;
                 $scope.editLocation = true;
-                $scope.editButton = true;
-                $scope.measurementsButton = true;
-                $scope.chartButton = true;
-                $scope.gatewayButton = true;
                 if($sessionStorage.cards == true){
                     $scope.cards = true;
                     $scope.grid = false;

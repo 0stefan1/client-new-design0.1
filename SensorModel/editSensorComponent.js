@@ -13,21 +13,26 @@ app.directive('editDirective', function(){
             var vm = this;
             $scope.title = false;
             $scope.editDisplay = false;
-            $scope.editButton = true;
             $scope.startEdit = function(){
+                document.getElementById('editButton').style.backgroundColor = '#240B73';
+                document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('deleteButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
                 if($scope.editDisplay == false){
                     $scope.editDisplay = true;
+                    $scope.deleteDisplay = false;
+                    $scope.showGateways = false;
+                    $scope.chartDisplay = false;
+                    $scope.measurementsDisplay = false; 
                     $scope.name = $sessionStorage.name;
                     $scope.measurementsButton = false;
                     $scope.chartButton = false;
                     $scope.sensorEditError = false;
                     $scope.sensorEditSuccess = false;
-                    $scope.editButton = false;
-                    $scope.gatewayButton = false;
                     $scope.detailsDisplay = false;
-                    $scope.deleteButton = false;
                     $scope.editLocation = false;
-                    $scope.editButton = false;
+                   
                 }
             }
             if ($localStorage.email && $localStorage.password){
@@ -100,19 +105,15 @@ app.directive('editDirective', function(){
                         })
             
             $scope.cancelEditSensor = function(){
-                    $scope.editButton = true;
+                document.getElementById('editButton').style.backgroundColor = '#4DA8F2';
                     $scope.editDisplay = false;
                     $scope.detailsDisplay = true;
-                    $scope.deleteButton = true;
-                    $scope.measurementsButton = true;
                     $scope.editLocation = true;
-                    $scope.chartButton = true;
                     $scope.sensorEditError = false;
                     $scope.sensorEditSuccess = false;
                     $scope.cards = false;
                     $scope.grid = true;
                     $scope.backButton = true;
-                    $scope.gatewayButton = true;
                 
             };
         }

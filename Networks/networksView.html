@@ -4,7 +4,9 @@
 
     <div  class="c-inside-body-network" ng-show ="!noNetworks && !serverError && !editNetworkDisplay && !deleteNetworkDisplay">
         <div class="header-network-card">
-            <h1>Chose your network</h1>
+            <h1 ng-show="!sensorsGatewaysButtons">Choose your network</h1>
+            <h1 ng-show="sensorsGatewaysButtons">Choose what you want to see</h1>
+
             <a ui-sref="sensorsHome.addNetwork"><i class="fas fa-plus"></i>Add a new network</a>
         </div>
         

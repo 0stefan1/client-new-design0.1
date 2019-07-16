@@ -500,31 +500,31 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
 .filters-sensors > label{
     font-weight: normal !important;
 }
-#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(1) > b{
+.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(1) > b{
     padding-right: 5px;
     border-right: 1px solid #013402;
 }
-#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(2){
+.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(2){
     padding-left: 5px;
 }
-#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(2) > b{
+.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(2) > b{
     padding-right: 5px;
     border-right: 1px solid #013402;
 }
-#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(3){
+.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(3){
     padding-left: 5px;
 }
-#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(2) > p{
+.filters-sensors.ng-scope > div:nth-child(2) > p{
     padding-right: 5px;
 }
-#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(3) > b{
+.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(3) > b{
     padding-right: 5px;
     border-right: 1px solid #013402;
 }
-#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(4){
+.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(4){
     padding-left: 5px;
 }
-#marginTopView > div:nth-child(7) > grid-sensors > div > div.c-sensors-view > div > div.header-sensors-card > div.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(4) > input{
+.filters-sensors.ng-scope > div:nth-child(1) > p:nth-child(4) > input{
     margin-left: 5px;
     width: 25px;
     height: 20px;

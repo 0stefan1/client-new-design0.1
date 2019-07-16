@@ -6,7 +6,6 @@
             templateUrl: 'SensorModel/sensorGatewayView.html',
             controller: function($scope, sensorModelService, $sessionStorage, $localStorage){
                 $scope.loadingGateways = true;
-                $scope.gatewayButton = true;
                 $scope.showGateways = false;
                 if($localStorage.email && $localStorage.password &&($localStorage.email != 0 && $localStorage.password !=0)){
                     var encodeduser = btoa($localStorage.email+ ':'+ $localStorage.password)
@@ -14,12 +13,17 @@
                     var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
                 }
                 $scope.showGate = function(id){
+                    document.getElementById('gatewaysButton').style.backgroundColor = '#240B73';
+                    document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
+                    document.getElementById('editButton').style.backgroundColor = '#4DA8F2';
+                    document.getElementById('deleteButton').style.backgroundColor = '#4DA8F2';
+                    document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
                     $scope.showGateways = true;
-                    $scope.gatewayButton = false;
                     $scope.detailsDisplay = false;
-                    $scope.editButton = false;
-                    $scope.deleteButton = false;
-                    $scope.editLocationButton = false;
+                    $scope.deleteDisplay = false;
+                    $scope.measurementsDisplay = false;
+                    $scope.chartDisplay = false;
+                    $scope.editDisplay = false;
                     sensorModelService.getGateway(encodeduser, $sessionStorage.netId, id)
                         .then(function(response){
                             $scope.gateway = response.data;
@@ -35,11 +39,8 @@
                         });
                     }
                 $scope.cancel = function(){
-                    $scope.editButton = true;
-                    $scope.deleteButton = true;
-                    $scope.editLocationButton = true;
+                    document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
                     $scope.detailsDisplay = true;
-                    $scope.gatewayButton = true;
                     $scope.gatewayDetails = true;
                     $scope.showGateways = false;
                 }

@@ -101,15 +101,16 @@
     <div  class="c-inside-body-sensors">
         <div class="header-sensors-card">
             <div class="header-c-top">
-                <img src="/Home/images-home/Icons/Back1.0.svg" alt="Check4Green Icons" title="Back" ng-click="back()" ng-if ="backButton">
+                <img src="/Home/images-home/Icons/Back1.0.svg" alt="Check4Green Icons" title="Back to networks" ng-click="back()" ng-if ="backButton">
                 <h1>You are in: <b>{{networkName}}</b></h1>
             </div>
+
             <div class="filters-sensors" ng-if="!detail">
                 <div class="ceckbox-sensors">
                 <p>Total sensors: <b>{{totalSensors}}</b></p>
                 <p>Active: <b style="color: #5cb85c;">{{activeCount}}</b></p>
                 <p>Inactive: <b style="color: #d9534f;">{{inactiveCount}}</b></p>
-                <p>Devices per page:<input></p>
+                <p>Devices per page:<input type="number" id="pageSize" style="width: 50px;" min="1" ng-model="vm.sensPerPage" placeholder="50"></p>
                 </div>
                 
                 <div class="ceckbox-sensors">
@@ -150,15 +151,21 @@
                 
             </div>
             <div class="c-details" ng-if="detailsData">
+                
+
                 <div class="header-details">
                     <a>{{sensor.name}}</a>
                     <a ng-click="hideDetails()">Hide sensors details <i class="fas fa-chevron-up"></i></a>
-                    <a ng-click="measurementSensor(sensor.id); startMeasurements()" ng-show="(measurementsButton && !editDisplay && !showGateways)">Grid</a>
-                    <a ng-click="chart(sensor.id)" ng-show="(chartButton && !editDisplay && !showGateways)">Chart</a>
-                    <a ng-click="showGate(sensor.id);" ng-show="gatewayButton">Gateways</a>
-                    <a ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.name, sensor.uploadInterval, sensor.latitude, sensor.longitude)" ng-if="(editLocation && !editDisplay && !showGateways)">Map</a>
-                    <a>Edit</a>
-                    <a ng-click="startDelete(sensor)" ng-show="(deleteButton && !editDisplay && !showGateways)">Delete</a>
+                    <a id="gridButton" ng-click="measurementSensor(sensor.id); startMeasurements()">Grid</a>
+                    <a id="chartButton" ng-click="chart(sensor.id)">Chart</a>
+                    <a id="gatewaysButton" ng-click="showGate(sensor.id);">Gateways</a>
+                    <a ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.name, sensor.uploadInterval, sensor.latitude, sensor.longitude)">Map</a>
+                    <a id ="editButton" ng-click=" startEdit();">Edit</a>
+                    <a id="deleteButton" ng-click="startDelete(sensor)" >Delete</a>
+                    <div style="text-align: right;">
+                        <a ng-if="chartDisplay" ng-click="chart(sensor.id)"><i class="fas fa-redo" ></i></a>
+                        <a ng-if="measurementsDisplay" ng-click="measurementSensor(sensor.id); startMeasurements()"><i class="fas fa-redo"></i></a>
+                    </div>
                 </div>
                     
                 <div class="c-content-details">
