@@ -26,12 +26,6 @@ app.directive('measurements', function(){
                     $scope.measurementsDisplay = true;
                 }
             };
-            $scope.cancelMeasurements = function(){
-                document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
-                $scope.editLocation = true;
-                $scope.measurementsDisplay = false;
-                $scope.detailsDisplay = true;
-            };
             
             if ($localStorage.email && $localStorage.password){
                 var encodedData = btoa($localStorage.email +':'+ $localStorage.password)
@@ -63,11 +57,22 @@ app.directive('measurements', function(){
                 $scope.noDataMeasurements = false;
                 $scope.loadingMeasurements = true;
                 $scope.dataMeasurements = false;
+                $scope.invalidCount = 0;
+                $scope.outOfRangeCount = 0;
+                $scope.valuesCount =0;
                 sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
                                     .then(function(measurements){
                                         $rootScope.measurementSensors = measurements;
                                         for(var i=0; i< $rootScope.measurementSensors.length; i++){
                                             $rootScope.measurementSensors[i].readingDate = $rootScope.measurementSensors[i].readingDate.substr(0,10)+ " "+$rootScope.measurementSensors[i].readingDate.substr(11,5);
+                                            if($rootScope.measurementSensors[i].value == 0){
+                                                $scope.invalidCount++;
+                                            }else if($rootScope.measurementSensors[i].value == $scope.outOfRangePositiveError || $rootScope.measurementSensors[i].value == $scope.outOfRangeNegativeError){
+                                                $scope.outOfRangeCount++;
+
+                                            } else{
+                                                $scope.valuesCount++;
+                                            }
                                         }
                                         $scope.loadingMeasurements = false;
                                         $scope.noDataMeasurements = false;

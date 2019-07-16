@@ -3,7 +3,7 @@
     <div ng-show="noDataMeasurements" class="noData">No data</div>
 
     <div ng-show="dataMeasurements">
-        <div class="inLine-measurement">
+        <!-- <div class="inLine-measurement">
             <div  class="form-group measurementsContainerSet">
                 <select class="form-control"  ng-model="pageSize" ng-click="setPageSize(pageSize)">
                     <option selected disabled hidden value="">Sensor per page: 10</option>
@@ -15,9 +15,23 @@
                     <option value="200">200</option>
                 </select>
             </div>
+        </div> -->
+        
+        <p>Total readings: <b>{{totalReadings}}</b></p>
+        <p>Values: <b style="color: #5cb85c;"></b>{{valuesCount}}</p>
+        <p>Invalid: <b style="color: #d9534f;"></b>{{invalidCount}}</p>
+        <p>Out of range: <b style="color: #286090;"></b>{{outOfRangeCount}}</p>
+        <p>Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" ng-model="size" placeholder="50"></p>
+                
+        <div class="ceckbox-sensors">
+            <p>Show values</p>
+            <input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/>
+            <p>Show invalid values</p>
+            <input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/>
+            <p>Show out of range values</p>
+            <input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/>
         </div>
         <div class="measurementsTotalReadings">
-            <label>Total Readings: {{totalReadings}}</label>
             <div class="legend-measurement" ng-if="!vibrations">
                 <a2 style="font-weight: bold;">Legend: </a2>
                 <span class="fa fa-circle" style="color: #4e9a06;"></span><a1>Value</a1>
@@ -59,5 +73,4 @@
         </table>
         <div class="pages-center" paging page="page" total="totalReadings" page-size="size" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ></div>
     </div>
-    <button type="button" class="btn btn" ng-click="cancelMeasurements()" ng-if="detailsData">Cancel</button>
 </div>

@@ -107,12 +107,26 @@
                 <h1>You are in: <b>{{networkName}}</b></h1>
             </div>
 
-            <div class="filters-sensors" ng-if="!detail">
+            <div class="filters-sensors" ng-if="!detailsData">
                 <div class="ceckbox-sensors">
                 <p>Total sensors: <b>{{totalSensors}}</b></p>
                 <p>Active: <b style="color: #5cb85c;">{{activeCount}}</b></p>
                 <p>Inactive: <b style="color: #d9534f;">{{inactiveCount}}</b></p>
                 <p>Devices per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" ng-model="vm.sensPerPage" placeholder="50"></p>
+                </div>
+                
+                <div class="ceckbox-sensors">
+                    <p>Show active sensors</p>
+                    <input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/>
+                </div>
+            </div>
+            <div class="filters-sensors" ng-if="measurementsDisplay">
+                <div class="ceckbox-sensors">
+                <p>Total readings: <b>{{totalReadings}}</b></p>
+                <p>Values: <b style="color: #5cb85c;"></b></p>
+                <p>Invalid: <b style="color: #d9534f;"></b></p>
+                <p>Out of range: <b style="color: #d9534f;"></b></p>
+                <p>Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" ng-model="size" placeholder="50"></p>
                 </div>
                 
                 <div class="ceckbox-sensors">
@@ -160,7 +174,7 @@
                     <a id="gridButton" ng-click="measurementSensor(sensor.id); startMeasurements()">Grid</a>
                     <a id="chartButton" ng-click="chart(sensor.id)">Chart</a>
                     <a id="gatewaysButton" ng-click="showGate(sensor.id);">Gateways</a>
-                    <a ui-sref="sensorsHome.editLocation" ng-click="startEditLocation(sensor.name, sensor.uploadInterval, sensor.latitude, sensor.longitude)">Map</a>
+                    <a ng-click=" startEditLoc(); startEditLocation(sensor.name, sensor.uploadInterval, sensor.latitude, sensor.longitude); ">Map</a>
                     <a id ="editButton" ng-click=" startEdit();">Edit</a>
                     <a id="deleteButton" ng-click="startDelete(sensor)" >Delete</a>
                     <div style="text-align: right;">
@@ -170,13 +184,14 @@
                 </div>
                     
                 <div class="c-content-details">
+                    <edit-loc></edit-loc>
                     <edit-directive></edit-directive>
                     <sensor-gateway></sensor-gateway>
                     <measurements></measurements>
                     <chartd3></chartd3>
                     <delete-sensor></delete-sensor>
 
-                    <div class="" ng-if="!editDisplay && !showGateways && !deleteDisplay && !measurementsDisplay && !chartDisplay">
+                    <div class="" ng-if="!editDisplay && !showGateways && !deleteDisplay && !measurementsDisplay && !chartDisplay && !editLocationDisplay">
                         <details-sensor></details-sensor>
                     </div>
                 </div>

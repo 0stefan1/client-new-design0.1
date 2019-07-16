@@ -40,12 +40,6 @@
                             }
                         });
                     }
-                $scope.cancel = function(){
-                    document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
-                    $scope.detailsDisplay = true;
-                    $scope.gatewayDetails = true;
-                    $scope.showGateways = false;
-                }
             }
         }
     });

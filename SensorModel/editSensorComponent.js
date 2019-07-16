@@ -105,19 +105,6 @@ app.directive('editDirective', function(){
                                     });
                             };
                         })
-            
-            $scope.cancelEditSensor = function(){
-                document.getElementById('editButton').style.backgroundColor = '#4DA8F2';
-                    $scope.editDisplay = false;
-                    $scope.detailsDisplay = true;
-                    $scope.editLocation = true;
-                    $scope.sensorEditError = false;
-                    $scope.sensorEditSuccess = false;
-                    $scope.cards = false;
-                    $scope.grid = true;
-                    $scope.backButton = true;
-                
-            };
         }
     }
 });

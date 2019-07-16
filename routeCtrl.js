@@ -370,7 +370,11 @@
                                 'SensorModel/sensorModelService.js',
                                 'Autentification/Service/autentificationService.js',
                                 'Networks/networkService.js',
-                                'Gateways/gatewayService.js'
+                                'Gateways/gatewayService.js',
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
+                                'sensorsHome/editLocationComponent.js',
+                                'sensorsHome/editLocationCtrl.js'
                             
                             ])
                         }]

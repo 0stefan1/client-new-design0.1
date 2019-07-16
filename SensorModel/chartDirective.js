@@ -356,14 +356,7 @@
                                 }
         }
             }
-
-            $scope.cancelChart = function(){
-                $scope.chartDisplay = false;
-                $scope.detailsDisplay = true;
-                $scope.editLocation = true;
-                document.getElementById('chartButton').style.backgroundColor = '#4DA8F2'
-
-            }
+            
         }
     }
     });
