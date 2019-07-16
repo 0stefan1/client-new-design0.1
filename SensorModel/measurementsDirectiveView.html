@@ -3,20 +3,19 @@
     <div ng-show="noDataMeasurements" class="noData">No data</div>
 
     <div ng-show="dataMeasurements">
-    <div class="inLine-measurement">
-        <button type="button" id="butonRefresh" class="btn btn-success" ng-click="measurementSensor(sensor.id)" ng-if="detailsData">Refresh</button>
-        <div  class="form-group measurementsContainerSet">
-            <select class="form-control"  ng-model="pageSize" ng-click="setPageSize(pageSize)">
-                <option selected disabled hidden value="">Sensor per page: 10</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="40">40</option>
-                <option value="60">60</option>
-                <option value="100">100</option>
-                <option value="200">200</option>
-            </select>
+        <div class="inLine-measurement">
+            <div  class="form-group measurementsContainerSet">
+                <select class="form-control"  ng-model="pageSize" ng-click="setPageSize(pageSize)">
+                    <option selected disabled hidden value="">Sensor per page: 10</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="40">40</option>
+                    <option value="60">60</option>
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                </select>
+            </div>
         </div>
-    </div>
         <div class="measurementsTotalReadings">
             <label>Total Readings: {{totalReadings}}</label>
             <div class="legend-measurement" ng-if="!vibrations">

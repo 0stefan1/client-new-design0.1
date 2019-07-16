@@ -48,15 +48,11 @@
             $scope.sensor = sensor;
             $sessionStorage.sensorId = sensor.id;
             $scope.detailsData = true;
+            document.getElementById('hideDetailsButton').style.backgroundColor = '#240B73';
             
         };
         $scope.hideDetails = function(){
             $scope.detailsData = false;
-        }
-
-
-
-        $scope.disconnectFromHub = function(){
             hubConnection.disconnectFromHub();
         }
         function getSens(user, networkId, page, size){
@@ -113,12 +109,6 @@
                     
             }
             $scope.$watch('vm.currentPage', vm.setPage);
-            $scope.setPageSize = function(modelSize){
-                if(modelSize){
-                    vm.sensPerPage = modelSize;
-                    getSens( encodeduser, $sessionStorage.netId, 1, vm.sensPerPage)
-                }
-            }
             $scope.search = function(){
                 getSens( encodeduser, $sessionStorage.netId, vm.currentPage, data)
                 $scope.$watchCollection('filterSensors.length', function(newValue, oldValue){

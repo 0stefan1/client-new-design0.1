@@ -13,6 +13,8 @@ app.directive('measurements', function(){
                 document.getElementById('editButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('deleteButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
+
                 $scope.detailsDisplay = false;
                 $scope.editLocation = false;
                 $scope.gatewayButton = false;

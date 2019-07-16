@@ -15,7 +15,7 @@ app.controller('registerGatewayCtrl', function($scope, $window, gatewayService, 
             var lng = $sessionStorage.lng;
         }
         var gateway = {'address': address, 'name': name, "latitude":lat, "longitude":lng}
-        var networkId = $sessionStorage.networkId;
+        var networkId = $sessionStorage.netId;
         gatewayService.addGateway($scope.encodeduser, networkId, gateway)
             .then(function(){
                 $scope.gatewayRegisterSuccess = true;

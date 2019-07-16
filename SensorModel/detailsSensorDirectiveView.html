@@ -1,5 +1,6 @@
 <span ng-if="ui" style ="color:red">{{uploadIntMessage}}</span>
-<table class="table"  ng-if="detailsDisplay">
+<div ng-show="loadingDetails" class="loader"></div>
+<table class="table"  ng-if="detailsDisplay && !loadingDetails">
         <thead>
             <tr>
                 <td>Address</td>

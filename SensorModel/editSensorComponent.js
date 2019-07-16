@@ -19,6 +19,8 @@ app.directive('editDirective', function(){
                 document.getElementById('deleteButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
+
                 if($scope.editDisplay == false){
                     $scope.editDisplay = true;
                     $scope.deleteDisplay = false;

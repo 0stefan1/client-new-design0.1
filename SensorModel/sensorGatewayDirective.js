@@ -18,6 +18,8 @@
                     document.getElementById('editButton').style.backgroundColor = '#4DA8F2';
                     document.getElementById('deleteButton').style.backgroundColor = '#4DA8F2';
                     document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
+                    document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
+
                     $scope.showGateways = true;
                     $scope.detailsDisplay = false;
                     $scope.deleteDisplay = false;

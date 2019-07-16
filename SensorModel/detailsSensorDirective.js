@@ -12,6 +12,8 @@ app.directive('detailsSensor', function(){
                     $scope.vibrations = true;
                 }
             }
+            document.getElementById('hideDetailsButton').style.backgroundColor = '#240B73';
+            
             
         }
     }

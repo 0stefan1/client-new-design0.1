@@ -19,6 +19,7 @@
                     document.getElementById('editButton').style.backgroundColor = '#4DA8F2';
                     document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
                     document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
+                    document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
                     var page = 0
                     $scope.value = false;
                     $scope.gatewayButton = false;

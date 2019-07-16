@@ -25,23 +25,22 @@
             }, 1000)
         }
 
-        $scope.expandSelected = function(sensor){
+        vm.expandSelected = function(sensor){
             $scope.sensors.forEach(function(val){
                 val.expanded=false;
                 $scope.editLocation = true;
             })
             sensor.expanded=true;
+
         };
+        
         $scope.showDetails = function(sensor){
             $scope.sensor = sensor;
             $sessionStorage.sensorId = sensor.id;
             $scope.detailsData = true;
-            
         };
         $scope.hideDetails = function(){
             $scope.detailsData = false;
-        }
-        $scope.disconnectFromHub = function(){
             hubConnection.disconnectFromHub();
         }
 
@@ -96,12 +95,6 @@
                 }
                 $scope.$watch('currentPage', vm.setPage);
                 $scope.gridSize ='';
-                $scope.setPageSize = function(gridSize){
-                    if(gridSize){
-                        vm.sensPerPage = gridSize;
-                        getSensors(encodeduser, 1, vm.sensPerPage);
-                    }
-                }
                 $scope.search = function(){
                     $scope.$watchCollection('filterSensors.length', function(newValue, oldValue){
                         if(newValue == data){
