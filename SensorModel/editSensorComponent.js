@@ -18,11 +18,13 @@ app.directive('editDirective', function(){
                 document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('deleteButton').style.backgroundColor = '#E88282';
                 document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('mapButton').style.backgroundColor = '#3CDB41';
                 document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
 
                 if($scope.editDisplay == false){
                     $scope.editDisplay = true;
+                    $scope.editLocationDisplay = false;
                     $scope.deleteDisplay = false;
                     $scope.showGateways = false;
                     $scope.chartDisplay = false;

@@ -7,16 +7,18 @@ app.directive('deleteSensor', function(){
         controller: function($scope, sensorModelService, $window, $timeout, $localStorage, $sessionStorage){
             $scope.deleteDisplay = false;
             $scope.startDelete = function(sensor){
-                document.getElementById('deleteButton').style.backgroundColor = '#8A4D4D';
+                document.getElementById('deleteButton').style.backgroundColor = '#a63d3d';
                 document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('editButton').style.backgroundColor = '#3CDB41';
                 document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('mapButton').style.backgroundColor = '#3CDB41';
                 document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
                 $scope.sensors.forEach(function(val){
                     val.deleteDisplay = false;
                 });
                 $scope.editDisplay = false;
+                $scope.editLocationDisplay = false;
                 $scope.showGateways = false;
                 $scope.chartDisplay = false;
                 $scope.measurementsDisplay = false; 
@@ -37,10 +39,17 @@ app.directive('deleteSensor', function(){
             }
             var timer;
             $scope.deleteSensor = function(id){
-                sensorModelService.deleteSensors($scope.encodedData, $sessionStorage.netId, id);
-                timer = $timeout(function(){
-                    $window.location.reload();
-                },300);
+                sensorModelService.deleteSensors($scope.encodedData, $sessionStorage.netId, id)
+                .then(function(){
+                    timer = $timeout(function(){
+                        $window.location.reload();
+                    },300);
+                })
+                .catch(function(response){
+                    $scope.error = true;
+                    $scope.errorMsg = response.message;
+                })
+                
             };
             $timeout.cancel(timer);
             $scope.cancelDeleteSensor = function(){
