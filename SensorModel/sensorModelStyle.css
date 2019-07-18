@@ -563,7 +563,37 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
     padding-right: 5px;
 }
 /* ****************DETAILS SENSOR */
-
+ /* ***************** Register sensor */
+.c-register-sensor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #E3F3EB;
+    margin-top: 40px;
+    margin-left: 20%;
+    margin-right: 20%;
+    box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
+}
+.c-register-sensor > .header-register-s{
+    position: relative;
+    text-align: center;
+    background-color: #31DB75;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
+}
+.header-register-s > h1{
+    font-size: 24px;
+}
+.header-register-s > img{
+    height: auto;
+    width: 30px;
+    position: absolute;
+    left: 10px;
+    top: 17px;
+    cursor: pointer;
+}
+ /* ***************** Register sensor */
 /* **********************************EDIT */
 .c-edit-view{
     display: flex;
