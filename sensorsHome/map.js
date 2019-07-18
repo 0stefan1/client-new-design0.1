@@ -16,8 +16,9 @@
                     mapTypeControl: false,
                     streetViewControl: false
                 });
-                $scope.loading = true;
+
                 $scope.noSensors = true;
+                $scope.loading = true;
                 autentificationService.getAllSensors(encodeduser, $sessionStorage.netId)
                     .then(function(data){
                         var pageSize = data;
