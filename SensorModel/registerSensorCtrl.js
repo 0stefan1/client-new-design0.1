@@ -1,8 +1,8 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("registerSensorCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", "$window", "$timeout","d3",
-        function registerSensorCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $window, $timeout, d3) {
+   app.controller("registerSensorCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", "$window", "$timeout",
+        function registerSensorCtrl($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $window, $timeout) {
             var vm = this;
             vm.titleGrid = SENSOR_TYPE.TITLE;
             $scope.registerButton = true;
@@ -17,49 +17,7 @@
             $scope.backButton = false;
             $scope.change = false;
             $scope.cards =false;
-            var map = new google.maps.Map(d3.selectAll('#registerMap').node(), {
-                zoom: 4,
-                center: new google.maps.LatLng(51.508742, -0.120850),
-                mapTypeControl: false,
-                streetViewControl: false
-            });
-            var marker;
-            map.setCenter($sessionStorage.location)
-            google.maps.event.addListener(map, "click", function(event){
-                placeMarker(map, event.latLng)
-                
-            })
-            function placeMarker(map, location){
-                if(marker == null){
-                    marker= new google.maps.Marker({
-                        position: location,
-                        map:map
-                    })
-                    $scope.latitude = marker.getPosition().lat();
-                    $scope.longitude = marker.getPosition().lng();
-                } else{
-                    marker.setPosition(location);
-                    $scope.latitude = marker.getPosition().lat();
-                    $scope.longitude = marker.getPosition().lng();
-                }
-            }
             
-            var overlay = new google.maps.OverlayView;
-            overlay.onAdd = function() {
-                overlay.draw = function(){
-                    var projection = this.getProjection(),
-                    padding = 10;
-                    function transform(d){
-                        d = new google.maps.LatLng(d.value[1], d.value[0]);
-                        d = projection.fromLatLngToDivPixel(d);
-                        return d3.select(this)
-                            .style("left", (d.x - padding) + "px")
-                            .style("top", (d.y - padding) +"px");
-                    }
-                }
-                
-            }
-            overlay.setMap(map);
             if (SENSOR_TYPE.ID == 6){
                 $scope.vibrations = true;
             }
@@ -85,12 +43,12 @@
                 if (SENSOR_TYPE.ID == 6){
                     $scope.uploadInt = 60;
                 }
-                if($scope.latitude == null && $scope.longitude == null){
+                if($sessionStorage.lat == null && $sessionStorage.lng == null){
                     var lat = 0;
                     var lng = 0;
                 } else{
-                    var lat = $scope.latitude;
-                    var lng = $scope.longitude;
+                    var lat = $sessionStorage.lat;
+                    var lng = $sessionStorage.lng;
                 }
                 var sensorPost = {
                               'name':registerName,

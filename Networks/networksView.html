@@ -4,11 +4,8 @@
 
     <div  class="c-inside-body-network" ng-show ="!noNetworks && !serverError && !editNetworkDisplay && !deleteNetworkDisplay">
         <div class="header-network-card">
-            <img src="/Home/images-home/Icons/Back1.0.svg" ng-if="networkDetails" alt="Check4Green Icons" title="Back" ng-click="cancelDetails()">
-            <h1 ng-show="!sensorsGatewaysButtons && !networkDetails">Choose your network</h1>
+            <h1 ng-show="!sensorsGatewaysButtons">Choose your network</h1>
             <h1 ng-show="sensorsGatewaysButtons">Choose what you want to see</h1>
-            <h1 ng-if="networkDetails">Network details</h1>
-
 
             <a ui-sref="sensorsHome.addNetwork"><i class="fas fa-plus"></i>Add a new network</a>
         </div>
@@ -17,7 +14,7 @@
         <div ng-show="loadingNetworks" class="loader"></div>
 
         <div class="c-aranjament" >
-            <div class="c-column" ng-repeat="network in networks" ng-if="!networkDetails">
+            <div class="c-column" ng-repeat="network in networks">
                 <div class="c-card">
                     <div class="c-title-network" ng-show="!network.sensorsGatewaysButtons">
                         <a ng-click="sensorsGateways(network)"><i class="fas fa-arrow-right"></i>Go to {{network.name}}</a>
@@ -37,16 +34,10 @@
 
                     <div class="c-buttons-network" ng-show="!deleteNetworkDisplay && !editNetworkDisplay && !network.sensorsGatewaysButtons">
                         <a ng-click="startEditNetwork(network)">Edit</a>
-                        <a ng-click="details(network);">Details</a>
+                        <a ui-sref="sensorsHome.networkDetails" ng-click="getNetwork(network)">Details</a>
                         <a ng-click="startDeleteNetwork(network)">Delete</a>
                     </div>
                 </div>
-            </div>
-            <div class="c-details" ng-if="networkDetails">
-                <!-- <div class="c-content-details"> -->
-                    <details-net></details-net>
-                <!-- </div> -->
-                    
             </div>
         </div>
     </div>

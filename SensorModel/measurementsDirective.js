@@ -11,7 +11,6 @@ app.directive('measurements', function(){
                 document.getElementById('gridButton').style.backgroundColor = '#244E70';
                 document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('editButton').style.backgroundColor = '#3CDB41';
-                document.getElementById('mapButton').style.backgroundColor = '#3CDB41';
                 document.getElementById('deleteButton').style.backgroundColor = '#E88282';
                 document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
@@ -19,7 +18,6 @@ app.directive('measurements', function(){
                 $scope.detailsDisplay = false;
                 $scope.editLocation = false;
                 $scope.gatewayButton = false;
-                $scope.editLocationDisplay = false;
                 $scope.deleteDisplay = false;
                 $scope.showGateways = false;
                 $scope.chartDisplay = false;

@@ -48,6 +48,7 @@
             $scope.sensor = sensor;
             $sessionStorage.sensorId = sensor.id;
             $scope.detailsData = true;
+            document.getElementById('hideDetailsButton').style.backgroundColor = '#244E70';
             
         };
         $scope.hideDetails = function(){
@@ -233,6 +234,7 @@
             hubConnection.connectingToHub();
             $scope.noRead = false;
             $scope.detailsData = false;
+            //$scope.loadingDetails = true;
             sensorModelService.getMeasurements(encodeduser, $sessionStorage.netId, id, 1, 1)
                 .then(function(measurement){
                     $rootScope.lastRead = measurement;
@@ -251,17 +253,10 @@
                 })
             $rootScope.lastRead = null;
         }
-        $scope.getSensor = function(id){
-            sensorModelService.getSensorsById(encodeduser, $sessionStorage.netId, id)
-                .then(function(response){
-                    var sens = response.data;
-                    $sessionStorage.name = sens.name;
-                    $sessionStorage.uplInt = sens.uploadInterval;
-                    var lat = sens.latitude;
-                    var long = sens.longitude;
-                    $sessionStorage.location = {lat: lat, lng: long};
-                })
-            
+        $scope.startEditLocation = function(name, uploadInterval, lat, long){
+            $sessionStorage.name = name;
+            $sessionStorage.uplInt = uploadInterval;
+            $sessionStorage.location = {lat: lat, lng: long};
         }
         
     }]);

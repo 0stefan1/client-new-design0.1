@@ -143,6 +143,7 @@
                             }
                             $scope.sensors = $scope.actsens;
                             $scope.active = true;
+                            
                         })
                         .catch(function(response)
                         {
@@ -274,17 +275,10 @@
                 $scope.vibrations = false;
             }
         }
-        $scope.getSensor = function(id){
-            autentificationService.getSensorById(encodeduser, $sessionStorage.netId, id)
-                .then(function(response){
-                    var sens = response.data;
-                    $sessionStorage.name = sens.name;
-                    $sessionStorage.uplInt = sens.uploadInterval;
-                    var lat = sens.latitude;
-                    var long = sens.longitude;
-                    $sessionStorage.location = {lat: lat, lng: long};
-                })
-            
+        $scope.startEditLocation = function( name, uploadInterval, lat, long){
+            $sessionStorage.name = name;
+            $sessionStorage.uplInt = uploadInterval;
+            $sessionStorage.location = {lat: lat, lng: long};
         }
     });
 }());
