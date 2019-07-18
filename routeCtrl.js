@@ -76,6 +76,7 @@
                                 'Autentification/LogIn/logInComponent.js',
                                 'Autentification/LogIn/logInCtrl.js',
                                 'Autentification/LogIn/logInStyle.css',
+                                'Home/scriptIndex.js'
                             ])
                         }]
                     }
