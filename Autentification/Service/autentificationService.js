@@ -8,7 +8,6 @@ angular.module("sensorApp")
             getCode: getCode,
             resetPassword: resetPassword,
             getUserSensors: getUserSensors,
-            getSensorById : getSensorById,
             getAllSensors : getAllSensors,
             activateAccount: activateAccount,
             getActivationCode: getActivationCode,
@@ -76,14 +75,6 @@ angular.module("sensorApp")
             })
             .catch(function(response){
               return response.status;
-            })
-          }
-          function getSensorById(encodedData, networkId, id){
-            return $http({
-              method: 'GET',
-              //url: 'http://192.168.0.18:32332/api/networks/'+networkId+'/sensors/'+id,
-              url: 'https://swiss-iot.azurewebsites.net/api/networks/'+networkId+'/sensors/'+id,
-              headers: {'Authorization': 'Basic '+ encodedData}
             })
           }
           function getRequestDemo(request){

@@ -1,5 +1,13 @@
 // rotate on settings
+function showPass() {
+    var x = document.getElementById("passwordA");
 
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
 // scroll button
 window.onscroll = function() { buttonScrollFunction()};
 

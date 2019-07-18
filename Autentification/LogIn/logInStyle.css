@@ -115,6 +115,21 @@ body > div:nth-child(5) > register > div > div > div.c-login-form > div:nth-chil
     padding: 15px;
     width: 250px;
     margin: 5px;
+    position: relative;
+}
+.passRelative{
+    position: relative;
+}
+.f-group  > .dadad{
+    position: absolute;
+    right: 20px;
+    top: 23px;
+    cursor: pointer;
+    font-size: 17px;
+    color: rgb(1, 168, 6);
+}
+.f-group  > .dadad:hover{
+    opacity: 0.7;
 }
 .f-group > input::placeholder{
     color: #6BB597;

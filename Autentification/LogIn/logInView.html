@@ -18,8 +18,9 @@
             </div>
           </div>
 
-          <div class="f-group" ng-class="{'has-error': loginForm.psw.$invalid && loginForm.psw.$dirty}">
-              <input type="password" placeholder="Enter password" ng-enter="login(email, password)" ng-model="password" name="psw" required>
+          <div class="f-group passRelative" ng-class="{'has-error': loginForm.psw.$invalid && loginForm.psw.$dirty}">
+              <input type="password" id="passwordA" placeholder="Enter password" ng-enter="login(email, password)" ng-model="password" name="psw" required>
+              <i class="fas fas fa-eye dadad" onclick="showPass()"></i>
           </div>
           <div class="error-style" ng-show="loginForm.psw.$error.required && loginForm.psw.$dirty"><p>This field is required!</p></div>
       </div>

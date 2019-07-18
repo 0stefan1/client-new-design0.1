@@ -233,7 +233,6 @@
             hubConnection.connectingToHub();
             $scope.noRead = false;
             $scope.detailsData = false;
-            //$scope.loadingDetails = true;
             sensorModelService.getMeasurements(encodeduser, $sessionStorage.netId, id, 1, 1)
                 .then(function(measurement){
                     $rootScope.lastRead = measurement;

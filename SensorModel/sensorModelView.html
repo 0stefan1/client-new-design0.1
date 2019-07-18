@@ -112,7 +112,7 @@
                 <p>Total sensors: <b>{{totalSensors}}</b></p>
                 <p>Active: <b style="color: #5cb85c;">{{activeCount}}</b></p>
                 <p>Inactive: <b style="color: #d9534f;">{{inactiveCount}}</b></p>
-                <p>Devices per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" ng-model="vm.sensPerPage" placeholder="50"></p>
+                <p>Devices per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="vm.sensPerPage" placeholder="50"></p>
                 </div>
                 
                 <div class="ceckbox-sensors">

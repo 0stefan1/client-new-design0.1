@@ -21,7 +21,7 @@
         <p>Values: <b style="color: #5cb85c;"></b>{{valuesCount}}</p>
         <p>Invalid: <b style="color: #d9534f;"></b>{{invalidCount}}</p>
         <p>Out of range: <b style="color: #286090;"></b>{{outOfRangeCount}}</p>
-        <p>Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" ng-model="size" placeholder="50"></p>
+        <p>Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="size" placeholder="50"></p>
                 
         <div class="ceckbox-sensors">
             <p>Show values</p>
