@@ -11,7 +11,7 @@ app.directive('deleteSensor', function(){
                 document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('editButton').style.backgroundColor = '#3CDB41';
                 document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
-                document.getElementById('mapButton').style.backgroundColor = '#3CDB41';
+                document.getElementById('mapButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
                 $scope.sensors.forEach(function(val){
