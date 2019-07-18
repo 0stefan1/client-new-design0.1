@@ -13,16 +13,18 @@
                     var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
                 }
                 $scope.showGate = function(id){
-                    document.getElementById('gatewaysButton').style.backgroundColor = '#240B73';
+                    document.getElementById('gatewaysButton').style.backgroundColor = '#244E70';
                     document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
-                    document.getElementById('editButton').style.backgroundColor = '#4DA8F2';
-                    document.getElementById('deleteButton').style.backgroundColor = '#4DA8F2';
+                    document.getElementById('editButton').style.backgroundColor = '#3CDB41';
+                    document.getElementById('mapButton').style.backgroundColor = '#3CDB41';
+                    document.getElementById('deleteButton').style.backgroundColor = '#E88282';
                     document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
                     document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
 
                     $scope.showGateways = true;
                     $scope.detailsDisplay = false;
                     $scope.deleteDisplay = false;
+                    $scope.editLocationDisplay = false;
                     $scope.measurementsDisplay = false;
                     $scope.chartDisplay = false;
                     $scope.editDisplay = false;

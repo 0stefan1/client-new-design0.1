@@ -117,7 +117,7 @@
                 
                 <div class="ceckbox-sensors">
                     <p>Show active sensors</p>
-                    <input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/>
+                    <input id="active" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/>
                 </div>
             </div>
             <div class="filters-sensors" ng-if="measurementsDisplay">
@@ -174,7 +174,7 @@
                     <a id="gridButton" ng-click="measurementSensor(sensor.id); startMeasurements()">Grid</a>
                     <a id="chartButton" ng-click="chart(sensor.id)">Chart</a>
                     <a id="gatewaysButton" ng-click="showGate(sensor.id);">Gateways</a>
-                    <a ng-click=" startEditLoc(); startEditLocation(sensor.name, sensor.uploadInterval, sensor.latitude, sensor.longitude); ">Map</a>
+                    <a id="mapButton" ng-click="getSensor(sensor.id); startEditLoc();">Map</a>
                     <a id ="editButton" ng-click=" startEdit();">Edit</a>
                     <a id="deleteButton" ng-click="startDelete(sensor)" >Delete</a>
                     <div style="text-align: right;">
@@ -200,9 +200,10 @@
             <div ng-show="!detailsData">
                 <div ng-show="(!filterSensors.length && sensorData && !loading)" id="alert-error"><p>No result</p></div> 
                 <div id="filteredSens" ng-show="filter">{{filterSensors.length}}</div> 
-                <div paging page="vm.currentPage" page-size="vm.sensPerPage" total="vm.allSensors" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ng-if="sensorData"></div>
             </div>
         </div>
+        <div ng-show="!detailsData" paging page="vm.currentPage" page-size="vm.sensPerPage" total="vm.allSensors" show-prev-next="true" show-first-last="true" 
+        ul-class="pagination" active-class="active" disabled-class="disabled" ng-if="sensorData"></div>
     </div>
 </div>
 

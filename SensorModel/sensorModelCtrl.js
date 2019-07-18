@@ -48,7 +48,6 @@
             $scope.sensor = sensor;
             $sessionStorage.sensorId = sensor.id;
             $scope.detailsData = true;
-            document.getElementById('hideDetailsButton').style.backgroundColor = '#240B73';
             
         };
         $scope.hideDetails = function(){
@@ -253,10 +252,17 @@
                 })
             $rootScope.lastRead = null;
         }
-        $scope.startEditLocation = function(name, uploadInterval, lat, long){
-            $sessionStorage.name = name;
-            $sessionStorage.uplInt = uploadInterval;
-            $sessionStorage.location = {lat: lat, lng: long};
+        $scope.getSensor = function(id){
+            sensorModelService.getSensorsById(encodeduser, $sessionStorage.netId, id)
+                .then(function(response){
+                    var sens = response.data;
+                    $sessionStorage.name = sens.name;
+                    $sessionStorage.uplInt = sens.uploadInterval;
+                    var lat = sens.latitude;
+                    var long = sens.longitude;
+                    $sessionStorage.location = {lat: lat, lng: long};
+                })
+            
         }
         
     }]);

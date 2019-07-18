@@ -25,6 +25,24 @@
                 $scope.loadingNetworks = false;
 
             });
+        $scope.details = function(network){
+            $scope.networks.forEach(function(val){
+                val.detailsNetwork = false;
+            })
+            $sessionStorage.editLoc = false;
+            $scope.networkDetails = true;
+            $sessionStorage.networkName = network.name;
+            $sessionStorage.netId = network.id;
+            $scope.network = network;
+        }
+
+        $scope.cancelDetails = function(){
+            $scope.buttons = true;
+            $scope.networkDetails = false;
+            delete $sessionStorage.allDevices;
+            delete $sessionStorage.activeDevices;
+            
+        }
         $scope.sensorsGateways = function(network){
             $scope.networks.forEach(function(val){
                 val.sensorsGatewaysButtons = false;

@@ -362,19 +362,15 @@
                                 'SensorModel/searchDirective.js',
                                 'SensorModel/sensorModelCtrl.js',
                                 'Home/scriptIndex.js',
-                                'sensorsHome/map.js',
                                 'Networks/deleteNetworkDirective.js',
                                 'Networks/editNetworkDirective.js',
                                 'SensorModel/sensorGatewayDirective.js',
-                                'sensorsHome/map.css',
                                 'SensorModel/sensorModelService.js',
                                 'Autentification/Service/autentificationService.js',
                                 'Networks/networkService.js',
                                 'Gateways/gatewayService.js',
-                                'sensorsHome/map.js',
-                                'sensorsHome/map.css',
-                                'sensorsHome/editLocationComponent.js',
-                                'sensorsHome/editLocationCtrl.js'
+                                'Networks/detailsNetworkDirective.js',
+                                'sensorsHome/editLocationDirective.js',
                             
                             ])
                         }]
@@ -416,8 +412,12 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
                                 'Networks/networksComponent.js',
-                                'Networks/networksCtrl.js'
+                                'Networks/networksCtrl.js',
+                                
+                                
                             ])
                         }]
                     }
@@ -438,8 +438,10 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
+                                'sensorsHome/map.css',
                                 'Sensors/AllSensors/sensorGridComponent.js',
                                 'SensorModel/sensorGridCtrl.js',
+                                
                             ])
                         }]
                     }
@@ -463,7 +465,9 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Sensors/Distance/distanceComponent.js'
+                                'Sensors/Distance/distanceComponent.js',
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
                             ])
                         }]
                     }
@@ -487,7 +491,9 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Sensors/Temperature/temperatureComponent.js'
+                                'Sensors/Temperature/temperatureComponent.js',
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
                             ])
                         }]
                     }
@@ -511,7 +517,9 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Sensors/ElectricalCurrent/electricalCurrentComponent.js'
+                                'Sensors/ElectricalCurrent/electricalCurrentComponent.js',
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
                             ])
                         }]
                     }
@@ -535,7 +543,9 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Sensors/AirQuality/airQualityComponent.js'
+                                'Sensors/AirQuality/airQualityComponent.js',
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
                             ])
                         }]
                     }
@@ -557,7 +567,9 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Sensors/Vibration/vibrationComponent.js'
+                                'Sensors/Vibration/vibrationComponent.js',
+                                'sensorsHome/map.js',
+                                'sensorsHome/map.css',
                             ])
                         }]
                     }
@@ -581,29 +593,9 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
-                                'Sensors/Pressure/pressureComponent.js'
-                            ])
-                        }]
-                    }
-                })
-                .state('sensorsHome.editLocation', {
-                    url: "/editLocation",
-                    views: {
-                        'editLocation@':{
-                            template: "<edit-location></edit-location>",
-                            controller: function($sessionStorage){
-                                $sessionStorage.editLoc = true;
-                                $sessionStorage.home = false;
-                            }
-                        }
-                    },
-                    resolve:{
-                        loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
-                            return $ocLazyLoad.load([
+                                'Sensors/Pressure/pressureComponent.js',
                                 'sensorsHome/map.js',
                                 'sensorsHome/map.css',
-                                'sensorsHome/editLocationComponent.js',
-                                'sensorsHome/editLocationCtrl.js'
                             ])
                         }]
                     }
@@ -625,7 +617,8 @@
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
                                 'SensorModel/registerSensorComponent.js',
-                                'SensorModel/registerSensorCtrl.js'
+                                'SensorModel/registerSensorCtrl.js',
+                                
                             ])
                         }]
                     }
@@ -654,25 +647,6 @@
                             return $ocLazyLoad.load([
                                 'Networks/registerNetworkComponent.js',
                                 'Networks/registerNetworkCtrl.js',
-                            ])
-                        }]
-                    }
-                })
-                .state('sensorsHome.networkDetails', {
-                    url:'/network-details',
-                    views: {
-                        'detailsNetwork@': {
-                            template: "<details-network></details-network>",
-                            controller: function($sessionStorage){
-                                $sessionStorage.netDet = true;
-                            }
-                        }
-                    },
-                    resolve:{
-                        loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
-                            return $ocLazyLoad.load([
-                               'Networks/detailsNetworkDirective.js',
-                               'sensorsHome/map.js'
                             ])
                         }]
                     }
