@@ -7,7 +7,6 @@
         }else {
             var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
-        $sessionStorage.hideSensorMenu = true;
         $scope.loadingNetworks = true;
         networkService.getNetworks(encodeduser)
             .then(function(response){
@@ -59,7 +58,6 @@
             $scope.networkName = network.name;
             $sessionStorage.networkName = network.name;
             $sessionStorage.netId = network.id;
-            $sessionStorage.hideSensorMenu = false;
             $location.path('/sensorsHome/gateways');
             $timeout(function(){
                 $window.location.reload();
@@ -70,7 +68,6 @@
             $scope.networkName = network.name;
             $sessionStorage.networkName = network.name;
             $sessionStorage.netId = network.id;
-            $sessionStorage.hideSensorMenu = false;
             $location.path('/sensorsHome/sensors');
             $timeout(function(){
                 $window.location.reload();

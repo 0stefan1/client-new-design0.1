@@ -10,15 +10,14 @@ app.directive('editDirective', function(){
         restrict: 'E',
         templateUrl: 'SensorModel/editSensorView.html',
         controller: function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $timeout){
-            var vm = this;
-            $scope.title = false;
             $scope.editDisplay = false;
             $scope.startEdit = function(){
                 document.getElementById('editButton').style.backgroundColor = '#168040';
                 document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('deleteButton').style.backgroundColor = '#E88282';
                 document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
-                document.getElementById('mapButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('mapButton').style.backgroundColor = '#3CDB41';
+                document.getElementById('details').style.backgroundColor = '#3CDB41';
                 document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
                 document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
 

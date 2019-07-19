@@ -38,11 +38,13 @@
             $scope.sensor = sensor;
             $sessionStorage.sensorId = sensor.id;
             $scope.detailsData = true;
+
         };
         $scope.hideDetails = function(){
             $scope.detailsData = false;
             hubConnection.disconnectFromHub();
         }
+        
 
         function getSensors(user, page, pageSize){
             autentificationService.getUserSensors(user, $sessionStorage.netId, page, pageSize)

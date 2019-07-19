@@ -17,7 +17,8 @@
                     document.getElementById('chartButton').style.backgroundColor = '#244E70';
                     document.getElementById('deleteButton').style.backgroundColor = '#E88282';
                     document.getElementById('editButton').style.backgroundColor = '#3CDB41';
-                    document.getElementById('mapButton').style.backgroundColor = '#4DA8F2';
+                    document.getElementById('mapButton').style.backgroundColor = '#3CDB41';
+                    document.getElementById('details').style.backgroundColor = '#3CDB41';
                     document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
                     document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
                     document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
@@ -358,7 +359,6 @@
                                 }
         }
             }
-            
         }
     }
     });

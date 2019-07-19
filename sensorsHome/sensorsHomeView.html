@@ -1,7 +1,7 @@
 <div class="container-sensorHome" id="sensorsHomeView">
 
     <header class="header-sensor-home">
-        <img id="main" onclick="openNav()" ng-show="!hideSensorMenu" src="/Home/images-home/Icons/MenuBar.svg" title="Open menu" alt="Original icon by Check4Green">
+        <img id="main" onclick="openNav()" src="/Home/images-home/Icons/MenuBar.svg" title="Open menu" alt="Original icon by Check4Green">
         <div class="c-flex-grow"></div>
         <img ui-sref="settings" src="/Home/images-home/Icons/Setting.svg" title="Open account settings" alt="Original icon by Check4Green">
     </header>
@@ -17,14 +17,14 @@
                 <p>Email: {{user.email}}</p>
             </div>
         </div>
-
+        <div ng-show="noNetworkSelected"><p>Select a network first</p></div>
         <div class="c-all-categories">
-            <div class="icon-text-menu" onclick="closeNav()" ng-click="cancelCards()" ui-sref="sensorsHome.gateways" title="Go to gateway view">
-                <img src="/Home/images-home/Icons/Gateway-icon.svg" title="Open gateways view" alt="Check4Green Icon">
+            <div class="icon-text-menu" id="gatewaysMenu" onclick="closeNav()"  ng-click="cancelCards()" ui-sref="sensorsHome.gateways" title="Go to gateway view">
+                <img src="/Home/images-home/Icons/Gateway-icon.svg"  title="Open gateways view" alt="Check4Green Icon">
                 <a>Go to gateways</a>
             </div>
 
-            <div class="icon-text-menu" onclick="colapseCategories3(this)" title="Collapse">
+            <div class="icon-text-menu" id="sensorsMenu" onclick="colapseCategories3(this)" title="Collapse">
                 <img src="/Home/images-home/Icons/Sensors-icon.svg" title="Open sensors list" alt="Check4Green Icon">
                 <a>Open sensors list <i id="caretMenu3" class="fas fa-angle-down"></i></a>
             </div>
