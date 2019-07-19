@@ -16,22 +16,21 @@
                 </select>
             </div>
         </div> -->
-        
-        <p>Total readings: <b>{{totalReadings}}</b></p>
-        <p>Values: <b style="color: #5cb85c;"></b>{{valuesCount}}</p>
-        <p>Invalid: <b style="color: #d9534f;"></b>{{invalidCount}}</p>
-        <p>Out of range: <b style="color: #286090;"></b>{{outOfRangeCount}}</p>
-        <p>Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="size" placeholder="50"></p>
-                
-        <div class="ceckbox-sensors">
-            <p>Show values</p>
-            <input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/>
-            <p>Show invalid values</p>
-            <input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/>
-            <p>Show out of range values</p>
-            <input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/>
-        </div>
-        <div class="measurementsTotalReadings">
+        <div class="measuremet-filters">
+            <div class="c-filter">
+                <p>Total readings: <b>{{totalReadings}}</b></p>
+                <p>Values: <b style="color: #5cb85c;">{{valuesCount}}</b></p>
+                <p>Invalid: <b style="color: #d9534f;">{{invalidCount}}</b></p>
+                <p>Out of range: <b style="color: #286090;">{{outOfRangeCount}}</b></p>
+            </div>
+
+            <div class="c-filter">
+                <p>Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="size" placeholder="50"></p>
+                <p>Show values<input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/></p>
+                <p>Show invalid values<input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/></p>
+                <p>Show out of range values<input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/></p>
+            </div>
+
             <div class="legend-measurement" ng-if="!vibrations">
                 <a2 style="font-weight: bold;">Legend: </a2>
                 <span class="fa fa-circle" style="color: #4e9a06;"></span><a1>Value</a1>
@@ -39,13 +38,13 @@
                 <span class="fa fa-circle" style="color: #286090;"></span><a1>Out of range</a1>
             </div>
         </div>
-        <table class="table">
+        <table class="table body-table">
             <thead>
                 <tr>
-                    <td>Index</td>
-                    <td>Reading Date</td>
-                    <td ng-if="!vibrations">Val({{unitOfMeasure}})</td>
-                    <td ng-if="vibrations">Alerts</td>
+                    <th>Index</th>
+                    <th>Reading Date</th>
+                    <th ng-if="!vibrations">Val({{unitOfMeasure}})</th>
+                    <th ng-if="vibrations">Alerts</th>
                 </tr>
             </thead>
             <tbody>
