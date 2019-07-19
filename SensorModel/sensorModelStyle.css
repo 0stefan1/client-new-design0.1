@@ -98,7 +98,7 @@
     flex-direction: column;
    border-radius:  10px 0px 50px 0px;
    background-color: #31DB75;
-   width: 50%;
+   width: 62%;
    padding: 20px;
    text-align: center;
    box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
@@ -106,6 +106,7 @@
 .header-network-card > h1{
     flex-grow: 2;
     user-select: none;
+    font-size: 30px;
 }
 .header-network-card > a{
     color: white;
@@ -445,7 +446,7 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
 .sensorModel > .c-sensors-view{
     display: flex;
     flex-direction: column;
-    padding: 40px;
+    padding-top: 40px;
 }
 .c-sensors-view > .c-inside-body-sensors{
    display: flex;
@@ -464,9 +465,9 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
    display: flex;
    flex-direction: column;
    position: relative;
-   border-radius:  50px 50px 0px 0px;
+   border-radius:  10px 50px 0px 0px;
    background-color: #31DB75;
-   padding: 20px;
+   padding: 15px;
    box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
    cursor: pointer;
 }
@@ -550,11 +551,11 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
 .header-details > a:first-child{
     background-color: #31DB75;
 }
-.header-details > a:last-child{
+#deleteButton{
     background-color: #E88282;
 }
 
-.header-details >  a:nth-child(6){
+#editButton{
     background-color: #3CDB41;
 }
 .header-details > a > i{
@@ -562,7 +563,184 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
     padding-right: 5px;
 }
 /* ****************DETAILS SENSOR */
+ /* ***************** Register sensor */
+.c-register-sensor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #E3F3EB;
+    margin-top: 40px;
+    margin-left: 20%;
+    margin-right: 20%;
+    box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
+}
+.c-register-sensor > .header-register-s{
+    position: relative;
+    text-align: center;
+    background-color: #31DB75;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
+}
+.header-register-s > h1{
+    font-size: 24px;
+}
+.header-register-s > img{
+    height: auto;
+    width: 30px;
+    position: absolute;
+    left: 10px;
+    top: 17px;
+    cursor: pointer;
+}
+ /* ***************** Register sensor */
+/* **********************************EDIT */
+.c-edit-view{
+    display: flex;
+    flex-direction: column;
+}
+.c-edit-view > form{
+    justify-content: center;
+    padding: 15px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+.container-name > input{
+    border: 1px solid #5e795e;
+    border-radius: 5px;
+}
+.container-name > input::placeholder{
+    color: #CCD2CC;
+    font-size: 12px;
+    padding-left: 5px;
+}
+#inputDays, #inputHours, #inputMinutes{
+    width: 100px;
+    margin-bottom: 10px;
+}
+#inputHours, #inputMinutes{
+    margin-left: 5px;
+}
+.c-edit-content > a{
+    background-color: #3CDB41;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+.c-edit-content > a:hover{
+    opacity: 0.8;
+}
+/* --> Edit info */
+.container-name{
+    display: flex;
+    position: relative;
+}
+.container-name input{
+    flex-grow: 2;
+}
+.container-name .container-info{
+    font-size: 20px;
+    flex-grow: 0;
+    margin-left: 5px;
+    margin-top: 9px;
+    color: #31DB75;
+    cursor: pointer;
+} 
+.container-name .container-info:hover .info-hover{
+    display: initial;
+}
+.container-name .container-info p{
+    display: none;
+    position: absolute;
+    font-size: 13px;
+    font-weight: normal;
+    color: black;
+    height: auto;
+    width: 150px;
+    background-color: white;
+    border: 2px solid #31DB75;
+    border-radius: 10px;
+    padding: 10px;
+    margin-left: 25px;
+    top: 10px;
+    box-shadow:  10px 3px 30px -9px rgba(0, 0, 0, 0.157);
+    z-index: 100;
+}
+@media (max-width: 680px){
+    .container-name .container-info p{
+        left: 0px;
+        top: 40px;
+    }
+}
+ /* <-- Edit info */
 
+/* **********************************EDIT */
+/* Delete button*********************************************** */
+.c-delete-view{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.c-delete-view > .delete-buttons{
+    align-self: center;
+}
+.delete-buttons > a{
+    color: white;
+    font-size: 12px;
+    background-color:  #E88282;
+    padding: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+}
+.delete-buttons > a:hover{
+    opacity: 0.8;
+}
+.delete-buttons > a:last-child{
+    color: white;
+    background-color: #3CDB41;
+    margin-left: 5px;
+}
+.c-delete-view > p{
+    align-self: center;
+    font-size: 15px;
+}
+.c-delete-view > p > b{
+    color: #E88282;
+}
+.container-rowCards .column .card .container-deleteB{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 100;
+    width: 100%;
+}
+.deleteDisplay{
+    text-align: center;
+    color:#d9534f;
+    padding-bottom: 10px;
+    margin-top: 6px;
+    text-align: center;
+    background-color: #cef0de;
+    border-top: 1px solid #069a269f;
+}
+.deleteDisplay b{
+    font-size: 13px;
+}
+.rotate{
+    transition: 1s ease-in-out;
+    transform: rotate(80deg);
+}
+.deleteDisplay .delete-buttons button{
+    font-size: 13px;
+}
+
+/* Delete button*********************************************** nth-child(2)*/
 
 
 .ceckbox-sensors{
@@ -663,62 +841,6 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* --> Edit info */
-.container-name{
-    display: flex;
-    position: relative;
-}
-.container-name input{
-    flex-grow: 2;
-}
-.container-name .container-info{
-    font-size: 20px;
-    flex-grow: 0;
-    margin-left: 5px;
-    margin-top: 9px;
-    color: #4cae4c;
-    cursor: pointer;
-} 
-.container-name .container-info:hover .info-hover{
-    display: initial;
-}
-.container-name .container-info p{
-    display: none;
-    position: absolute;
-    font-weight: initial;
-    font-size: 13px;
-    color: black;
-    height: auto;
-    width: 150px;
-    background-color: white;
-    border: 2px solid #4e9a06;
-    padding: 10px;
-    margin-left: 25px;
-    top: 10px;
-    font-family: "FontC4G";
-    box-shadow:  10px 3px 30px -9px rgba(0, 0, 0, 0.157);
-    z-index: 1;
-}
-@media (max-width: 680px){
-    .container-name .container-info p{
-        left: 0px;
-        top: 40px;
-    }
-}
- /* <-- Edit info */
 .title-grid p{
     width: 200px;
     background-color: #4e9a06;
@@ -781,36 +903,7 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
 }
 
 
-/* Delete button*********************************************** */
-.container-rowCards .column .card .container-deleteB{
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    z-index: 100;
-    width: 100%;
-}
-.deleteDisplay{
-    text-align: center;
-    color:#d9534f;
-    padding-bottom: 10px;
-    margin-top: 6px;
-    text-align: center;
-    background-color: #cef0de;
-    border-top: 1px solid #069a269f;
-}
-.deleteDisplay b{
-    font-size: 13px;
-}
-.rotate{
-    transition: 1s ease-in-out;
-    transform: rotate(80deg);
-}
-.deleteDisplay .delete-buttons button{
-    font-size: 13px;
-}
 
-/* Delete button*********************************************** nth-child(2)*/
 
 
 .inLine{
