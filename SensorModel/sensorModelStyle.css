@@ -573,6 +573,7 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
     margin-top: 40px;
     margin-left: 20%;
     margin-right: 20%;
+    margin-bottom: 20px;
     box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
 }
 .c-register-sensor > .header-register-s{
@@ -615,12 +616,22 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
     padding-left: 5px;
 }
 #inputDays, #inputHours, #inputMinutes{
-    width: 100px;
+    max-width: 100px;
     margin-bottom: 10px;
 }
 #inputHours, #inputMinutes{
     margin-left: 5px;
 }
+.c-edit-content{
+    padding-left: 20%;
+    padding-right: 20%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.map-google{
+    margin-bottom: 20px;
+}
+
 .c-edit-content > a{
     background-color: #3CDB41;
     color: white;
@@ -741,7 +752,15 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
 }
 
 /* Delete button*********************************************** nth-child(2)*/
-
+/* filters measurements */
+.measuremet-filters{
+    display: flex;
+    flex-direction: column;
+}
+.measuremet-filters > .c-filter{
+    display: flex;
+}
+/* filters measurements */
 
 .ceckbox-sensors{
     margin-left: 10px;
@@ -838,7 +857,38 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
 }
 /* <-- Search */
 
-
+/* *******************New table details */
+.c-content-details{
+    padding: 15px;
+}
+table{
+    
+}
+.body-table > thead{
+    background-color: #E0F9E2;
+    border-radius: 10px;
+}
+.body-table > thead > tr > th{
+    font-family: 'Muli', sans-serif;
+    font-weight: normal;
+    color: #004455;
+    text-align: center;
+}
+.body-table > tbody{
+    background-color: #F1FBFB;
+    
+    border-radius: 10px;
+}
+.body-table > tbody > tr > td{
+    font-family: 'Muli', sans-serif;
+    font-weight: normal;
+    color: #004455;
+    
+}
+.body-table > tbody > tr{
+    text-align: center;
+}
+/* *******************New table details */
 
 
 .title-grid p{
@@ -870,7 +920,7 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
 }
 .sensorModel thead{
     font-size: 15px;
-    font-weight: 600;
+    
 }
 .sensorModel tbody{
     font-size: 12px;
@@ -901,11 +951,6 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
 .registerDisplay input{
     margin-bottom:10px;
 }
-
-
-
-
-
 .inLine{
     display: flex;
 }
@@ -952,14 +997,14 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
 inLine-measurement{
     display: flex;
 }
-.legend-measurement{
+/* .legend-measurement{
     float: right;
     margin-top: 0px;
     padding: 5px;
 }
 .legend-measurement a1{
     margin-left: 2px;
-}
+} */
 #butonRefresh{
     float: left;
     margin-bottom:20px;
@@ -1022,19 +1067,35 @@ inLine-measurement{
     margin-right:10px;
 }
 .measurementsOk{
-    background-color:#4cae4c;
-    color:white;
-    border-radius:100px;
+    /* color:#4cae4c; */
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 50px;
+    border-bottom: 1px solid #4cae4c;
+    border-top: 1px solid #4cae4c;
+    max-width: 100px;
 }
 .measurementsOutOfRange{
-    background-color:#286090;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 50px;
+    border-bottom: 1px solid #286090;
+    border-top: 1px solid #286090;
+    max-width: 100px;
+    /* background-color:#286090;
     color:white;
-    border-radius:100px;
+    border-radius:100px; */
 }
 .measurementsInvalidSensor{
-    background-color:#d9534f;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 50px;
+    border-bottom: 1px solid #d9534f;
+    border-top: 1px solid #d9534f;
+    max-width: 100px;
+    /* background-color:#d9534f;
     color:white;
-    border-radius:100px;
+    border-radius:100px; */
 }
 .refreshMeasurements{
     display:flex;
@@ -1189,9 +1250,7 @@ overflow{
         width: 200px;
     }
 }
-.map-google{
-    width: 80%;
-}
+
 /* checkboxes filters 
 .multiselect{
     width: auto;
