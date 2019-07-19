@@ -25,17 +25,17 @@
             </div>
 
             <div class="c-filter">
-                <p>Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="size" placeholder="50"></p>
-                <p>Show values<input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/></p>
-                <p>Show invalid values<input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/></p>
-                <p>Show out of range values<input id="active" onmouseout="hideFilters()" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/></p>
+                <label>Show values <input id="active" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/></label>
+                <label>Show invalid values <input id="active" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/></label>
+                <label>Show out of range values <input id="active" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/></label>
+                <label>Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="size" placeholder="50"></label>
             </div>
 
             <div class="legend-measurement" ng-if="!vibrations">
-                <a2 style="font-weight: bold;">Legend: </a2>
-                <span class="fa fa-circle" style="color: #4e9a06;"></span><a1>Value</a1>
-                <span class="fa fa-circle" style="color: #d9534f;"></span><a1>Invalid sensor (0)</a1>
-                <span class="fa fa-circle" style="color: #286090;"></span><a1>Out of range</a1>
+                <b>Legend: </b>
+                <p><i class="fa fa-circle" style="color: #4e9a06;"></i>Value</p>
+                <p><i class="fa fa-circle" style="color: #d9534f;"></i>Invalid sensor (0)</p>
+                <p><i class="fa fa-circle" style="color: #286090;"></i>Out of range</p>
             </div>
         </div>
         <table class="table body-table">

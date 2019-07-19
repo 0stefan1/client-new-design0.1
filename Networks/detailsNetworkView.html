@@ -1,10 +1,12 @@
-<div ng-show="networkDetails">
+<div class="c-details-map" ng-show="networkDetails">
     <div ng-show="loading" class="loader"></div>
     <div ng-show="noSensors && !loading" class="noData">No Data</div>
-    <div ng-show="!noSensors">
-        <div> Network name: <b>{{name}}</b> </div>
-        <label style="font-weight: initial;">Total devices: <b>{{allDevices}}</b>.</label>
-        <label style="font-weight: initial;">Active: <b style="color: #5cb85c;">{{activeDevices}}</b></label>
+    <div class="c-map-details" ng-show="!noSensors">
+        <section>
+            <label>Network name: <b>{{name}}</b></label>
+            <label style="font-weight: initial;">Total devices: <b>{{allDevices}}</b>.</label>
+            <label style="font-weight: initial;">Active: <b style="color: #5cb85c;">{{activeDevices}}</b></label>
+        </section>
         <map ></map>
     </div>
 </div>
