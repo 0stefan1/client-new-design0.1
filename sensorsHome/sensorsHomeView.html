@@ -17,7 +17,7 @@
                 <p>Email: {{user.email}}</p>
             </div>
         </div>
-        <div ng-show="noNetworkSelected"><p>Select a network first</p></div>
+        <div class="alert-message" ng-show="noNetworkSelected"><p>Select a network first!</p></div>
         <div class="c-all-categories">
             <div class="icon-text-menu" id="gatewaysMenu" onclick="closeNav()"  ng-click="cancelCards()" ui-sref="sensorsHome.gateways" title="Go to gateway view">
                 <img src="/Home/images-home/Icons/Gateway-icon.svg"  title="Open gateways view" alt="Check4Green Icon">
@@ -107,4 +107,5 @@
     <!-- Fake elements -->
     <div id="myTopnav" style=" display: none !important; "></div>
     <div id="logoC4Gheader" style=" display: none !important; "></div>
+    <div id="bLogIn" style=" display: none !important; "></div>
     <!-- Fake elements -->
