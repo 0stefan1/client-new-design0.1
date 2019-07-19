@@ -178,10 +178,8 @@
                     <a id="mapButton" ng-click="getSensor(sensor.id); startEditLoc();">Map</a>
                     <a id ="editButton" ng-click=" startEdit();">Edit</a>
                     <a id="deleteButton" ng-click="startDelete(sensor)" >Delete</a>
-                    <div style="text-align: right;">
-                        <a ng-if="chartDisplay" ng-click="chart(sensor.id)"><i class="fas fa-redo" ></i></a>
-                        <a ng-if="measurementsDisplay" ng-click="measurementSensor(sensor.id); startMeasurements()"><i class="fas fa-redo"></i></a>
-                    </div>
+                    <img ng-if="chartDisplay" ng-click="chart(sensor.id)" src="/Home/images-home/Icons/Refresh1.0.svg" alt="Check4Green Icons" title="Refresh">
+                    <img ng-if="measurementsDisplay" ng-click="measurementSensor(sensor.id); startMeasurements()" src="/Home/images-home/Icons/Refresh1.0.svg" alt="Check4Green Icons" title="Refresh">
                 </div>
                     
                 <div class="c-content-details">

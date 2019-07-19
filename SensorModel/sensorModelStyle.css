@@ -539,7 +539,19 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
     margin: 10px;
 }
 .c-details > .header-details{
+    position: relative;
     padding: 10px;
+}
+.header-details > img{
+    height: auto;
+    width: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.header-details > img:hover{
+    opacity: 0.7;
 }
 .header-details > a{
     padding: 5px;
@@ -1374,4 +1386,30 @@ overflow{
 }
 .hidemenu{
     display: initial !important;
+}
+.alert-message{
+    position: absolute;
+    right: 40px;
+    bottom: 10%;
+    background-color: red;
+    padding: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
+    border-radius: 0px 200px 0px 200px;
+    z-index: 10002301023;
+    user-select: none;
+    transition: 1s;
+}
+.alert-message > p{
+    font-size: 15px;
+    padding-top: 10px;
+    color: white;
+    font-weight: bold;
+    transition: 1s;
+}
+.alert-message:hover{
+    background-color: white;
+}
+.alert-message:hover p{
+    color: red;
 }
