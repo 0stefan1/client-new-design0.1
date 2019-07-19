@@ -357,8 +357,7 @@
                                 'SensorModel/chartDirective.js',
                                 'SensorModel/deleteSensorDirective.js',
                                 'SensorModel/detailsSensorDirective.js',
-                                'SensorModel/editSensorComponent.js',
-                                'SensorModel/editSensorCtrl.js',
+                                'SensorModel/editSensorDirective.js',
                                 'SensorModel/measurementsDirective.js',
                                 'SensorModel/searchDirective.js',
                                 'SensorModel/sensorModelCtrl.js',
@@ -622,18 +621,6 @@
                                 
                             ])
                         }]
-                    }
-                })
-                .state('sensorsHome.editSensor', {
-                    url: "/edit-sensor",
-                    views: {
-                        'editSensor@':{
-                            template: "<edit-sensor></edit-sensor>",
-                            controller: function($sessionStorage, SENSOR_TYPE){
-                                SENSOR_TYPE.TITLE = 'Edit sensor';
-                            
-                            }
-                        }
                     }
                 })
                 .state('sensorsHome.addNetwork', {

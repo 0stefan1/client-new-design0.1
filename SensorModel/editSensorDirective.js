@@ -1,32 +1,38 @@
 (function(){
-    "use strict";
-   var app = angular.module("sensorApp");
-   app.controller("editSensorCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$sessionStorage", "sensorModelService", "$window", "$timeout",
-function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $window, $timeout){
-            var vm = this;
-            $scope.title = true;
-            vm.title = SENSOR_TYPE.TITLE;
-            
-            $scope.editButton = true;
-            $scope.name = $sessionStorage.name
-            
-            if($scope.cards == true){
-                $scope.cards = false;
-                $scope.backButton = false;
+var app = angular.module("sensorApp");
+app.directive('editDirective', function(){
+    return {
+        restrict: 'E',
+        templateUrl: 'SensorModel/editSensorView.html',
+        controller: function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService, $timeout){
+            $scope.editDisplay = false;
+            $scope.startEdit = function(){
+                document.getElementById('editButton').style.backgroundColor = '#168040';
+                document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('deleteButton').style.backgroundColor = '#E88282';
+                document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('mapButton').style.backgroundColor = '#3CDB41';
+                document.getElementById('details').style.backgroundColor = '#3CDB41';
+                document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
+
+                if($scope.editDisplay == false){
+                    $scope.editDisplay = true;
+                    $scope.editLocationDisplay = false;
+                    $scope.deleteDisplay = false;
+                    $scope.showGateways = false;
+                    $scope.chartDisplay = false;
+                    $scope.measurementsDisplay = false; 
+                    $scope.name = $sessionStorage.name;
+                    $scope.measurementsButton = false;
+                    $scope.chartButton = false;
+                    $scope.sensorEditError = false;
+                    $scope.sensorEditSuccess = false;
+                    $scope.detailsDisplay = false;
+                    $scope.editLocation = false;
+                   
+                }
             }
-            $scope.editDisplay = true;
-            $scope.measurementsButton = false;
-            $scope.chartButton = false;
-            $scope.gatewayButton = false;
-            $scope.sensorEditError = false;
-            $scope.sensorEditSuccess = false;
-            $scope.editButton = false;
-            $scope.detailsDisplay = false;
-            $scope.deleteButton = false;
-            $scope.editLocation = false;
-            
-            $scope.editButton = false;
-            
             if ($localStorage.email && $localStorage.password){
               var encodedData = btoa($localStorage.email +':'+ $localStorage.password)
             }else{
@@ -65,9 +71,13 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
                                             $scope.ui = true;
                                             $scope.uploadIntMessage = response.message;
                                         }
+                                        $scope.sensorEditError = false;
+                                        $scope.sensorEditSuccess = true;
+                                        $scope.sensor.uploadInterval=$scope.editSensor.uploadInterval;
+                                        $scope.sensor.name = $scope.editSensor.name;
                                         $timeout(function(){
-                                            
                                             $scope.editButton = true;
+                                            $scope.editDisplay = false;
                                             $scope.detailsDisplay = true;
                                             $scope.deleteButton = true;
                                             $scope.measurementsButton = true;
@@ -75,22 +85,18 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
                                             $scope.chartButton = true;
                                             $scope.sensorEditError = false;
                                             $scope.sensorEditSuccess = false;
-                                            if($sessionStorage.cards == true){
-                                                $scope.cards = true;
-                                                $scope.grid = false;
-                                                $scope.backButton = true;
-                                            } else{
-                                                $scope.cards = false;
-                                                $scope.grid = true;
-                                                $scope.backButton = true;
-                                            }
-                                            $window.history.back();
+                                            $scope.cards = false;
+                                            $scope.grid = true;
+                                            $scope.backButton = true;
+                                            document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
+                                            document.getElementById('details').style.backgroundColor = '#168040';
+                                            document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
+                                            document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
+                                            document.getElementById('editButton').style.backgroundColor = '#3CDB41';
+                                            document.getElementById('mapButton').style.backgroundColor = '#3CDB41';
+                                            document.getElementById('deleteButton').style.backgroundColor = '#E88282';
+                                            document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
                                         }, 1000)
-                                        $scope.sensorEditError = false;
-                                        $scope.sensorEditSuccess = true;
-                                        $scope.sensor.uploadInterval=$scope.editSensor.uploadInterval;
-                                        $scope.sensor.name = $scope.editSensor.name;
-                                        
                                         
                                     })
                                     .catch(function(response){
@@ -103,29 +109,7 @@ function($scope, SENSOR_TYPE, $localStorage, $sessionStorage, sensorModelService
                                     });
                             };
                         })
-            
-            $scope.cancelEditSensor = function(){
-                    $window.history.back();
-                    $scope.editButton = true;
-                    $scope.detailsDisplay = true;
-                    $scope.deleteButton = true;
-                    $scope.measurementsButton = true;
-                    $scope.editLocation = true;
-                    $scope.chartButton = true;
-                    $scope.sensorEditError = false;
-                    $scope.sensorEditSuccess = false;
-                    $scope.gatewayButton = true;
-                    if($sessionStorage.cards == true){
-                        $scope.cards = true;
-                        $scope.grid = false;
-                        $scope.backButton = true;
-                    } else{
-                        $scope.cards = false;
-                        $scope.grid = true;
-                        $scope.backButton = true;
-                    }
-                
-            };
         }
-   ]);
+    }
+});
 }());
