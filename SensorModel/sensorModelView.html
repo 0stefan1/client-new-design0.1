@@ -104,7 +104,9 @@
                 <img src="/Home/images-home/Icons/Back1.0.svg" ng-if="!detailsData && backButton" alt="Check4Green Icons" title="Back" ng-click="back()">
                 <img src="/Home/images-home/Icons/Back1.0.svg" ng-if="detailsData && backButton" alt="Check4Green Icons" title="Back" ng-click="hideDetails()">
 
-                <h1>You are in: <b>{{networkName}}</b></h1>
+                <h1 ng-if="!detailsData">You are in: <b>{{networkName}}</b></h1>
+                <h1 ng-if="detailsData">You are in: <b>{{sensor.name}}</b></h1>
+
             </div>
 
             <div class="filters-sensors" ng-if="!detailsData">
@@ -158,7 +160,7 @@
                         <delete-sensor></delete-sensor>
                     </div>
                     <div class="c-title-network-2">
-                        <a class="blue" ng-click="vm.expandSelected(sensor);getLastRead(sensor.id); sensData(sensor.name, sensor.id, sensor.sensorTypeId); measureUnit(sensor.sensorTypeId); showSensorGateway(sensor.id); showDetails(sensor); outOfRangeAllSens(sensor.name, sensor.id, sensor.address, sensor.sensorTypeId)">
+                        <a class="blue" ng-click="vm.expandSelected(sensor);getLastRead(sensor.id); sensData(sensor.name, sensor.id, sensor.sensorTypeId); measureUnit(sensor.sensorTypeId); showSensorGateway(sensor.id); showDetails(sensor); outOfRangeAllSens(sensor.name, sensor.id, sensor.address, sensor.sensorTypeId);">
                             Show sensors details<i class="fas fa-chevron-down"></i></a>
                     </div>
                 </div>
@@ -168,7 +170,7 @@
                 
 
                 <div class="header-details">
-                    <a>{{sensor.name}}</a>
+                    <a id="details" ng-click="startShowDetails()">{{sensor.name}}</a>
                     <a id="hideDetailsButton" ng-click="hideDetails()" >Hide sensors details <i class="fas fa-chevron-up"></i></a>
                     <a id="gridButton" ng-click="measurementSensor(sensor.id); startMeasurements()">Grid</a>
                     <a id="chartButton" ng-click="chart(sensor.id)">Chart</a>
@@ -190,9 +192,9 @@
                     <chartd3></chartd3>
                     <delete-sensor></delete-sensor>
 
-                    <div class="" ng-if="!editDisplay && !showGateways && !deleteDisplay && !measurementsDisplay && !chartDisplay && !editLocationDisplay">
+                    <!-- <div class="" ng-if="!editDisplay && !showGateways && !deleteDisplay && !measurementsDisplay && !chartDisplay && !editLocationDisplay && detailsDisplay"> -->
                         <details-sensor></details-sensor>
-                    </div>
+                    <!-- </div> -->
                 </div>
                     
             </div>
