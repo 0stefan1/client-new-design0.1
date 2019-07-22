@@ -55,18 +55,17 @@ app.directive('deleteSensor', function(){
             $timeout.cancel(timer);
             $scope.cancelDeleteSensor = function(){
                 document.getElementById('deleteButton').style.backgroundColor = '#4DA8F2'
-
                 $scope.deleteDisplay = false;
                 $scope.detailsDisplay = true;
                 $scope.editLocation = true;
-                if($sessionStorage.cards == true){
-                    $scope.cards = true;
-                    $scope.grid = false;
-                    
-                } else{
-                    $scope.cards = false;
-                    $scope.grid = true;
-                }
+                document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('details').style.backgroundColor = '#168040';
+                document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
+                document.getElementById('editButton').style.backgroundColor = '#3CDB41';
+                document.getElementById('mapButton').style.backgroundColor = '#3CDB41';
+                document.getElementById('deleteButton').style.backgroundColor = '#E88282';
+                document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
             };
         }
     }
