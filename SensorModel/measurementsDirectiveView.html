@@ -54,8 +54,8 @@
                     <td>{{measurementSensor.readingDate}}</td>
                     <td ng-if= "!vibrations">
                         <div class="measurementsOk" ng-if="(measurementSensor.value < outOfRangePositiveError) && (measurementSensor.value > outOfRangeNegativeError) && (measurementSensor.value != 0)">{{measurementSensor.value}}</div>
-                        <div class="measurementsOutOfRange" ng-if="measurementSensor.value > outOfRangePositiveError">ORP</div>
-                        <div class="measurementsOutOfRange" ng-if="outOfRangeNegativeError > measurementSensor.value">ORN</div>
+                        <div class="measurementsOutOfRange" ng-if="measurementSensor.value >= outOfRangePositiveError">ORP</div>
+                        <div class="measurementsOutOfRange" ng-if="outOfRangeNegativeError >= measurementSensor.value">ORN</div>
                         <div class="measurementsInvalidSensor" ng-if="measurementSensor.value == 0">IS(0)</div>
                     </td>
                     <td ng-if ="vibrations">
