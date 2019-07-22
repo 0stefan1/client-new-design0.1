@@ -128,7 +128,7 @@
 }
 .c-inside-body-network > .c-aranjament{
     height: auto;
-   margin: 20px;
+    margin: 20px;
 }
 .c-inside-body-network > .c-aranjament:after {
    content: "";
@@ -160,7 +160,11 @@
 .c-card > img:hover{
     opacity: 0.7;
 }
-
+.c-network{
+    width: 200px;
+    margin: 20px;
+    margin-left: 40%;
+}
                         /* sensor sau gateway */
 .c-card > .c-title-network-2{
     display: flex;
