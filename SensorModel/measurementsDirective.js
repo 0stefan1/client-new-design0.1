@@ -99,84 +99,87 @@ app.directive('measurements', function(){
                     .then(function(response){
                         $scope.totalReadings = response;
                 })
-                $scope.showValues = function(value){
-                    if(value == true){
-                        sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
-                            .then(function(data){
-                                var readings = data;
-                                var measurements =[];
-                                for(var i=0; i<readings.length; i++){
-                                    if(readings[i].value < $scope.outOfRangePositiveError && readings[i].value > $scope.outOfRangeNegativeError && readings[i].value != 0){
-                                        readings[i].readingDate = readings[i].readingDate.substr(0, 10)+ " "+ readings[i].readingDate.substr(11, 5)
-                                        measurements.push((readings[i]));
-                                    }
-                                }
-                                $rootScope.measurementSensors = measurements;
+                $scope.filters = [
+                    {
+                        Id:2,
+                        Name: 'Values',
+                        Selected: false
+                    },
+                    {
+                        Id:3,
+                        Name: 'Out of range values',
+                        Selected: false
+                    },
+                    {
+                        Id:4,
+                        Name: 'Invalid values',
+                        Selected: false
+                    }]
+                $scope.filterValues = function(selectedId){
+                    var count =0;
+                    for(var i=0; i<$scope.filters.length; i++){
+                        if($scope.filters[i].Selected == false){
+                            count++;
+                        }
+                        if($scope.filters[i].Id != selectedId){
+                            $scope.filters[i].Selected = false;
 
-                            })
-                    }else{
-                        sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
-                        .then(measureSuccess)
-                        function measureSuccess(measurements){
-                            $rootScope.measurementSensors = measurements;
-                            for(var i=0; i< $rootScope.measurementSensors.length; i++){
-                                $rootScope.measurementSensors[i].readingDate = $rootScope.measurementSensors[i].readingDate.substr(0,10)+ " "+$rootScope.measurementSensors[i].readingDate.substr(11,5);
-                            }
+                        }
+                        else if($scope.filters[i].Name=='Values'){
+                            sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
+                                .then(function(data){
+                                    var readings = data;
+                                    var measurements =[];
+                                    for(var i=0; i<readings.length; i++){
+                                        if(readings[i].value < $scope.outOfRangePositiveError && readings[i].value > $scope.outOfRangeNegativeError && readings[i].value != 0){
+                                            readings[i].readingDate = readings[i].readingDate.substr(0, 10)+ " "+ readings[i].readingDate.substr(11, 5)
+                                            measurements.push((readings[i]));
+                                        }
+                                    }
+                                    $rootScope.measurementSensors = measurements;
+                                }) 
+                        } else if($scope.filters[i].Name=='Out of range values'){
+                            sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
+                                .then(function(data){
+                                    var readings = data;
+                                    var measurements =[];
+                                    for(var i=0; i<readings.length; i++){
+                                        if((readings[i].value >= $scope.outOfRangePositiveError || readings[i].value <= $scope.outOfRangeNegativeError) && readings[i].value != 0){
+                                            readings[i].readingDate = readings[i].readingDate.substr(0, 10)+ " "+ readings[i].readingDate.substr(11, 5)
+                                            measurements.push((readings[i]));
+                                        }
+                                    }
+                                    $rootScope.measurementSensors = measurements;
+
+                                })
+                        }else if($scope.filters[i].Name=='Invalid values'){
+                            sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
+                                .then(function(data){
+                                    var readings = data;
+                                    var measurements =[];
+                                    for(var i=0; i<readings.length; i++){
+                                        if(readings[i].value == 0){
+                                            readings[i].readingDate = readings[i].readingDate.substr(0, 10)+ " "+ readings[i].readingDate.substr(11, 5)
+                                            measurements.push((readings[i]));
+                                        }
+                                    }
+                                    $rootScope.measurementSensors = measurements;
+
+                                })
                         }
                     }
-                }
-                $scope.showInvalidValues = function(value){
-                    if(value == true){
+                    if(count == 3){
                         sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
-                            .then(function(data){
-                                var readings = data;
-                                var measurements =[];
-                                for(var i=0; i<readings.length; i++){
-                                    if(readings[i].value == 0){
-                                        readings[i].readingDate = readings[i].readingDate.substr(0, 10)+ " "+ readings[i].readingDate.substr(11, 5)
-                                        measurements.push((readings[i]));
+                                .then(measureSuccess)
+                                function measureSuccess(measurements){
+                                    $rootScope.measurementSensors = measurements;
+                                    for(var i=0; i< $rootScope.measurementSensors.length; i++){
+                                        $rootScope.measurementSensors[i].readingDate = $rootScope.measurementSensors[i].readingDate.substr(0,10)+ " "+$rootScope.measurementSensors[i].readingDate.substr(11,5);
                                     }
                                 }
-                                $rootScope.measurementSensors = measurements;
-
-                            })
-                    }else{
-                        sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
-                        .then(measureSuccess)
-                        function measureSuccess(measurements){
-                            $rootScope.measurementSensors = measurements;
-                            for(var i=0; i< $rootScope.measurementSensors.length; i++){
-                                $rootScope.measurementSensors[i].readingDate = $rootScope.measurementSensors[i].readingDate.substr(0,10)+ " "+$rootScope.measurementSensors[i].readingDate.substr(11,5);
-                            }
-                        }
                     }
                 }
-                $scope.showOutOfRangeValues = function(value){
-                    if(value == true){
-                        sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
-                            .then(function(data){
-                                var readings = data;
-                                var measurements =[];
-                                for(var i=0; i<readings.length; i++){
-                                    if((readings[i].value >= $scope.outOfRangePositiveError || readings[i].value <= $scope.outOfRangeNegativeError) && readings[i].value != 0){
-                                        readings[i].readingDate = readings[i].readingDate.substr(0, 10)+ " "+ readings[i].readingDate.substr(11, 5)
-                                        measurements.push((readings[i]));
-                                    }
-                                }
-                                $rootScope.measurementSensors = measurements;
-
-                            })
-                    }else{
-                        sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
-                        .then(measureSuccess)
-                        function measureSuccess(measurements){
-                            $rootScope.measurementSensors = measurements;
-                            for(var i=0; i< $rootScope.measurementSensors.length; i++){
-                                $rootScope.measurementSensors[i].readingDate = $rootScope.measurementSensors[i].readingDate.substr(0,10)+ " "+$rootScope.measurementSensors[i].readingDate.substr(11,5);
-                            }
-                        }
-                    }
-                }
+                
                 //pagination for readings
                 $scope.setPage = function(){
                     sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
