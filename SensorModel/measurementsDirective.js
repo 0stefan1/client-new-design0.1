@@ -70,7 +70,7 @@ app.directive('measurements', function(){
                                             $rootScope.measurementSensors[i].readingDate = $rootScope.measurementSensors[i].readingDate.substr(0,10)+ " "+$rootScope.measurementSensors[i].readingDate.substr(11,5);
                                             if($rootScope.measurementSensors[i].value == 0){
                                                 $scope.invalidCount++;
-                                            }else if($rootScope.measurementSensors[i].value == $scope.outOfRangePositiveError || $rootScope.measurementSensors[i].value == $scope.outOfRangeNegativeError){
+                                            }else if($rootScope.measurementSensors[i].value >= $scope.outOfRangePositiveError || $rootScope.measurementSensors[i].value <= $scope.outOfRangeNegativeError){
                                                 $scope.outOfRangeCount++;
 
                                             } else{
