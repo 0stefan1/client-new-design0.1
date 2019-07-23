@@ -25,25 +25,7 @@
             }, 1000)
         }
 
-        vm.expandSelected = function(sensor){
-            $scope.sensors.forEach(function(val){
-                val.expanded=false;
-                $scope.editLocation = true;
-            })
-            sensor.expanded=true;
-
-        };
         
-        $scope.showDetails = function(sensor){
-            $scope.sensor = sensor;
-            $sessionStorage.sensorId = sensor.id;
-            $scope.detailsData = true;
-
-        };
-        $scope.hideDetails = function(){
-            $scope.detailsData = false;
-            hubConnection.disconnectFromHub();
-        }
         
 
         function getSensors(user, page, pageSize){
@@ -81,6 +63,27 @@
                 $scope.loading = true;
                 $scope.activeCount = 0;
                 $scope.inactiveCount = 0;
+                vm.expandSelected = function(sensor){
+                    $scope.sensors.forEach(function(val){
+                        val.expanded=false;
+                        $scope.editLocation = true;
+                    })
+                    sensor.expanded=true;
+        
+                };
+                
+                $scope.showDetails = function(sensor){
+                    $scope.sensor = sensor;
+                    $sessionStorage.sensorId = sensor.id;
+                    $scope.detailsData = true;
+        
+                };
+                $scope.hideDetails = function(){
+                    $scope.detailsData = false;
+                    hubConnection.disconnectFromHub();
+                    getSensors( encodeduser, vm.currentPage, data);
+                }
+                
                 autentificationService.getUserSensors(encodeduser, $sessionStorage.netId, 1, data)
                 .then(function(response){
                     var actSensors = response.data;

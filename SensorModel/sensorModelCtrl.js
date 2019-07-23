@@ -32,28 +32,7 @@
         }else {
             var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
-        vm.expandSelected = function(sensor){
-            $scope.sensors.forEach(function(val){
-                val.expanded=false;
-                $scope.editLocation = true;
-                $scope.editDisplay = false;
-                $scope.editButton = true;
-
-            })
-            sensor.expanded=true;
-        };
-
-
-        $scope.showDetails = function(sensor){
-            $scope.sensor = sensor;
-            $sessionStorage.sensorId = sensor.id;
-            $scope.detailsData = true;
-            
-        };
-        $scope.hideDetails = function(){
-            $scope.detailsData = false;
-            hubConnection.disconnectFromHub();
-        }
+        
         function getSens(user, networkId, page, size){
             sensorModelService.getSensors(user, networkId, page, size)
                 .then(function(response){
@@ -87,6 +66,29 @@
             $scope.totalSensors = data;
             $scope.activeCount =0;
             $scope.inactiveCount =0;
+            vm.expandSelected = function(sensor){
+                $scope.sensors.forEach(function(val){
+                    val.expanded=false;
+                    $scope.editLocation = true;
+                    $scope.editDisplay = false;
+                    $scope.editButton = true;
+    
+                })
+                sensor.expanded=true;
+            };
+    
+    
+            $scope.showDetails = function(sensor){
+                $scope.sensor = sensor;
+                $sessionStorage.sensorId = sensor.id;
+                $scope.detailsData = true;
+                
+            };
+            $scope.hideDetails = function(){
+                $scope.detailsData = false;
+                hubConnection.disconnectFromHub();
+                getSens( encodeduser, $sessionStorage.netId, 1, data);
+            }
             sensorModelService.getSensors(encodeduser, $sessionStorage.netId, 1, data)
                 .then(function(response){
                     var actSensors = response.data;

@@ -38,6 +38,8 @@
                     });
                     $timeout(function(){
                         var marker;
+                        $scope.latitude = null;
+                        $scope.longitude = null;
                         marker= new google.maps.Marker({
                             position: $sessionStorage.location,
                             map:map
@@ -85,6 +87,7 @@
                             .then(function(){
                                 $sessionStorage.lng = $scope.editLoc.longitude;
                                 $sessionStorage.lat = $scope.editLoc.latitude;
+                                $scope.errorMessage = false;
                                 $scope.showMessage = true;
                                 $timeout(function(){
                                     $scope.editButton = true;
@@ -112,6 +115,7 @@
                             })
                             .catch(function(){
                                 $scope.errorMessage = true;
+                                $scope.showMessage = false;
                                 $scope.message = 'Choose a location!';
                                 $scope.sensorEditError = true;
                                 $scope.sensorEditSuccess = false;
