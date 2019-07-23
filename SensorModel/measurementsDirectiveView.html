@@ -28,7 +28,7 @@
                 <div ng-repeat="filter in filters" ng-if="!vibrations">
                     <label>{{filter.Name}} <input id="active" type="checkbox" ng-model="filter.Selected" ng-change="filterValues(filter.Id)"/></label>
                 </div>
-                <label>Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="size" placeholder="50"></label>
+                <label>Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="size"></label>
             </div>
 
             <div class="legend-measurement" ng-if="!vibrations">
@@ -48,7 +48,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="measurementSensor in $root.measurementSensors">
+                <tr ng-repeat="measurementSensor in $root.measurementSensors| limitTo: size: size*(page-1)">
                     <div></div>
                     <td>{{$index+1}}</td>
                     <td>{{measurementSensor.readingDate}}</td>

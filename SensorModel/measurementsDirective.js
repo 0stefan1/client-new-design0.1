@@ -40,30 +40,20 @@ app.directive('measurements', function(){
                 $scope.page = 1;
                 $scope.size = 10;
                 $sessionStorage.pag = 10;
-                $scope.pageSize = "";
                 if(SENSOR_TYPE.ID == 6){
                     $scope.vibrations = true;
                 }
-                
-                //set the number of readings/ page
-                $scope.setPageSize = function(pageSize){
-                    if (pageSize){
-                        $scope.size = pageSize;
-                        $sessionStorage.pag = pageSize;
-                        sensorModelService.getMeasurements( encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
-                            .then(measureSuccess)
-                        function measureSuccess(measurements){
-                            $rootScope.measurementSensors = measurements;
-                        }
-                    }
-                }
+            sensorModelService.getFinalPageReadings(encodedData, $sessionStorage.netId, id)
+                .then(function(response){
+                    $scope.totalReadings = response;
+            })   
                 $scope.noDataMeasurements = false;
                 $scope.loadingMeasurements = true;
                 $scope.dataMeasurements = false;
                 $scope.invalidCount = 0;
                 $scope.outOfRangeCount = 0;
                 $scope.valuesCount =0;
-                sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
+                sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, 1, $scope.totalReadings)
                                     .then(function(measurements){
                                         $rootScope.measurementSensors = measurements;
                                         for(var i=0; i< $rootScope.measurementSensors.length; i++){
@@ -95,10 +85,7 @@ app.directive('measurements', function(){
                                         if($rootScope.measurementSensors == null){
                                             $scope.totalReadings = 0;
                                         }
-                sensorModelService.getFinalPageReadings(encodedData, $sessionStorage.netId, id)
-                    .then(function(response){
-                        $scope.totalReadings = response;
-                })
+                
                 $scope.filters = [
                     {
                         Id:2,
@@ -125,64 +112,94 @@ app.directive('measurements', function(){
                             $scope.filters[i].Selected = false;
 
                         }
-                        else if($scope.filters[i].Name=='Values'){
-                            sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
-                                .then(function(data){
-                                    var readings = data;
-                                    var measurements =[];
-                                    for(var i=0; i<readings.length; i++){
-                                        if(readings[i].value < $scope.outOfRangePositiveError && readings[i].value > $scope.outOfRangeNegativeError && readings[i].value != 0){
-                                            readings[i].readingDate = readings[i].readingDate.substr(0, 10)+ " "+ readings[i].readingDate.substr(11, 5)
-                                            measurements.push((readings[i]));
+                        else if(count !=3){
+                            if($scope.filters[i].Name=='Values'){
+                                sensorModelService.getFinalPageReadings(encodedData, $sessionStorage.netId, id)
+                                    .then(function(response){
+                                        $scope.totalReadings = response;
+                                    
+                                sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, 1, $scope.totalReadings)
+                                    .then(function(data){
+                                        var readings = data;
+                                        var measurements =[];
+                                        for(var i=0; i<readings.length; i++){
+                                            if(readings[i].value < $scope.outOfRangePositiveError && readings[i].value > $scope.outOfRangeNegativeError && readings[i].value != 0){
+                                                readings[i].readingDate = readings[i].readingDate.substr(0, 10)+ " "+ readings[i].readingDate.substr(11, 5)
+                                                measurements.push((readings[i]));
+                                            }
                                         }
-                                    }
-                                    $rootScope.measurementSensors = measurements;
-                                }) 
-                        } else if($scope.filters[i].Name=='Out of range values'){
-                            sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
-                                .then(function(data){
-                                    var readings = data;
-                                    var measurements =[];
-                                    for(var i=0; i<readings.length; i++){
-                                        if((readings[i].value >= $scope.outOfRangePositiveError || readings[i].value <= $scope.outOfRangeNegativeError) && readings[i].value != 0){
-                                            readings[i].readingDate = readings[i].readingDate.substr(0, 10)+ " "+ readings[i].readingDate.substr(11, 5)
-                                            measurements.push((readings[i]));
-                                        }
-                                    }
-                                    $rootScope.measurementSensors = measurements;
+                                        $rootScope.measurementSensors = measurements;
+                                        $scope.size = measurements.length;
+                                        $scope.totalReadings = measurements.length;
 
+                                    }) 
                                 })
-                        }else if($scope.filters[i].Name=='Invalid values'){
-                            sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
-                                .then(function(data){
-                                    var readings = data;
-                                    var measurements =[];
-                                    for(var i=0; i<readings.length; i++){
-                                        if(readings[i].value == 0){
-                                            readings[i].readingDate = readings[i].readingDate.substr(0, 10)+ " "+ readings[i].readingDate.substr(11, 5)
-                                            measurements.push((readings[i]));
+                            } else if($scope.filters[i].Name=='Out of range values'){
+                                sensorModelService.getFinalPageReadings(encodedData, $sessionStorage.netId, id)
+                                    .then(function(response){
+                                        $scope.totalReadings = response;
+                                    
+                                sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, 1, $scope.totalReadings)
+                                    .then(function(data){
+                                        var readings = data;
+                                        var measurements =[];
+                                        for(var i=0; i<readings.length; i++){
+                                            if((readings[i].value >= $scope.outOfRangePositiveError || readings[i].value <= $scope.outOfRangeNegativeError) && readings[i].value != 0){
+                                                readings[i].readingDate = readings[i].readingDate.substr(0, 10)+ " "+ readings[i].readingDate.substr(11, 5)
+                                                measurements.push((readings[i]));
+                                            }
                                         }
-                                    }
-                                    $rootScope.measurementSensors = measurements;
+                                        $rootScope.measurementSensors = measurements;
+                                        $scope.size = measurements.length;
+                                        $scope.totalReadings = measurements.length;
 
+                                    })
                                 })
+                            
+                            }else if($scope.filters[i].Name=='Invalid values'){
+                                sensorModelService.getFinalPageReadings(encodedData, $sessionStorage.netId, id)
+                                    .then(function(response){
+                                        $scope.totalReadings = response;
+                                    
+                                sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, 1, $scope.totalReadings)
+                                    .then(function(data){
+                                        var readings = data;
+                                        var measurements =[];
+                                        for(var i=0; i<readings.length; i++){
+                                            if(readings[i].value == 0){
+                                                readings[i].readingDate = readings[i].readingDate.substr(0, 10)+ " "+ readings[i].readingDate.substr(11, 5)
+                                                measurements.push((readings[i]));
+                                            }
+                                        }
+                                        $rootScope.measurementSensors = measurements;
+                                        $scope.size = measurements.length;
+                                        $scope.totalReadings = measurements.length;
+
+                                    })
+                                })
+                            }
                         }
                     }
                     if(count == 3){
-                        sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
-                                .then(measureSuccess)
-                                function measureSuccess(measurements){
-                                    $rootScope.measurementSensors = measurements;
-                                    for(var i=0; i< $rootScope.measurementSensors.length; i++){
-                                        $rootScope.measurementSensors[i].readingDate = $rootScope.measurementSensors[i].readingDate.substr(0,10)+ " "+$rootScope.measurementSensors[i].readingDate.substr(11,5);
-                                    }
-                                }
+                        $scope.size = 10;
+                        sensorModelService.getFinalPageReadings(encodedData, $sessionStorage.netId, id)
+                            .then(function(response){
+                                $scope.totalReadings = response;
+                                sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id,  1, $scope.totalReadings)
+                                        .then(measureSuccess)
+                                        function measureSuccess(measurements){
+                                            $rootScope.measurementSensors = measurements;
+                                            for(var i=0; i< $rootScope.measurementSensors.length; i++){
+                                                $rootScope.measurementSensors[i].readingDate = $rootScope.measurementSensors[i].readingDate.substr(0,10)+ " "+$rootScope.measurementSensors[i].readingDate.substr(11,5);
+                                            }
+                                        }
+                        })
                     }
                 }
                 
                 //pagination for readings
                 $scope.setPage = function(){
-                    sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, $scope.page, $scope.size)
+                    sensorModelService.getMeasurements(encodedData, $sessionStorage.netId, id, 1, $scope.totalReadings)
                         .then(measureSuccess)
                     function measureSuccess(measurements){
                         $rootScope.measurementSensors = measurements;
@@ -214,8 +231,12 @@ app.factory("hubConnection", function($rootScope, sensorModelService, $sessionSt
               }
             sensorModelService.getMeasurements( encodedData, $sessionStorage.netId, $sessionStorage.sensorId,  1, $sessionStorage.pag )
                 .then(function(data){
+                    for(var i=0; i<data.length; i++){
+                        data[i].readingDate = data[i].readingDate.substr(0,10)+ " "+ data[i].readingDate.substr(11,5);
+                    }
                     $rootScope.measurementSensors = data;
                     $rootScope.lastRead = data;
+
                 })
         }
         $.connection.hub.start()
