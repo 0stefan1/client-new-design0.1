@@ -114,13 +114,15 @@
                 <p>Total sensors: <b>{{totalSensors}}</b></p>
                 <p>Active: <b style="color: #5cb85c;">{{activeCount}}</b></p>
                 <p>Inactive: <b style="color: #d9534f;">{{inactiveCount}}</b></p>
-                <p>Devices per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="vm.sensPerPage" placeholder="50"></p>
+                <label class="ceckbox-sensors-no">Devices per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="vm.sensPerPage" placeholder="50"></label>
                 </div>
                 
-                <div class="ceckbox-sensors">
-                    <p>Show active sensors</p>
-                    <input id="active" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)"/>
-                </div>
+                <label class="ceckbox-sensors">
+                    Show active sensors
+                  <input id="active" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)">
+                  <span></span>
+                </label>
+
             </div>
             <div class="filters-sensors" ng-if="measurementsDisplay">
                 <div class="ceckbox-sensors">
@@ -128,7 +130,7 @@
                 <p>Values: <b style="color: #5cb85c;"></b></p>
                 <p>Invalid: <b style="color: #d9534f;"></b></p>
                 <p>Out of range: <b style="color: #d9534f;"></b></p>
-                <p>Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" ng-model="size" placeholder="50"></p>
+                <label class="ceckbox-sensors-no">Readings per page: <input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" ng-model="size" placeholder="50"></label>
                 </div>
                 
                 <div class="ceckbox-sensors">

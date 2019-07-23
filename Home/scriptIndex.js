@@ -1,3 +1,10 @@
+
+
+// Show Firlters 
+function hideFilters(){
+    var s = document.getElementsByClassName("chevron");
+}
+
 // rotate on settings
 function showPass() {
     var x = document.getElementById("passwordA");

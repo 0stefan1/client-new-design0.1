@@ -91,6 +91,37 @@
 .container-sensorHome > label > b{
     font-size: 17px;
 }
+/* ********************CHECKBOX */
+.ceckbox-sensors input {
+  display: none;
+    margin-top: 5px;
+}
+
+/* Style the artificial checkbox */
+.ceckbox-sensors span {
+  height: 15px;
+  width: 15px;
+  border: 1px solid #195f1a;
+  display: inline-block;
+  position: relative;
+  margin-left: 5px;
+  cursor: pointer;
+  margin-top: 3px;
+}
+
+[type=checkbox]:checked + span:before {
+  content: '\2714';
+  position: absolute;
+  color: #2CA72F;
+  top: -3px;
+  left: 1px;
+}
+.ceckbox-sensors-no input{
+    height: auto;
+    width: 20px;
+    border: 1px solid #195f1a;
+}
+/* ********************CHECKBOX */
 /************************************************************** Network card view */
 
 .c-network-view{
@@ -790,10 +821,24 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
 .measuremet-filters{
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .measuremet-filters > .c-filter{
     display: flex;
-    
+    position: relative;
+}
+/* .c-filter > i{
+    margin-top: 5px;
+}
+.c-filter > a{
+    color: black;
+    font-size: 13px;
+    cursor: pointer;
+    display: none;
+} */
+.c-filter > label:not(:last-child){
+    border-right: 1px solid #c7cec7;
+    padding-right: 5px;
 }
 .c-filter > p:not(:first-child){
     margin-left: 5px;
@@ -813,7 +858,12 @@ label{
 }
 .legend-measurement{
     display: flex;
-    align-self: flex-end;
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+}
+.legend-measurement > b, p:not(:last-child){
+    padding-right: 5px;
 }
 #pageSize{
     margin-left: 5px;
@@ -845,7 +895,6 @@ label{
 }
 /* maps details */
 .ceckbox-sensors{
-    margin-left: 10px;
     display: flex;
 }
 .header-sensors-card > a{
