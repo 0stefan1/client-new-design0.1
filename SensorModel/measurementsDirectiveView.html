@@ -24,14 +24,10 @@
                 <p>Out of range: <b style="color: #286090;">{{outOfRangeCount}}</b></p>
             </div>
 
-            <div class="c-filter">
-                <div ng-repeat="filter in filters">
+            <div class="c-filter" >
+                <div ng-repeat="filter in filters" ng-if="!vibrations">
                     <label>{{filter.Name}} <input id="active" type="checkbox" ng-model="filter.Selected" ng-change="filterValues(filter.Id)"/></label>
                 </div>
-                <!-- <label>All <input id="active" type="checkbox" ng-checked="selected=='all'" ng-true-value="all" ng-model="selected"/></label>
-                <label>Show values <input id="active" type="checkbox" ng-checked="selected=='value'" ng-true-value="value" ng-model="selected"/></label>
-                <label>Show invalid values <input id="active" type="checkbox" ng-checked="selected=='invalidValue'" ng-true-value="invalidValue" ng-model="selected"/></label>
-                <label>Show out of range values <input id="active" type="checkbox" ng-checked="selected=='outOfRangeValue'" ng-true-value="outOfRangeValue" ng-model="selected"/></label> -->
                 <label>Readings per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="size" placeholder="50"></label>
             </div>
 
