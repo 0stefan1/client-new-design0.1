@@ -81,7 +81,9 @@
                 $scope.hideDetails = function(){
                     $scope.detailsData = false;
                     hubConnection.disconnectFromHub();
-                    getSensors( encodeduser, vm.currentPage, data);
+                    if($sessionStorage.activeSens == true){
+                        getSensors( encodeduser, vm.currentPage, vm.sensPerPage);
+                    }
                 }
                 
                 autentificationService.getUserSensors(encodeduser, $sessionStorage.netId, 1, data)
@@ -131,6 +133,7 @@
             {
                 if(value == true)
                 {
+                    $sessionStorage.activeSens = true;
                     autentificationService.getUserSensors(encodeduser, $sessionStorage.netId,vm.currentPage, vm.allSensors)
                         .then(function(response)
                         {
@@ -158,6 +161,7 @@
                 }
                 else
                 {
+                    $sessionStorage.activeSens = false;
                     getSensors( encodeduser, vm.currentPage, vm.allSensors);
                 }
             }

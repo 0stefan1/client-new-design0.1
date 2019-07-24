@@ -57,7 +57,7 @@
             <tbody>
                 <tr ng-repeat="measurementSensor in $root.measurementSensors| limitTo: size: size*(page-1)">
                     <div></div>
-                    <td>{{$index+1}}</td>
+                    <td>{{ ($index + 1) + (page - 1) * size }}</td>
                     <td>{{measurementSensor.readingDate}}</td>
                     <td ng-if= "!vibrations">
                         <div class="measurementsOk" ng-if="(measurementSensor.value < outOfRangePositiveError) && (measurementSensor.value > outOfRangeNegativeError) && (measurementSensor.value != 0)">{{measurementSensor.value}}</div>
