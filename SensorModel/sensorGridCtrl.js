@@ -1,6 +1,6 @@
 (function(){
     var app = angular.module("sensorApp");
-    app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, $localStorage, $location, $timeout, $window, autentificationService, sensorModelService, SENSOR_TYPE,hubConnection){
+    app.controller("sensorGridCtrl", function ($scope, $rootScope, $sessionStorage, $localStorage, $location, $timeout, $window, autentificationService, sensorModelService, SENSOR_TYPE,hubConnection, $filter){
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
         $scope.networkName = $sessionStorage.networkName;
@@ -16,7 +16,6 @@
             var encodeduser = btoa($sessionStorage.email+ ':'+ $sessionStorage.password)
         }
         $scope.back = function(){
-            $sessionStorage.cards = false;
             delete $sessionStorage.netId;
             $location.path('sensorsHome/networks');
             $timeout(function(){
@@ -36,7 +35,6 @@
                         $scope.sensors[i].productionDate = $scope.sensors[i].productionDate.substr(0, 10)+ " "+ $scope.sensors[i].productionDate.substr(11, 5)
                     }
                     $scope.loading=false;
-                    $scope.sensorData = true;
                     if($scope.sensors.length == 0){
                         $scope.noData = true;
                         $scope.noSensors = true;
@@ -102,22 +100,34 @@
                 }
                 $scope.$watch('currentPage', vm.setPage);
                 $scope.gridSize ='';
-                $scope.search = function(){
-                    $scope.$watchCollection('filterSensors.length', function(newValue, oldValue){
-                        if(newValue == data){
-                            vm.allSensors = data;
-                            vm.sensPerPage = 50;
-                            return;
-                        }
-                        if(oldValue == newValue){
-                            vm.currentPage = 1; 
-                            var filterSensors = document.getElementById('filteredSens');
-                            vm.allSensors = filterSensors.innerHTML;
-                            vm.sensPerPage = filterSensors.innerHTML;
-                        }
-                    });
-                }
                 var expanded = false;
+                var searchMatch = function (haystack, needle) {
+                    if (!needle) {
+                        return true;
+                    }
+                    return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+                };
+            
+                $scope.search = function () {
+                    $scope.filteredItems = $filter('filter')($scope.sensors, function (item) {
+                        if (searchMatch(item.name, $scope.filterSearch))
+                            return true;
+                        
+                        return false;
+                    });
+                    $scope.sensors = $scope.filteredItems;
+                    vm.currentPage = 1;
+                    vm.allSensors = $scope.sensors.length;
+                    if($scope.filterSearch == ""){
+                        vm.allSensors = data;
+                        getSensors(encodeduser, 1, data);
+                        
+
+                    }
+                    
+                    
+                };
+                
                 $scope.showCheckboxes = function()
                 {
                     var checkboxes = document.getElementById("checkboxes");

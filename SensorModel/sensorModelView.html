@@ -136,7 +136,7 @@
         <div ng-show="loadingNetworks" class="loader"></div>
 
         <div class="c-aranjament" >
-            <div class="c-column" ng-if="!detailsData" ng-repeat= "sensor in filterSensors = (sensors | filter: filterSearch) | limitTo: vm.sensPerPage: vm.sensPerPage*(vm.currentPage-1) ">
+            <div class="c-column" ng-if="!detailsData" ng-repeat= "sensor in filterSensors = sensors | limitTo: vm.sensPerPage: vm.sensPerPage*(vm.currentPage-1) ">
                 <div class="c-card">
                     <div class="c-title-network-2">
                         <a>{{ ($index + 1) + (vm.currentPage - 1) * vm.sensPerPage }}. {{sensor.name}}</a>

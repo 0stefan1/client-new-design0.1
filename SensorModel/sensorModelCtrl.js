@@ -1,8 +1,8 @@
 (function(){
     "use strict";
    var app = angular.module("sensorApp");
-   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$location","$sessionStorage", "sensorModelService", "$rootScope","hubConnection", "$timeout", "$window",
-    function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $location, $sessionStorage, sensorModelService, $rootScope, hubConnection, $timeout, $window) {
+   app.controller("sensorModelCtrl",["$scope", 'SENSOR_TYPE', "$localStorage", "$location","$sessionStorage", "sensorModelService", "$rootScope","hubConnection", "$timeout", "$window","$filter",
+    function sensorModelCtrl($scope, SENSOR_TYPE, $localStorage, $location, $sessionStorage, sensorModelService, $rootScope, hubConnection, $timeout, $window, $filter) {
         var vm = this;
         vm.titleGrid = SENSOR_TYPE.TITLE;
         $scope.outOfRangePositiveError = SENSOR_TYPE.OUT_OF_RANGE_POSITIVE;
@@ -19,7 +19,6 @@
         $scope.back = function(){
             $scope.sensorData = false;
             $scope.noSensorData = false;
-            $sessionStorage.cards = false;
             delete $sessionStorage.netId;
             $location.path('/sensorsHome/networks');
             $timeout(function(){
@@ -110,23 +109,33 @@
                     
             }
             $scope.$watch('vm.currentPage', vm.setPage);
-            $scope.search = function(){
-                getSens( encodeduser, $sessionStorage.netId, vm.currentPage, data)
-                $scope.$watchCollection('filterSensors.length', function(newValue, oldValue){
-                    if(newValue == data){
-                        vm.allSensors = data;
-                        vm.sensPerPage = 50;
-                        return;
-                    }
-                    if(oldValue == newValue){
-                        vm.currentPage = 1; 
-                        var filterSensors = document.getElementById('filteredSens');
-                        vm.allSensors = filterSensors.innerHTML;
-                        vm.sensPerPage = filterSensors.innerHTML;
-                    }
+            var searchMatch = function (haystack, needle) {
+                if (!needle) {
+                    return true;
+                }
+                return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+            };
+            $scope.search = function () {
+                $scope.filteredItems = $filter('filter')($scope.sensors, function (item) {
+                    if (searchMatch(item.name, $scope.filterSearch))
+                        return true;
+                    
+                    return false;
                 });
-            }
+                $scope.sensors = $scope.filteredItems;
+                vm.currentPage = 1;
+                vm.allSensors = $scope.sensors.length;
+                if($scope.filterSearch == ""){
+                    vm.allSensors = data;
+                    getSens( encodeduser, $sessionStorage.netId,vm.currentPage, vm.allSensors);
+                    
+
+                }
+                
+                
+            };
             var expanded = false;
+
             $scope.showCheckboxes = function()
             {
                 var checkboxes = document.getElementById("checkboxes");
