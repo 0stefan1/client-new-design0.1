@@ -197,6 +197,17 @@
     padding: 20px;
     box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
     min-height: 105px;
+    position: relative;
+}
+.c-view-action{
+    position: absolute;
+    bottom: -10px;
+    left: 15%;
+    z-index: 10009;
+    /* background-color: white;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px; */
 }
 .c-card > img{
     height: auto;
@@ -314,6 +325,15 @@
 .c-edit-network{
     display: flex;
     flex-direction: column;
+    width: 200px;
+    height: auto;
+    background-color: white;
+    position: absolute;
+    left: -20px;
+    bottom: 20px;
+    /* border-radius: 5px;
+    border-bottom: 1px solid #bebebe;
+    box-shadow:  0px 7px 7px #a8a8a852; */
 }
 .c-edit-network > .c-content-edit-network{
     align-self: center;
@@ -333,6 +353,11 @@
 .a-edit-netwotk{
     display: flex;
     justify-content: center;
+    background-color: white;
+    padding-bottom: 4px;
+    border-radius: 5px;
+    border-bottom: 1px solid #bebebe;
+    box-shadow:  0px 7px 7px #a8a8a852;
 }
 .a-edit-netwotk > a{
     color: white;
@@ -760,6 +785,7 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
     display: flex;
     flex-direction: column;
     padding: 20px;
+    background-color: white;
 }
 .c-delete-view > .delete-buttons{
     align-self: center;
