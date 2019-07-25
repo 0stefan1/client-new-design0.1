@@ -213,8 +213,8 @@
     height: auto;
     width: 20px;
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 10px;
+    right: 10px;
     cursor: pointer;
 }
 .c-card > img:hover{
@@ -231,6 +231,37 @@
     flex-direction: column;
     cursor: pointer;
     position: relative;
+}
+.c-card > .c-title-network-3{
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    position: relative;
+}
+.c-title-network-3 > a{
+    color: white;
+    background-color: #4DA8F2;
+    border-radius: 5px;
+    padding: 5px;
+    padding-right: 7px;
+    padding-left: 7px;
+    font-size: 13px;
+    margin-top: 10px;
+}
+.padding{
+    padding: 5px !important;
+}
+.margin-top{
+    margin-top: 20px;
+}
+.c-title-network-3 > a:nth-child(1){
+    margin-right: 5px;
+}
+.c-title-network-3 > a:nth-child(2){
+    margin-right: 5px;
+}
+.c-title-network-3 > a:hover{
+    opacity: 0.8;
 }
 .c-title-network-2 > span{
     position: absolute;

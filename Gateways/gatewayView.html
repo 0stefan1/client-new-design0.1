@@ -1,3 +1,75 @@
+<div class="c-sensors-view margin-top" ng-show ="!loading">
+
+    <div  class="c-inside-body-sensors">
+        <div class="header-sensors-card">
+            <div class="header-c-top">
+                <img src="/Home/images-home/Icons/Back1.0.svg"  ng-click="back()" ng-if ="backButton"  alt="Check4Green Icons" title="Back">
+                <!-- <img src="/Home/images-home/Icons/Back1.0.svg" ng-if="detailsData && backButton" alt="Check4Green Icons" title="Back" ng-click="hideDetails()"> -->
+
+                <h1 ng-if="!detailsData">You are in: <b>{{networkName}}</b></h1>
+                <h1 ng-if="detailsData">You are in: <b>{{sensor.name}}</b></h1>
+
+            </div>
+
+            <!-- <div class="filters-sensors" ng-if="!detailsData">
+                <div class="ceckbox-sensors">
+                <p>Total sensors: <b>{{totalSensors}}</b></p>
+                <p>Active: <b style="color: #5cb85c;">{{activeCount}}</b></p>
+                <p>Inactive: <b style="color: #d9534f;">{{inactiveCount}}</b></p>
+                <label class="ceckbox-sensors-no">Devices per page:<input type="number" id="pageSize" style="width: 40px;" onkeydown="javascript: return event.keyCode == 69 ? false : true" min="1" max="500" ng-model="vm.sensPerPage"></label>
+                </div>
+                
+                <label class="ceckbox-sensors">
+                    Show active sensors
+                  <input id="active" type="checkbox" ng-model="value" ng-click="showActiveSensors(value)">
+                  <span></span>
+                </label>
+
+            </div> -->
+            <div class="search-c">
+                <search-gateway></search-gateway>
+            </div>
+
+            <a id="addSensorB" ui-sref="sensorsHome.addGateway"><i class="fas fa-plus"></i>Add a new gateway</a>
+
+        </div>
+        
+
+        <div ng-show="loadingGateways" class="loader"></div>
+        <div class="noData" ng-show="noGateways">Currently you don't have any gateways on this network. Go to <a style="text-decoration: none;">Add gateway</a> to register one</div>
+        <div class="noData" ng-show="gatewayServerError">An error occured. Please try again later.</div>
+
+        <div class="c-aranjament" >
+            <div class="c-column" ng-repeat= "gateway in filterGateways = (gateways | filter: filterSearch) | limitTo: vm.gatewaysPerPage: vm.gatewaysPerPage*(vm.currentPage-1)">
+                <div class="c-card">
+                    <div class="c-title-network-2">
+                        <a class="padding"> {{$index+1}}. {{gateway.name}}</a>
+                        <span class="fa fa-circle" ng-if="gateway.active == true" style="color: #58FF5E;"></span>
+                        <span class="fa fa-circle" ng-if="gateway.active == false" style="color: #FB3030;"></span>
+                    </div>
+
+                    <div class="c-view-action">
+                        <delete-gateway></delete-gateway>
+                    </div>
+                    <div class="c-title-network-3">
+                        <a class="blue" ui-sref="sensorsHome.editGateway" ng-click="gatewayId(gateway.id, gateway.name, gateway.latitude, gateway.longitude)" ng-if = "editButton"> Edit</a>
+                        <a class="blue" ng-click="startDelete(gateway);" ng-if = "deleteButton"> Delete</a>
+                        <a class="blue" ui-sref="sensorsHome.editGatewayLocation" > Location</a>
+                    </div>
+                </div>
+            </div>
+
+
+                <div ng-show="(!filterGateways.length && !loadingGateways && gatewayData)" id="alert-error"><p>No result</p></div> 
+                
+            </div>
+            <div ng-show="!detailsData" paging page="vm.currentPage" page-size="vm.sensPerPage" total="vm.allSensors" show-prev-next="true" show-first-last="true" 
+            ul-class="pagination" active-class="active" disabled-class="disabled" ng-if="sensorData"></div>
+            <div paging page="vm.currentPage" page-size="vm.gatewaysPerPage" total="vm.allGateways" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ng-show="gatewayData"></div>
+        </div>
+</div>
+<!-- 
+
 <div class="sensorModel container" >
         <div class="title-grid">
             <p>{{::vm.titleGrid}}</p>
@@ -48,65 +120,14 @@
 
                 <div class="container-rightButtons" >
                     <search-gateway></search-gateway>
-                
-                    <!-- <div class="container-buttonView" >
-                        <a>View:</a>
-                        <div class="button-view">
-                            <i id="large" class="fas fa-th-large" ng-click="changeLayoutGatewayCards()" ng-if= "changeGateway " onclick="focusButtonLarge()" ></i>
-                            <i id="list" class=" fas fa-th-list" ng-click="changeGatewayLayoutGrid()" ng-if= "changeGateway " onclick="focusButtonList()"></i>
-                        </div>
-                    </div> -->
                 </div>
         
             </div>
             <div class="measurementsTotalReadings" >
-                <!-- <label style="font-weight: initial;">Network: <b>{{networkName}}</b>.</label> -->
                 <label style="font-weight: initial;">Total Gateways: <b>{{vm.allGateways}}</b>.</label>
                 <label style="font-weight: initial;">Active: <b style="color: #5cb85c;">{{countActiveGateways}}</b>,</label>
                 <label style="font-weight: initial;">inactive: <b style="color: #d9534f;">{{countInactiveGateways}}</b></label>
             </div>
-                    
-            <!-- <table class = "table" ng-if="gatewayGrid">
-                <thead>
-                    <tr>
-                        <td>No.</td>
-                        <td>Name</td>
-                        <td>Status</td>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat-start="gateway in filterGateways = (gateways | filter: filterSearch) | limitTo: vm.gatewaysPerPage: vm.gatewaysPerPage*(vm.currentPage-1) ">
-                        <td>{{$index+1}}</td>
-                        <td>{{gateway.name}}</td>
-                        <td>
-                            <span class="label label-success" ng-if="gateway.active == true">Active</span>
-                            <span class="label label-danger" ng-if="gateway.active == false">Inactive</span>
-                        </td>
-                        
-                        <td class="sensorModelContainerInfo">
-                            <button type="button" class="btn btn-success" ng-if="!gateway.expanded" ng-click="vm.expandSelected(gateway); gatewayId(gateway.id, gateway.name, gateway.latitude, gateway.longitude)">+</button>
-                            <button type="button" class="btn btn" ng-if="gateway.expanded" ng-click="gateway.expanded = false">-</button>
-                        </td>
-                    </tr>
-                    <tr ng-if="gateway.expanded" ng-repeat-end="" class="table-overflow">
-                        <td colspan="8" class="subTable">
-                            <details-gateway></details-gateway>
-                            <div>
-                                <button type="button" class="btn btn-success" ng-click="startEdit(gateway)"  ng-show="editButton">Edit</button>
-                                <button type="button" class="btn btn-success" ng-click="startDelete(gateway);" ng-show="deleteButton">Delete</button>
-                                <button type="button" class="btn btn-success" ng-click="showGatewaySensors()" ng-show="sensors">Sensors</button>
-                                <button type="button" class="btn btn-success" ng-click="startEditLocation(gateway.name, gateway.latitude, gateway.longitude)" ui-sref="sensorsHome.editLocation" ng-show="editLocationButton" >Location</button>
-
-                            </div> 
-                            <delete-gateway></delete-gateway>
-                            <edit-gateway></edit-gateway>
-                            <gateway-sensors></gateway-sensors>
-                        </td>
-                    </tr>
-                </tbody>
-            </table> -->
-            
         </div> 
         <div class="container-rowCards">
             <div class="column" ng-repeat= "gateway in filterGateways = (gateways | filter: filterSearch) | limitTo: vm.gatewaysPerPage: vm.gatewaysPerPage*(vm.currentPage-1)">
@@ -137,5 +158,5 @@
         <div ng-show="(!filterGateways.length && !loadingGateways && gatewayData)" id="alert-error"><p>No result</p></div> 
         <div paging page="vm.currentPage" page-size="vm.gatewaysPerPage" total="vm.allGateways" show-prev-next="true" show-first-last="true" ul-class="pagination" active-class="active" disabled-class="disabled" ng-show="gatewayData"></div>
     
-</div>
+</div> -->
 
