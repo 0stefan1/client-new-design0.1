@@ -26,7 +26,6 @@
             $scope.buttons = true;
             $scope.registerButton = false;
             $sessionStorage.buttons = true;
-            $sessionStorage.cards = false;
             delete $sessionStorage.netId;
             $location.path('sensorsHome/networks');
             $timeout(function(){
@@ -134,24 +133,24 @@
                 }
             }
         })
-        if($sessionStorage.gatewayCards == true){
-            $scope.gatewayGrid = false;
-            $scope.gatewayCards = true;
-        } else{
-            $scope.gatewayGrid = true;
-            $scope.gatewayCards = false;
-        }
-        $scope.changeGateway = true;
-        $scope.changeLayoutGatewayCards = function(){
-            $scope.gatewayGrid = false;
-            $scope.gatewayCards = true;
-            $sessionStorage.gatewayCards = true;
-        } 
-        $scope.changeGatewayLayoutGrid = function(){
-            $scope.gatewayGrid = true;
-            $scope.gatewayCards = false;
-            $sessionStorage.gatewayCards = false;
-        }
+        // if($sessionStorage.gatewayCards == true){
+        //     $scope.gatewayGrid = false;
+        //     $scope.gatewayCards = true;
+        // } else{
+        //     $scope.gatewayGrid = true;
+        //     $scope.gatewayCards = false;
+        // }
+        // $scope.changeGateway = true;
+        // $scope.changeLayoutGatewayCards = function(){
+        //     $scope.gatewayGrid = false;
+        //     $scope.gatewayCards = true;
+        //     $sessionStorage.gatewayCards = true;
+        // } 
+        // $scope.changeGatewayLayoutGrid = function(){
+        //     $scope.gatewayGrid = true;
+        //     $scope.gatewayCards = false;
+        //     $sessionStorage.gatewayCards = false;
+        // }
         $scope.gatewayId = function(id, name, latitude, longitude){
             $sessionStorage.gatewayEditId = id;
             $sessionStorage.gatewayName = name;

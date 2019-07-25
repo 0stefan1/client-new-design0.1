@@ -20,8 +20,6 @@
 
       }
       $scope.cancelCards = function(){
-        $sessionStorage.cards = false;
-        $sessionStorage.gatewayCards = false;
         $sessionStorage.showNetworkDetails = false;
       }
       autentificationService.getUser(encodeduser)
