@@ -19,13 +19,13 @@
         <div class="c-aranjament" >
             <div class="c-column" ng-repeat="network in networks" ng-if="!networkDetails">
                 <div class="c-card">
-                    <div class="c-title-network" ng-show="!network.sensorsGatewaysButtons">
+                    <div class="c-title-network" ng-show="!network.sensorsGatewaysButtons && !deleteNetworkDisplay && !editNetworkDisplay">
                         <a ng-click="sensorsGateways(network)"><i class="fas fa-arrow-right"></i>Go to {{network.name}}</a>
                     </div>
 
                     <img src="/Home/images-home/Icons/Close1.0.svg" ng-show="network.sensorsGatewaysButtons" ng-click="cancelSensorsGateways(network)" alt="Check4Green Icons" title="Back">
 
-                    <div class="c-title-network-2" ng-show="network.sensorsGatewaysButtons">
+                    <div class="c-title-network-2" ng-show="network.sensorsGatewaysButtons ">
                         <a ng-click="filterSensors(network)"><i class="fas fa-arrow-right"></i>Go to sensors</a>
                         <a ng-click="filterGateways(network)"><i class="fas fa-arrow-right"></i>Go to gateways</a>
                     </div>
