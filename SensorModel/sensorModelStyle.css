@@ -93,12 +93,12 @@
 }
 /* ********************CHECKBOX */
 .ceckbox-sensors input {
-  display: none;
+    display: none;
     margin-top: 5px;
 }
 
 /* Style the artificial checkbox */
-.ceckbox-sensors span {
+.ceckbox-sensors span{
   height: 15px;
   width: 15px;
   border: 1px solid #195f1a;
@@ -116,7 +116,9 @@
   top: -3px;
   left: 1px;
 }
-.ceckbox-sensors-no input{
+.ceckbox-sensors-no > input{
+    display: initial;
+    margin-top: 0px;
     height: auto;
     width: 20px;
     border: 1px solid #195f1a;
@@ -1653,6 +1655,15 @@ overflow{
     .c-title-network-2 > span{
         font-size: 13px;
     }
+    .c-register-sensor{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .c-edit-content{
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
 }
 @media screen and (max-width: 600px){
     .c-setting-view > .header-setting > h1{
