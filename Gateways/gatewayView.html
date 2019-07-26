@@ -38,7 +38,7 @@
         <div class="noData" ng-show="noGateways">Currently you don't have any gateways on this network. Go to <a style="text-decoration: none;">Add gateway</a> to register one</div>
         <div class="noData" ng-show="gatewayServerError">An error occured. Please try again later.</div>
 
-        <div class="c-aranjament" >
+        <div class="c-aranjament" ng-if="!loadingGateways">
             <div class="c-column" ng-if="!detailsData" ng-repeat= "gateway in filterGateways = gateways | limitTo: vm.gatewaysPerPage: vm.gatewaysPerPage*(vm.currentPage-1)">
                 <div class="c-card">
                     <div class="c-title-network-2" ng-show="!editDisplay && !deleteDisplay && !showSensors">
