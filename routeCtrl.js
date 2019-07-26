@@ -675,25 +675,9 @@
                                'Gateways/deleteGatewayDirective.js',
                                'Gateways/editGatewayDirective.js',
                                'Gateways/searchDirective.js',
-                               'Gateways/gatewaySensorsDirective.js'
+                               'Gateways/gatewaySensorsDirective.js',
+                               'sensorsHome/map.css'
                             
-                            ])
-                        }]
-                    }
-                })
-                .state('sensorsHome.editGateway',{
-                    url:'/edit-gateway',
-                    views:{
-                        'editgateway@':{
-                            template: "<editgateway></editgateway>"
-                        }
-                    },
-                    resolve:{
-                        loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
-                            return $ocLazyLoad.load([
-                               'Gateways/editGatewayDirective.js',
-                               'Gateways/editGatewayCtrl.js',
-                               'Gateways/gatewayService.js'
                             ])
                         }]
                     }

@@ -11,7 +11,7 @@
         <img onclick="closeNav()" src="/Home/images-home/Icons/Close1.0.svg" title="Close" alt="Ceheck4Green Icon">
 
         <div class="img-user-menu">
-            <img onclick="closeNav()" ng-click="cancelCards()" ui-sref="sensorsHome.devices" src="/Home/images-home/Icons/User1.0.svg" title="Go to sensor home" alt="Check4Green Icon">
+            <img onclick="closeNav()" ng-click="cancelCards()" ui-sref="sensorsHome.sensors" src="/Home/images-home/Icons/User1.0.svg" title="Go to sensor home" alt="Check4Green Icon">
             <div class="text-user-menu" ui-sref="settings" title="Go to account settings">
                 <b>{{vm.username}}</b>
                 <p>Email: {{user.email}}</p>
@@ -97,8 +97,6 @@
             <div ui-view="registerNetwork@"></div>
             <div ui-view="registerGateway@"></div>
             <div ui-view ="gateways@"></div>
-            <div ui-view="editgateway@"></div>
-            <div ui-view="gatewayLocation@"></div>
         </div>
         <!-- /route-grid -->
     </div>

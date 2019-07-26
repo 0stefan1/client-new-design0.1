@@ -16,6 +16,7 @@
                     $scope.gateways.forEach(function(val){
                         val.editDisplay = false;
                     });
+                    $scope.editLocationDisplay = false;
                     $scope.editGatewaySuccess = false;
                     $scope.editGatewayerror = false;
                     $scope.detailsButton = false;
@@ -27,6 +28,12 @@
                     $scope.deleteButton = false;
                     $scope.editLocationButton = false;
                     $scope.gatewayDetails = false;
+                    document.getElementById('editGatewayButton').style.backgroundColor='#168040';
+                    document.getElementById('gatewayDetails').style.backgroundColor = '#3CDB41';
+                    document.getElementById('hideDetailsButton').style.backgroundColor='#4DA8F2';
+                    document.getElementById('sensorsButton').style.backgroundColor='#4DA8F2';
+                    document.getElementById('deleteGatewayButton').style.backgroundColor='#E88282';
+                    document.getElementById('editGatewayLocBtn').style.backgroundColor='#4DA8F2';
                 }
                 $scope.editGateway = function(name){
                     var gatewayEdit={'name': name};
@@ -52,6 +59,7 @@
                         })
                 }
                 $scope.cancelEdit = function(){
+                    document.getElementById('editGatewayButton').style.backgroundColor='#3CDB41';
                     $scope.detailsButton = true;
                     $scope.editButton = true;
                     $scope.editDisplay = false;
@@ -62,10 +70,5 @@
                 }
             }
         }
-    });
-    app.component('editgateway', {
-        templateUrl: 'Gateways/editGatewayView.html',
-        controller: 'editGatewayCtrl',
-        controllerAs: 'vm'
     });
 }());

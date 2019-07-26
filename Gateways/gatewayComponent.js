@@ -5,9 +5,8 @@
         controller: 'gatewayCtrl',
         controllerAs : 'vm'
     });
-    app.controller('gatewayCtrl', function($scope, $sessionStorage, $localStorage, $location, $timeout, $window, gatewayService){
+    app.controller('gatewayCtrl', function($scope, $sessionStorage, $localStorage, $location, $timeout, $window, $filter, gatewayService){
         var vm = this;
-        vm.titleGrid = 'Gateways';
         var networkId = $sessionStorage.netId;
         $scope.networkName = $sessionStorage.networkName;
         $scope.editLocationButton = true;
@@ -19,13 +18,6 @@
             var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
         $scope.back = function(){
-            $sessionStorage.gate = false;
-            $scope.gatewayData = false;
-            $scope.sensorData = false;
-            $scope.noSensorData = false;
-            $scope.buttons = true;
-            $scope.registerButton = false;
-            $sessionStorage.buttons = true;
             delete $sessionStorage.netId;
             $location.path('sensorsHome/networks');
             $timeout(function(){
@@ -59,6 +51,7 @@
         gatewayService.getAllGateways(encodeduser, $sessionStorage.netId)
             .then(function(data){
                 vm.allGateways = data;
+                $scope.totalGateways = data;
                 $scope.countActiveGateways = 0;
                 $scope.countInactiveGateways = 0;
                 vm.gatewaysPerPage = 50;
@@ -80,13 +73,45 @@
                     
             }
             $scope.$watch('vm.currentPage', setPage);
-            $scope.setPageSize = function(modelSize){
-                if(modelSize){
-                    vm.gatewaysPerPage = modelSize;
-                    getGateways(encodeduser, networkId, 1, vm.gatewaysPerPage)
+
+            var searchMatch = function (haystack, needle) {
+                if (!needle) {
+                    return true;
                 }
-            }
+                return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+            };
         
+            $scope.search = function () {
+                $scope.filteredItems = $filter('filter')($scope.gateways, function (item) {
+                    if (searchMatch(item.name, $scope.filterSearch))
+                        return true;
+                    
+                    return false;
+                });
+                $scope.gateways = $scope.filteredItems;
+                vm.currentPage = 1;
+                vm.allGateways = $scope.gateways.length;
+                if($scope.filterSearch == ""){
+                    vm.allGateways = data;
+                    getGateways( encodeduser, networkId, 1, data)
+                    
+
+                }
+                
+                
+            };
+            $scope.showDetails = function(gateway){
+                $scope.gateway = gateway;
+                $sessionStorage.gatewayId = gateway.id;
+                $scope.detailsData = true;
+                $scope.detailsDisplay = true;
+    
+            };
+            $scope.hideDetails = function(){
+                $scope.detailsData = false;
+                if($sessionStorage.activegateways == true){
+                    getGateways( encodeduser, networkId, 1, data)                }
+            }
             vm.expandSelected = function(gateway){
                 $scope.gateways.forEach(function(val){
                     val.expanded=false;
@@ -96,6 +121,7 @@
             $scope.showActiveGateways = function(value){
                 if (value == true){
                     $scope.activeGateways = [];
+                    $sessionStorage.activegateways = true;
                     for (var i=0; i< $scope.gateways.length; i++){
                         if($scope.gateways[i].active == true){
                             $scope.activeGateways.push($scope.gateways[i])
@@ -104,6 +130,7 @@
                     $scope.gateways = $scope.activeGateways;
                 } else{
                     $scope.loadingGateways = true;
+                    $sessionStorage.activegateways = false;
                     gatewayService.getGateways(encodeduser, networkId)
                     .then(function(response){
                         $scope.gateways = response.data;
@@ -151,15 +178,19 @@
         //     $scope.gatewayCards = false;
         //     $sessionStorage.gatewayCards = false;
         // }
-        $scope.gatewayId = function(id, name, latitude, longitude){
-            $sessionStorage.gatewayEditId = id;
-            $sessionStorage.gatewayName = name;
-            $sessionStorage.gatewayLat = latitude;
-            $sessionStorage.gatewayLong = longitude;
-        }
-        $scope.startEditLocation = function( name, lat, long){
-            $sessionStorage.name = name;
-            $sessionStorage.location = {lat: lat, lng: long};
+        $scope.getgateway = function(id){
+            gatewayService.getGateway(encodeduser, $sessionStorage.netId, id)
+                .then(function(response){
+                    var gateway = response.data;
+                    $sessionStorage.gatewayEditId = gateway.id;
+                    $sessionStorage.gatewayName = gateway.name;
+                    $sessionStorage.gatewayLat = gateway.latitude;
+                    $sessionStorage.gatewayLong = gateway.longitude;
+                    var lat = gateway.latitude;
+                    var long = gateway.longitude;
+                    $sessionStorage.location = {lat: lat, lng: long};
+                })
+            
         }
     
     });
