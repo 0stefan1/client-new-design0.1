@@ -86,7 +86,9 @@
             $scope.hideDetails = function(){
                 $scope.detailsData = false;
                 hubConnection.disconnectFromHub();
-                getSens( encodeduser, $sessionStorage.netId, 1, data);
+                if($sessionStorage.activeSens == true){
+                    getSens( encodeduser, $sessionStorage.netId, vm.currentPage, vm.sensPerPage);
+                }
             }
             sensorModelService.getSensors(encodeduser, $sessionStorage.netId, 1, data)
                 .then(function(response){
@@ -151,6 +153,7 @@
             {
                 if(value == true)
                 {
+                    $sessionStorage.activeSens = true;
                     sensorModelService.getSensors( encodeduser, $sessionStorage.netId,vm.currentPage, vm.allSensors)
                         .then(function(response)
                         {
@@ -179,6 +182,7 @@
                 }
                 else
                 {
+                    $sessionStorage.activeSens = false;
                     getSens( encodeduser, $sessionStorage.netId,vm.currentPage, vm.allSensors);
                 }
             }

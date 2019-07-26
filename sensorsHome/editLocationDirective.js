@@ -18,18 +18,29 @@
                     $scope.editLocationDisplay = true;
                     $sessionStorage.editLoc = true;
                     $scope.showGateways = false;
+                    $scope.gatewayDetails = false;
+                    $scope.showSensors = false;
                     $scope.deleteDisplay = false;
                     $scope.measurementsDisplay = false;
                     $scope.chartDisplay = false;
                     $scope.editDisplay = false;
-                    document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
-                    document.getElementById('deleteButton').style.backgroundColor = '#E88282';
-                    document.getElementById('editButton').style.backgroundColor = '#3CDB41';
-                    document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
-                    document.getElementById('mapButton').style.backgroundColor = '#168040';
-                    document.getElementById('details').style.backgroundColor = '#3CDB41';
-                    document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
-                    document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
+                    if($sessionStorage.gateWay == false){
+                        document.getElementById('chartButton').style.backgroundColor = '#4DA8F2';
+                        document.getElementById('deleteButton').style.backgroundColor = '#E88282';
+                        document.getElementById('editButton').style.backgroundColor = '#3CDB41';
+                        document.getElementById('gridButton').style.backgroundColor = '#4DA8F2';
+                        document.getElementById('mapButton').style.backgroundColor = '#168040';
+                        document.getElementById('details').style.backgroundColor = '#3CDB41';
+                        document.getElementById('gatewaysButton').style.backgroundColor = '#4DA8F2';
+                        document.getElementById('hideDetailsButton').style.backgroundColor = '#4DA8F2';
+                    }else{
+                        document.getElementById('gatewayDetails').style.backgroundColor = '#3CDB41';
+                        document.getElementById('hideDetailsButton').style.backgroundColor='#4DA8F2';
+                        document.getElementById('sensorsButton').style.backgroundColor='#4DA8F2';
+                        document.getElementById('editGatewayButton').style.backgroundColor='#3CDB41';
+                        document.getElementById('deleteGatewayButton').style.backgroundColor='#E88282';
+                        document.getElementById('editGatewayLocBtn').style.backgroundColor='#168040';
+                    }
                     var map = new google.maps.Map(d3.selectAll('#editLocMap').node(), {
                         zoom: 4,
                         center: new google.maps.LatLng(51.508742, -0.120850),
@@ -133,14 +144,20 @@
                                 $sessionStorage.lng = editGatewayLoc.long;
                                 $sessionStorage.lat = editGatewayLoc.lat;
                                 $scope.showMessage = true;
+                                $scope.errorMessage = false;
+
                                 $timeout(function(){
-                                    $window.history.back();
-                                    $sessionStorage.home = true;
-                                    $sessionStorage.editLoc = false;
-                                    $timeout(function(){
-                                        $window.location.reload();
-                                    }, 100);
+                                    $scope.showMessage = false;
+                                    $scope.errorMessage = false;
+                                    $scope.gatewayDetails = true;
+                                    $scope.editLocationDisplay = false;
+
                                 }, 1000)
+                            })
+                            .catch(function(){
+                                $scope.errorMessage = true;
+                                $scope.showMessage = false;
+                                $scope.message = 'Choose a location!';
                             })
                     }
                 
