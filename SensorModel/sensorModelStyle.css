@@ -1665,6 +1665,20 @@ overflow{
     }
     
 }
+@media screen and (max-width: 780px){
+
+    #addSensorB{
+        display: initial !important;
+        left: 0px !important;
+        border-radius: 0px 10px 0px 0px;
+    }
+    .c-inside-body-sensors > .header-sensors-card{
+        padding-bottom: 40px;
+    }
+    .header-sensors-card > .search-c{
+        display: initial;
+    }
+}
 @media screen and (max-width: 600px){
     .c-setting-view > .header-setting > h1{
         font-size: 25px;
@@ -1692,16 +1706,6 @@ overflow{
         left: -5px;
         top: -5px;
     }
-    .header-sensors-card > .search-c{
-        display: initial;
-    }
-    #addSensorB{
-        display: initial !important;
-        bottom: 201px;
-        left: 35%;
-        width: 160px;
-        border-radius: 0px 0px 10px 10px;
-    }
     .header-details{
         display: flex;
         flex-wrap: wrap;
@@ -1710,15 +1714,14 @@ overflow{
         margin-top: 5px;
         margin-left: 5px;
     }
-    /* .input-setting > select > option{
-        height: 200px !important;
-        width: 200px !important;
-    } */
     .c-edit-view > form{
         margin: 0px;
     }
     #inputHours, #inputMinutes{
         margin-left: 0px;
+    }
+    .c-network{
+        margin-left: 30%;
     }
 }
 @media screen and (max-width: 515px){
@@ -1733,6 +1736,9 @@ overflow{
     }
     #inputDays, #inputHours, #inputMinutes{
         max-width: 90% !important;
+    }
+    .c-network{
+        margin-left: 20%;
     }
     /* table{
         display: flex;
