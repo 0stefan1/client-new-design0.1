@@ -4,6 +4,16 @@
 function hideFilters(){
     var s = document.getElementsByClassName("chevron");
 }
+  // show text headerHome and rotate arrow
+  function nowHeaderFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "header-container") {
+        x.className += " responsive";
+    } else {
+        x.className = "header-container";
+    }
+}
+
 
 // rotate on settings
 function showPass() {

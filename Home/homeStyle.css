@@ -62,6 +62,86 @@
     transform:translateY(-5px);
     transition: 0.5s;
 }
+@media screen and (max-width: 810px){
+    .c-domains-align > img{
+        height: auto;
+        width: 70px;
+    }
+    .c-domains h1{
+        font-size: 17px;
+        text-align: center;
+    }
+    .c-domains > .c-domains-child > .c-domains-align{
+        
+    }
+    .c-domains-align > strong{
+        font-size: 13px;
+        text-align: center;
+    }
+    /* DOWN monitor img*/
+    .c-presentation > img{
+        width: 300px !important;
+        margin-bottom: 30px;
+    }
+    .c-presentation > video{
+        position: absolute;
+        top: 144px !important;
+        height: auto;
+        width: 250px !important;
+    }
+    .c-text-monitor > p{
+        font-size: 20px !important;
+    }
+    /* REQUEST */
+    .c-request > img{
+        display: none;
+    }
+    .c-request{
+        margin-top: 20px !important;
+        padding-top: 0px !important;
+    }
+    /* PRESENTATION */
+    .content-presentation{
+        margin-top: 25px !important;
+    }
+    .content-presentation > .c-section-1{
+        flex-direction: column;
+    }
+    .video-pp > iframe{
+        height: auto;
+        width: 100%;
+    }
+    .video-pp{
+        margin-bottom: 20px;
+    }
+    .content-presentation > .c-section-2{
+        flex-direction: column;
+    }
+    .c-section-2 > .c-text:not(:first-child){
+        margin-left: 0px !important;
+        margin-top: 20px;
+    }
+    .content-presentation > .img-tri {
+        height: auto;
+        width: 80% !important;
+        padding: 0px !important;
+        margin-bottom: 30px;
+    }
+    .container-cards .container-cardsChild video{
+        vertical-align: unset !important;
+    }
+    .container-cardsParrent{
+        padding: 0px !important;
+    }
+    .container-cardsParrent .container-cards{
+        max-width: 100% !important;
+        margin-left: 0px !important;
+        padding: 5px !important;
+    }
+    .contaner-cardsAndTitle{
+        padding-bottom: 70px !important;
+    }
+}
 /* Domains section ************************************/
 
 /* Video section ************************************/
@@ -325,10 +405,10 @@
 }
 
 @media screen and (max-width: 900px) {
-    .header-container{
+    /* .header-container{
         background-color: #fdffff;
         box-shadow: 1px 1px 14px 0px #005c4e4d;
-    }
+    } */
     .header-container.responsive .logo-header-home{
         margin-left: 25%;
         margin-right: 100%;
@@ -494,3 +574,4 @@ footer {
     text-align: center;
 }
 /* footer <-- */
+
