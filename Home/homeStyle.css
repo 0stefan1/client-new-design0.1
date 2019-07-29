@@ -141,6 +141,16 @@
     .contaner-cardsAndTitle{
         padding-bottom: 70px !important;
     }
+    /* CONTACT */
+    .contact-container-big .contact-container .area-text-container .textarea-container-flex textarea{
+        width: 100% !important;
+    }
+    .contact-container-big .contact-container{
+        right: 20px !important;
+    }
+    .c-iong-contact{
+        right: 15% !important;
+    }
 }
 /* Domains section ************************************/
 
