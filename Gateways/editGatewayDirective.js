@@ -13,21 +13,15 @@
                   $scope.encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
                 }
                 $scope.startEdit = function(gateway){
-                    $scope.gateways.forEach(function(val){
-                        val.editDisplay = false;
-                    });
+                    $scope.editDisplay = true;
+                    $scope.deleteDisplay = false;
+                    $scope.gatewayDetails = false;
+                    $scope.showSensors = false;
                     $scope.editLocationDisplay = false;
                     $scope.editGatewaySuccess = false;
                     $scope.editGatewayerror = false;
-                    $scope.detailsButton = false;
-                    gateway.editDisplay = true;
                     $scope.sensors = false;
                     $sessionStorage.editGatewayId = gateway.id;
-                    $scope.editButton = false;
-                    $scope.editDisplay = true;
-                    $scope.deleteButton = false;
-                    $scope.editLocationButton = false;
-                    $scope.gatewayDetails = false;
                     document.getElementById('editGatewayButton').style.backgroundColor='#168040';
                     document.getElementById('gatewayDetails').style.backgroundColor = '#3CDB41';
                     document.getElementById('hideDetailsButton').style.backgroundColor='#4DA8F2';

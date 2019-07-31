@@ -1,8 +1,7 @@
-<div class="c-edit-network" ng-if="deleteDisplay">
-    <div class="c-content-edit-network">
-        <p>This item will be <b>permanently</b> delete!</p>
-    </div>
-    <div class="a-edit-netwotk">
+<div class="c-delete-view" ng-if="deleteDisplay">
+    <p class="text-delete">This item will be <b>permanently</b> deleted!</p>
+    <span id="alert-error" ng-show="errorDelete">{{errorMsg}}</span>
+    <div class="delete-buttons">
         <a ng-click="deleteGateway()">Delete</a>
         <a ng-click="cancelDelete();">Close</a>
     </div>

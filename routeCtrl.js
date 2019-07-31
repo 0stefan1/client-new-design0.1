@@ -670,13 +670,14 @@
                     resolve:{
                         loadDependencies: ['$ocLazyLoad', function($ocLazyLoad){
                             return $ocLazyLoad.load([
+                            'SensorModel/sensorModelStyle.css',
                                'Gateways/gatewayComponent.js',
                                'Gateways/gatewayDetailsDirective.js',
                                'Gateways/deleteGatewayDirective.js',
                                'Gateways/editGatewayDirective.js',
                                'Gateways/searchDirective.js',
                                'Gateways/gatewaySensorsDirective.js',
-                               'sensorsHome/map.css'
+                               'sensorsHome/map.css',
                             
                             ])
                         }]

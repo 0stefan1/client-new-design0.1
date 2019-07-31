@@ -15,9 +15,12 @@
                 $scope.showSensors = false;
                 $scope.showGatewaySensors = function(){
                     $scope.editLocationDisplay = false;
+                    $scope.editDisplay = false;
                     $scope.loadingSensors = true;
                     $scope.sensors = false;
                     $scope.detailsButton = false;
+                    $scope.deleteDisplay = false;
+
                     $scope.sensors = false;
                     $scope.editButton = false;
                     $scope.deleteButton = false;
