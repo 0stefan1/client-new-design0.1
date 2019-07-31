@@ -109,7 +109,7 @@
   margin-top: 3px;
 }
 
-[type=checkbox]:checked + span:before {
+.ceckbox-sensors [type=checkbox]:checked + span:before {
   content: '\2714';
   position: absolute;
   color: #2CA72F;
@@ -1085,6 +1085,11 @@ label{
 .body-table{
     margin-top: 15px;
 }
+.td-adress{
+    background-color: white;
+    border: 2px solid #E0F9E2;
+    border-top: 2px solid #E0F9E2 !important;
+}
 .body-table > thead{
     background-color: #E0F9E2;
     border-radius: 10px;
@@ -1314,13 +1319,13 @@ inLine-measurement{
 .refreshMeasurements{
     display:flex;
 }
-.chartDisplay input{
+/* .chartDisplay input{
     margin-left:-15px!important;
     margin-top:2px;
 }
 .chartDisplay .cancelButton{
     margin-top:20px;
-}
+} */
 .noData{
     text-align: center;
     padding:30px;
@@ -1345,21 +1350,7 @@ inLine-measurement{
     fill: #4e9a06;
     opacity: 2;
 }
-#line2{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-top: 20px;
-    padding: 20px;
-    border: 1px solid rgb(189, 189, 189);
-    box-shadow: 1px 1px 7px rgba(51, 51, 51, 0.089);
-}
-#line{
-    /* margin-top: 20px;
-    padding-top: 20px;
-    padding: 20px;
-    border: 1px solid rgb(189, 189, 189);
-    box-shadow: 1px 1px 7px rgba(51, 51, 51, 0.089); */
-}
+
 .legend{
     padding: 5px;
     font: 10px sans-serif;
@@ -1663,7 +1654,15 @@ overflow{
         padding-left: 5%;
         padding-right: 5%;
     }
-    
+    .legend-measurement{
+        bottom: -55px;
+    }
+    .measurementsDisplay table{
+        margin-top: 50px !important;
+    }
+    .header-details > img{
+        top: 50px;
+    }
 }
 @media screen and (max-width: 780px){
 
@@ -1677,6 +1676,11 @@ overflow{
     }
     .header-sensors-card > .search-c{
         display: initial;
+    }
+    .c-content-details{
+        overflow-x: auto !important;
+        width: 100% !important;
+        padding: 0px;
     }
 }
 @media screen and (max-width: 600px){
@@ -1723,6 +1727,25 @@ overflow{
     .c-network{
         margin-left: 30%;
     }
+    .measuremet-filters > .c-filter{
+        flex-direction: column;
+    }
+    .c-filter > label:not(:last-child){
+        border-right: 1px solid #c7cec700;
+        padding-right: 0px;
+    }
+    .c-filter > p:not(:first-child){
+        margin-left: 0px;
+        padding-left: 0px;
+        border-left: 1px solid #c7cec700;
+    }
+    .c-filter > label:not(:first-child){
+        margin-left: 0px;
+        padding-left: 0px;
+    }
+    .header-details > img{
+        top: 78px;
+    }
 }
 @media screen and (max-width: 515px){
     #addSensorB{
@@ -1740,16 +1763,8 @@ overflow{
     .c-network{
         margin-left: 20%;
     }
-    /* table{
-        display: flex;
+    .header-details > img{
+        top: 110px;
     }
-    table > thead tr{
-        display: flex;
-        flex-direction: column;
-    }
-    table > tbody tr{
-        display: flex;
-        flex-direction: column;
-    } */
 }
 /* **********************RESPONSIVE CONTENT */
