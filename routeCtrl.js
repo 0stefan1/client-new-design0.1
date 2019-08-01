@@ -145,6 +145,8 @@
                             return $ocLazyLoad.load([
                                 'Home/HomeContent/PresentationContent/presentationComponent.js',
                                 'Home/HomeContent/PresentationContent/presentationCtrl.js',
+                                'Home/homeStyle.css',
+                                'Home/HomeContent/cardContentStyle.css'
                             ])
                         }]
                     }

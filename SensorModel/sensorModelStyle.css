@@ -96,7 +96,6 @@
     display: none;
     margin-top: 5px;
 }
-
 /* Style the artificial checkbox */
 .ceckbox-sensors span{
   height: 15px;
@@ -108,7 +107,6 @@
   cursor: pointer;
   margin-top: 3px;
 }
-
 .ceckbox-sensors [type=checkbox]:checked + span:before {
   content: '\2714';
   position: absolute;
@@ -986,6 +984,7 @@ label{
 /* maps details */
 .ceckbox-sensors{
     display: flex;
+    align-content: stretch;
 }
 .header-sensors-card > a{
     display: none;
@@ -1665,7 +1664,6 @@ overflow{
     }
 }
 @media screen and (max-width: 780px){
-
     #addSensorB{
         display: initial !important;
         left: 0px !important;
