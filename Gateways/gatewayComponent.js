@@ -127,10 +127,14 @@
                             $scope.activeGateways.push($scope.gateways[i])
                         }
                     }
+                    vm.allGateways = $scope.activeGateways.length;
+                    vm.gatewaysPerPage = $scope.activeGateways.length;
                     $scope.gateways = $scope.activeGateways;
                 } else{
                     $scope.loadingGateways = true;
                     $sessionStorage.activegateways = false;
+                    vm.allGateways = data;
+                    vm.gatewaysPerPage = 50;
                     gatewayService.getGateways(encodeduser, networkId)
                     .then(function(response){
                         $scope.gateways = response.data;
@@ -160,24 +164,6 @@
                 }
             }
         })
-        // if($sessionStorage.gatewayCards == true){
-        //     $scope.gatewayGrid = false;
-        //     $scope.gatewayCards = true;
-        // } else{
-        //     $scope.gatewayGrid = true;
-        //     $scope.gatewayCards = false;
-        // }
-        // $scope.changeGateway = true;
-        // $scope.changeLayoutGatewayCards = function(){
-        //     $scope.gatewayGrid = false;
-        //     $scope.gatewayCards = true;
-        //     $sessionStorage.gatewayCards = true;
-        // } 
-        // $scope.changeGatewayLayoutGrid = function(){
-        //     $scope.gatewayGrid = true;
-        //     $scope.gatewayCards = false;
-        //     $sessionStorage.gatewayCards = false;
-        // }
         $scope.getgateway = function(id){
             gatewayService.getGateway(encodeduser, $sessionStorage.netId, id)
                 .then(function(response){

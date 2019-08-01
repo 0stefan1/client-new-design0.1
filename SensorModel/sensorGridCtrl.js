@@ -159,6 +159,8 @@
                                     $scope.actsens.push($scope.actSensors[i]);
                                 }
                             }
+                            vm.sensPerPage = $scope.actsens.length;
+                            vm.allSensors = $scope.actsens.length;
                             $scope.sensors = $scope.actsens;
                             $scope.active = true;
                         })
@@ -172,6 +174,8 @@
                 else
                 {
                     $sessionStorage.activeSens = false;
+                    vm.sensPerPage = 50;
+                    vm.allSensors = data;
                     getSensors( encodeduser, vm.currentPage, vm.allSensors);
                 }
             }
