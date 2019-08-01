@@ -169,6 +169,8 @@
                                     $scope.actsens.push($scope.actSensors[i]);
                                 }
                             }
+                            vm.sensPerPage = $scope.actsens.length;
+                            vm.allSensors = $scope.actsens.length;
                             $scope.sensors = $scope.actsens;
                             $scope.active = true;
                             
@@ -183,48 +185,12 @@
                 else
                 {
                     $sessionStorage.activeSens = false;
+                    vm.sensPerPage = 50;
+                    vm.allSensors = data;
                     getSens( encodeduser, $sessionStorage.netId,vm.currentPage, vm.allSensors);
                 }
             }
         }
-        // if($sessionStorage.cards == true){
-        //     $scope.cards = true;
-        //     $scope.grid = false;
-        // } 
-        // else{
-        //     $scope.grid = true;
-        //     $scope.cards = false;
-        // }
-        // $scope.changeLayoutCards = function(){
-        //     $scope.buttons = false;
-        //     $scope.cards = true;
-        //     $scope.editCards = true;
-        //     $scope.grid = false;
-        //     $sessionStorage.cards = true;
-        //     $scope.editLocation = false;
-        //     $sessionStorage.details = true;
-        //     $sessionStorage.editDisplay = true;
-        //     $sessionStorage.editSensGrid = false;
-        //     $sessionStorage.title = true;
-        // } 
-        // $scope.changeLayoutGrid = function(){
-        //     $sessionStorage.editSensGrid = true;
-        //     $sessionStorage.editDisplay = false;
-        //     $scope.sensorData = true;
-        //     $scope.buttons = false;
-        //     $scope.cards = false;
-        //     $scope.editCards = false;
-        //     $scope.grid = true;
-        //     $sessionStorage.details = false;
-        //     $sessionStorage.cards = false;
-        //     $sessionStorage.title = false;
-        //     if($sessionStorage.cancelEdit){
-        //         $timeout(function(){
-        //             $window.location.reload();
-        //         }, 1);
-        //         $sessionStorage.cancelEdit = false;
-        //     }
-        // }
         $scope.measureUnit = function(sensTypeId){
             sensorModelService.getMeasureId(sensTypeId)
                  .then(idSuccess)
