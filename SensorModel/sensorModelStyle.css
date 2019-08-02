@@ -674,6 +674,7 @@ body > div:nth-child(11) > settings > div.c-network-view > div > div > form{
     border-radius: 10px;
     box-shadow: 0px 5px 15px -7px rgba(0, 0, 0, 0.322);
     margin: 10px;
+    position: relative;
 }
 .c-details > .header-details{
     position: relative;
@@ -972,6 +973,10 @@ label{
 }
 .c-details-map{
     padding: 15px;
+    position: relative;
+}
+#marginTopView > div:nth-child(9) > networks > div > div.c-inside-body-network > div.c-aranjament > div > details-net > div > div.c-map-details > map > div > div.legend-measurement{
+    position: initial;
 }
 .c-map-details > section{
     display: flex;
@@ -1661,6 +1666,20 @@ overflow{
     }
     .header-details > img{
         top: 50px;
+    }
+    #marginTopView > div:nth-child(9) > networks > div > div.c-inside-body-network > div.c-aranjament > div > details-net > div > div.c-map-details > map > div > div.legend-measurement{
+        flex-direction: column;
+    }
+    #marginTopView > div:nth-child(9) > networks > div > div.c-inside-body-network > div.c-aranjament > div > details-net > div > div.c-map-details > section{
+        flex-direction: column;
+    }
+    .c-map-details > section > label:not(:first-child){
+        margin-left: 0px;
+        padding-left: 0px;
+        border-left: 1px solid #c7cec700;
+    }
+    #marginTopView > div:nth-child(9) > networks > div > div.c-inside-body-network > div.c-aranjament{
+        margin-left: 2%;
     }
 }
 @media screen and (max-width: 780px){

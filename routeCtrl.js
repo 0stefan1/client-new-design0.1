@@ -399,6 +399,7 @@
                                  'Autentification/Settings/settingsComponent.js',
                                  'Autentification/Settings/settingsCtrl.js',
                                  'Autentification/Settings/settingsStyle.css',
+                                 'SensorModel/sensorModelStyle.css',
                                  'Autentification/Service/autentificationService.js'
                             ])
                         }]
