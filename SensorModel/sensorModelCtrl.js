@@ -11,7 +11,6 @@
         $scope.backButton = true;
         $scope.sensorData = false;
         $scope.noData = false;
-        $scope.change = true;
         $scope.searchSensor ='';
         $scope.loading = true;
         vm.currentPage = 1;

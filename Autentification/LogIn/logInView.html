@@ -7,7 +7,7 @@
             <div ng-if = "loading" class="loader"></div>
             <div ng-show="vm.showLogInError" id="alert-error"><p>{{message}}</p></div>
 
-      <div class="c-login-form" name="loginForm" novalidate ng-hide="loading">
+      <div class="c-login-form" name="loginForm" novalidate ng-if="!loading">
 
           <div class="f-group" ng-class="{'has-error': loginForm.uname.$invalid && loginForm.uname.$dirty}">
               <input type="email" placeholder="Enter email" ng-model="email" ng-pattern="/^[A-Za-z0-9._@]*$/" name="uname" required>

@@ -110,7 +110,8 @@
             $scope.hideDetails = function(){
                 $scope.detailsData = false;
                 if($sessionStorage.activegateways == true){
-                    getGateways( encodeduser, networkId, 1, data)                }
+                    getGateways( encodeduser, networkId, 1, data)                
+                }
             }
             vm.expandSelected = function(gateway){
                 $scope.gateways.forEach(function(val){

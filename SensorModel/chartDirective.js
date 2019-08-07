@@ -199,7 +199,7 @@
                                                 .attr("x", function(d) {return x(d.readingDate); })
                                                 .attr("y", function(d) {return y(d.value)-3; })
                                                 .text(function(d) { 
-                                                                    if(d.value<$scope.outOfRangePositiveError && d.value >$scope.outOfRangeNegativeError && d.value!=0){return d.value;} 
+                                                                    if(d.value<$scope.outOfRangePositiveError && d.value >$scope.outOfRangeNegativeError && d.value!=0 && (!$scope.vibrations || SENSOR_TYPE.ID != 37)){return d.value;} 
                                                                     if(SENSOR_TYPE.ID == 37 || $scope.vibrations){
                                                                         if(d.value == 100){
                                                                             return 'x';
