@@ -8,35 +8,44 @@
         $scope.outOfRangePositiveError = SENSOR_TYPE.OUT_OF_RANGE_POSITIVE;
         $scope.outOfRangeNegativeError = SENSOR_TYPE.OUT_OF_RANGE_NEGATIVE;
         $scope.networkName = $sessionStorage.networkName;
-        $scope.backButton = true;
         $scope.sensorData = false;
         $scope.noData = false;
         $scope.searchSensor ='';
         $scope.loading = true;
         vm.currentPage = 1;
         vm.sensPerPage = 50;
+
+        //back to networks button
         $scope.back = function(){
-            $scope.sensorData = false;
-            $scope.noSensorData = false;
             delete $sessionStorage.netId;
             $location.path('/sensorsHome/networks');
             $timeout(function(){
                 $window.location.reload();
-
             }, 1000)
         }
+
+        //user credentials
         if($localStorage.email && $localStorage.password){
             var encodeduser = btoa($localStorage.email +':'+ $localStorage.password);
         }else {
             var encodeduser = btoa($sessionStorage.email +':'+ $sessionStorage.password);
         }
         
+
+        //get sensors from the server
         function getSens(user, networkId, page, size){
+            $scope.activeCount =0;
+            $scope.inactiveCount =0;
             sensorModelService.getSensors(user, networkId, page, size)
                 .then(function(response){
                     $scope.sensors = response.data;
                     for(var i=0; i<$scope.sensors.length; i++){
-                        $scope.sensors[i].productionDate = $scope.sensors[i].productionDate.substr(0,10)+ " " + $scope.sensors[i].productionDate.substr(11,5)
+                        $scope.sensors[i].productionDate = $scope.sensors[i].productionDate.substr(0,10)+ " " + $scope.sensors[i].productionDate.substr(11,5);
+                        if($scope.sensors[i].active == true){
+                            $scope.activeCount++;
+                        }else{
+                            $scope.inactiveCount++;
+                        }
                     }
                     $scope.loading = false;
                     if($scope.sensors.length == 0){
@@ -62,8 +71,13 @@
         function allSensors(data){
             vm.allSensors = data;
             $scope.totalSensors = data;
-            $scope.activeCount =0;
-            $scope.inactiveCount =0;
+            if (data == 0){
+                $scope.noSensorsData = true;
+                $scope.loading = false;
+                $scope.sensorData = false;
+            }
+
+            //details buuton
             vm.expandSelected = function(sensor){
                 $scope.sensors.forEach(function(val){
                     val.expanded=false;
@@ -74,42 +88,27 @@
                 })
                 sensor.expanded=true;
             };
-    
-    
             $scope.showDetails = function(sensor){
                 $scope.sensor = sensor;
                 $sessionStorage.sensorId = sensor.id;
                 $scope.detailsData = true;
-                
             };
             $scope.hideDetails = function(){
                 $scope.detailsData = false;
                 hubConnection.disconnectFromHub();
                 if($sessionStorage.activeSens == true){
-                    getSens( encodeduser, $sessionStorage.netId, vm.currentPage, vm.sensPerPage);
+                    getSens(encodeduser, $sessionStorage.netId, vm.currentPage, vm.sensPerPage);
                 }
             }
-            sensorModelService.getSensors(encodeduser, $sessionStorage.netId, 1, data)
-                .then(function(response){
-                    var actSensors = response.data;
-                    for(var i=0; i<response.data.length; i++){
-                        if(actSensors[i].active == true){
-                            $scope.activeCount++;
-                        }else{
-                            $scope.inactiveCount++;
-                        }
-                    }
-                })
-            if (data == 0){
-                $scope.noSensorsData = true;
-                $scope.loading = false;
-                $scope.sensorData = false;
-            }
+
+            //paging
             vm.setPage = function(){
                 getSens( encodeduser, $sessionStorage.netId, 1, data);
                     
             }
             $scope.$watch('vm.currentPage', vm.setPage);
+
+            //searching
             var searchMatch = function (haystack, needle) {
                 if (!needle) {
                     return true;
@@ -135,19 +134,8 @@
                 
                 
             };
-            var expanded = false;
-
-            $scope.showCheckboxes = function()
-            {
-                var checkboxes = document.getElementById("checkboxes");
-                if(!expanded){
-                    checkboxes.style.display = "block";
-                    expanded = true;
-                } else{
-                    checkboxes.style.display = "none";
-                    expanded = false;
-                }
-            }
+            
+            //filters
             $scope.showActiveSensors = function(value)
             {
                 if(value == true)

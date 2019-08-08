@@ -25,9 +25,8 @@
                   $scope.loading = false;
                   $sessionStorage.hideSensorMenu = true;
                   $timeout(function(){
-                    
                     $window.location.reload();
-                }, 100)
+                })
               })
               .catch(function(response){
                 $scope.loading = false;

@@ -6,8 +6,8 @@
         <div  class="c-inside-body-sensors">
             <div class="header-sensors-card">
                 <div class="header-c-top">
-                    <img src="/Home/images-home/Icons/Back1.0.svg" ng-if="!detailsData && backButton" alt="Check4Green Icons" title="Back" ng-click="back()">
-                    <img src="/Home/images-home/Icons/Back1.0.svg" ng-if="detailsData && backButton" alt="Check4Green Icons" title="Back" ng-click="hideDetails()">
+                    <img src="/Home/images-home/Icons/Back1.0.svg" ng-if="!detailsData" alt="Check4Green Icons" title="Back" ng-click="back()">
+                    <img src="/Home/images-home/Icons/Back1.0.svg" ng-if="detailsData" alt="Check4Green Icons" title="Back" ng-click="hideDetails()">
                 
                     <h1 ng-if="!detailsData">You are in: <b>{{networkName}}</b></h1>
                     <h1 ng-if="detailsData">You are in: <b>{{sensor.name}}</b></h1>
