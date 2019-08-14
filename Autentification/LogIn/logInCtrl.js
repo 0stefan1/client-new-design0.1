@@ -19,6 +19,7 @@
           }
           autentificationService.logIn($scope.encodeduser)
               .then(function(response){
+                  vm.showLogInError = false;
                   $location.path('sensorsHome/networks');
                   $sessionStorage.email = email;
                   $sessionStorage.password = password;

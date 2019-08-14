@@ -24,6 +24,19 @@
 .c-flex-grow{
   flex-grow: 2;
 }
+
+.homeHouse{
+  margin-right: 10px;
+  
+  font-size: 27px;
+}
+.homeHouse:hover{
+  opacity: 0.9;
+}
+.homeHouse i{
+  margin-top:10px;
+  color: black;
+}
 /* .container-sensorHome .headerSensorHome{
   position: sticky;
   top: 0;
@@ -51,22 +64,9 @@
 .container-sensorHome .headerSensorHome .topnav-shome #main i{
   padding: 3px;
   color: #ffff;
-}
-.container-sensorHome .headerSensorHome .topnav-shome .homeHouse{
-  margin: 5px;
-  background: #525252;
-  border-radius: 50%;
-}
-.container-sensorHome .headerSensorHome .topnav-shome .homeHouse:hover{
-  text-decoration: none;
-  background: #414141 !important;
-  transition: 0.3s;
-}
-.container-sensorHome .headerSensorHome .topnav-shome .homeHouse i{
-  padding: 7px;
-  color: #1ec033;
-}
+} */
 
+/*
 .container-sensorHome .headerSensorHome .topnav-shome .logged-hover{
   margin: 5px;
   border-radius: 50%;
